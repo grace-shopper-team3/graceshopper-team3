@@ -13,7 +13,6 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const allproducts = useSelector((state) => state.allProducts.allProducts);
-  console.log("allproducts", allproducts);
 
   return (
     <div id="AllProducts">
