@@ -16,52 +16,43 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-default">
         <div className="container-fluid">
-          {isLoggedIn ? (
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">
-                <Link to="/">
-                  <img
-                    style={{ width: 60, height: 30 }}
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
-                  />
-                </Link>
-              </a>
-              <Link to="/">Home</Link>
-              <Link to="/products">All Products</Link>
+          <div className="navbar-header ">
+            <a className="navbar-brand" href="#">
+              <Link to="/">
+                <img
+                  style={{ width: 70, height: 40 }}
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
+                />
+              </Link>
+            </a>
+            <Link to="/">Home</Link>
+            <Link to="/products">All Products</Link>
+          </div>
+          <form className="navbar-form navbar-left">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+              />
+            </div>
+            <button type="submit" className="btn btn-default">
+              Submit
+            </button>
+            {isLoggedIn ? (
               <button type="button" onClick={logoutAndRedirectHome}>
                 Logout
               </button>
-            </div>
-          ) : (
-            <div class="navbar-header">
-              {/* The navbar will show these links before you log in */}
-              <a className="navbar-brand" href="#">
-                <Link to="/">
-                  <img
-                    style={{ width: 60, height: 30 }}
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
-                  />
-                </Link>
-              </a>
-
-              <Link to="/">Home</Link>
-              <Link to="/products">All Products</Link>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-          )}
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search" />
-            </div>
-            <button type="submit" class="btn btn-default">
-              Submit
-            </button>
+            ) : (
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
+              </>
+            )}
             <Link to="/cart"> Cart</Link>
           </form>
         </div>
       </nav>
-      <hr />
     </div>
   );
 };
