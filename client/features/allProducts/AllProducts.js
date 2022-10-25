@@ -23,7 +23,20 @@ const AllProducts = () => {
       <div>
         {allproducts.map((product) => (
           <div key={product.id}>
-            {product.name} {product.price}
+            <div className="card" style={{ width: `18rem` }}>
+              <img
+                className="card-img-top"
+                src=".../100px180/"
+                alt="Card image cap"
+              ></img>
+              <div className="card-body">
+                <h5 className="card-title">{product.name}</h5>
+                <p>$ {product.price}</p>
+                <a href="#" className="btn btn-primary">
+                  ADD TO CART
+                </a>
+              </div>
+            </div>
           </div>
         ))}
       </div>
