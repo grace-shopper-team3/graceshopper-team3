@@ -35,7 +35,7 @@ const Navbar = () => {
           ) : (
             <div class="navbar-header">
               {/* The navbar will show these links before you log in */}
-              <a className="navar-brand" href="#">
+              <a className="navbar-brand" href="#">
                 <Link to="/">
                   <img
                     style={{ width: 60, height: 30 }}

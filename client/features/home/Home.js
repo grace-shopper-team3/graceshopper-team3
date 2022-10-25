@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
 /**
  * COMPONENT
@@ -12,9 +12,11 @@ const Home = (props) => {
   //     <h3>Welcome, {username}</h3>
   //   </div>
   // );
-
-
-  
+  return (
+    <div>
+      <h1>Draft Home Page</h1>
+    </div>
+  );
 };
 
 export default Home;
