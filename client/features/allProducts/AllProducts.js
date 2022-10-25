@@ -26,7 +26,7 @@ const AllProducts = () => {
             <div className="card" style={{ width: `18rem` }}>
               <img
                 className="card-img-top"
-                src=".../100px180/"
+                src={product.imageUrl}
                 alt="Card image cap"
               ></img>
               <div className="card-body">
