@@ -17,14 +17,13 @@ const Navbar = () => {
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <div className="navbar-header ">
-            <a className="navbar-brand" href="#">
-              <Link to="/">
-                <img
-                  style={{ width: 70, height: 40 }}
-                  src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
-                />
-              </Link>
-            </a>
+            <Link to="/">
+              <img
+                style={{ width: 70, height: 40 }}
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
+              />
+            </Link>
+
             <Link to="/">Home</Link>
             <Link to="/products">All Products</Link>
           </div>
