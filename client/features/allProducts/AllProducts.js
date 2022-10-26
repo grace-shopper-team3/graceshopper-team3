@@ -13,31 +13,70 @@ const AllProducts = () => {
 
   return (
     <div id="AllProducts">
-      <div>
-        <h1>All Products</h1>
-      </div>
-      <div>
-        {allproducts.map((product) => (
-          <div key={product.id}>
-            <div className="card" style={{ width: `18rem` }}>
-              <Link to={`/products/${product.id}`}>
-                <img
-                  className="card-img-top"
-                  src={product.imageUrl}
-                  alt="Card image cap"
-                ></img>
-              </Link>
-              <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
-                <p>$ {product.price}</p>
-                <a href="#" className="btn btn-primary">
-                  ADD TO CART
-                </a>
+      <section>
+        <h1
+          style={{
+            textAlign: `center`,
+            backgroundColor: `#F6BD60`,
+          }}
+        >
+          All FunkoPops
+        </h1>
+      </section>
+      <section>
+        <div className="container">
+          <div className={"row"}>
+            {allproducts.map((product) => (
+              <div
+                key={product.id}
+                className="col-sm-4"
+                style={{
+                  marginTop: `30px`,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  className="card border-secondary"
+                  style={{
+                    width: `18rem`,
+                    height: `25rem`,
+                    display: `flex`,
+                    justifyContent: `center`,
+                    alignItems: `center`,
+                  }}
+                >
+                  <Link to={`/products/${product.id}`}>
+                    {/* <img
+                      style={{ height: `15rem` }}
+                      className="card-img-top"
+                      src={product.imageUrl}
+                      alt="Card image cap"
+                    ></img> */}
+                    <div
+                      style={{
+                        width: `14rem`,
+                        height: `16rem`,
+                        backgroundImage: `url(${product.imageUrl})`,
+                        backgroundSize: `cover`,
+                      }}
+                      className="card-img-top"
+                    ></div>
+                  </Link>
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{product.name}</h5>
+                    <p>$ {product.price}</p>
+                    <a href="#" className="btn btn-primary">
+                      ADD TO CART
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
     </div>
   );
 };
