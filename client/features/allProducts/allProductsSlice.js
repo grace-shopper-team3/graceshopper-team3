@@ -24,8 +24,5 @@ const allProductsSlice = createSlice({
   },
 });
 
-/*
-  ACTIONS // check with react component to see how actions was imported
-*/
 
 export default allProductsSlice.reducer;
