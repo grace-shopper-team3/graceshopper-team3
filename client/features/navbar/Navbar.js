@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { logout } from '../../app/store';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../app/store";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -9,30 +9,50 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
     <div>
-      <h1>FS-App-Template</h1>
-      <nav>
-        {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
-              Logout
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header ">
+            <a className="navbar-brand" href="#">
+              <Link to="/">
+                <img
+                  style={{ width: 70, height: 40 }}
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
+                />
+              </Link>
+            </a>
+            <Link to="/">Home</Link>
+            <Link to="/products">All Products</Link>
+          </div>
+          <form className="navbar-form navbar-left">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+              />
+            </div>
+            <button type="submit" className="btn btn-default">
+              Submit
             </button>
-          </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-          </div>
-        )}
+            {isLoggedIn ? (
+              <button type="button" onClick={logoutAndRedirectHome}>
+                Logout
+              </button>
+            ) : (
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
+              </>
+            )}
+            <Link to="/cart"> Cart</Link>
+          </form>
+        </div>
       </nav>
-      <hr />
     </div>
   );
 };

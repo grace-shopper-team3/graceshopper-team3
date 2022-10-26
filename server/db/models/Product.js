@@ -12,6 +12,7 @@ const Product = db.define("product", {
   },
   imageUrl: {
     type: Sequelize.STRING,
+    default: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
   },
   price: {
     type: Sequelize.DECIMAL,
