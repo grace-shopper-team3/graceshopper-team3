@@ -23,7 +23,20 @@ const SingleProduct = () => {
           <div>
             <h3> {product.name} </h3>
             <div>Category: {product.category}</div>
-            <img src={product.imageUrl} />
+            <div
+              style={{
+                display: `flex`,
+                justifyContent: `center`,
+              }}
+            >
+              <img
+                src={product.imageUrl}
+                style={{
+                  height: `36rem`,
+                  marginRight: `36rem`,
+                }}
+              />
+            </div>
             <div>$ {product.price}</div>
             <div>Description: {product.description}</div>
             <a href="#" className="btn btn-primary">
