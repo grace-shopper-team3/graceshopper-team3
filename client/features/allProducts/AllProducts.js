@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
-import allProductsSlice from "./allProductsSlice";
 import { fetchAllProducts } from "./allProductsSlice";
+import { Link } from "react-router-dom";
 
 const AllProducts = () => {
-  //depending on what's in the store, something like,
-  //const allproducts = useSelector(selectAllProducts)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -23,11 +20,13 @@ const AllProducts = () => {
         {allproducts.map((product) => (
           <div key={product.id}>
             <div className="card" style={{ width: `18rem` }}>
-              <img
-                className="card-img-top"
-                src={product.imageUrl}
-                alt="Card image cap"
-              ></img>
+              <Link to={`/products/${product.id}`}>
+                <img
+                  className="card-img-top"
+                  src={product.imageUrl}
+                  alt="Card image cap"
+                ></img>
+              </Link>
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
                 <p>$ {product.price}</p>
