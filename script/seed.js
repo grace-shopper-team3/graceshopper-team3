@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product },
+  models: { User, Product, Order, Order_Product },
 } = require("../server/db");
 
 /**
@@ -17,6 +17,7 @@ async function seed() {
   const users = await Promise.all([
     User.create({ username: "cody", password: "123" }),
     User.create({ username: "murphy", password: "123" }),
+    User.create({ username: "nina", password: "Respira" }),
   ]);
 
   // Creating Products
@@ -98,7 +99,40 @@ async function seed() {
     }),
   ]);
 
-  console.log(`seeded ${users.length} users, and ${products.length} products.`);
+  const orders = await Promise.all([
+    Order.create({ status: "unfulfilled", userId: 1 }),
+    Order.create({ status: "fulfilled", userId: 2 }),
+    Order.create({ status: "unfulfilled", userId: 3 }),
+  ]);
+
+  // Creating Order_Products
+  const order_products = await Promise.all([
+    Order_Product.create({
+      orderId: 1,
+      productId: 1,
+      quantityInCart: 1,
+      price: 4,
+      subtotal: 4,
+    }),
+    Order_Product.create({
+      orderId: 1,
+      productId: 2,
+      quantityInCart: 2,
+      price: 4,
+      subtotal: 8,
+    }),
+    Order_Product.create({
+      orderId: 2,
+      productId: 3,
+      quantityInCart: 3,
+      price: 5,
+      subtotal: 15,
+    }),
+  ]);
+
+  console.log(
+    `seeded ${users.length} users, ${products.length} products, ${orders.length} orders, and ${order_products.length} order_products.`
+  );
   console.log(`seeded successfully`);
   return {
     users: {
@@ -116,6 +150,11 @@ async function seed() {
       StarLord: products[7],
       MoonKnight: products[8],
       CaptainAmerica: products[9],
+    },
+    orders: {
+      orderOne: orders[0],
+      orderTwo: orders[1],
+      orderThree: orders[2],
     },
   };
 }
