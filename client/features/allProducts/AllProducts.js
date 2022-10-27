@@ -9,7 +9,7 @@ const AllProducts = () => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
-  const allproducts = useSelector((state) => state.allProducts.allProducts);
+  const allproducts = useSelector((state) => state.allProducts.products);
 
   return (
     <div>

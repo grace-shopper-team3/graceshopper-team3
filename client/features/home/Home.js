@@ -5,22 +5,8 @@ import { useSelector } from "react-redux";
  * COMPONENT
  */
 const Home = (props) => {
-  // const username = useSelector((state) => state.auth.me.username);
-
-  // return (
-  //   <div>
-  //     <h3>Welcome, {username}</h3>
-  //   </div>
-  // );
   return (
     <div className="container-fluid">
-      {/* <div className="row">
-        <img
-          src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
-          className="img-fluid"
-          alt="Responsive image"
-        ></img>
-      </div> */}
       <div
         id="carouselExampleControls"
         className="carousel slide"
@@ -88,7 +74,6 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      {/* <div style={{ padding: "10px" }}></div> */}
     </div>
   );
 };
