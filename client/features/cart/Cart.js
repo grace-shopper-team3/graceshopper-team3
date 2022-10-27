@@ -46,7 +46,17 @@ const Cart = (props) => {
                       </div>
                     </td>
                     <td>
-                      <p className="fw-normal mb-1">
+                      <form action="/action_page.php">
+                        <input
+                          type="number"
+                          id="quantity"
+                          name="quantity"
+                          value="1"
+                          min="1"
+                          max="5"
+                        />
+                      </form>
+                      {/* <p className="fw-normal mb-1">
                         <button
                           type="button"
                           className="btn btn-outline-secondary"
@@ -60,7 +70,7 @@ const Cart = (props) => {
                         >
                           +
                         </button>
-                      </p>
+                      </p> */}
                       <p className="text-muted mb-0">
                         <button
                           type="button"
