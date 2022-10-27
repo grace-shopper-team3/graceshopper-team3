@@ -3,8 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      {/* <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50"> */}
-      {/* <footer className="mt-auto bg-dark text-center text-white fixed-bottom"> */}
       <footer className="mt-auto bg-dark text-center text-white">
         <div className="container p-4">
           <section className="mb-4">
