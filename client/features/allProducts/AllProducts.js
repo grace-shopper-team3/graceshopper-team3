@@ -12,6 +12,7 @@ const AllProducts = () => {
   const allproducts = useSelector((state) => state.allProducts.allProducts);
 
   return (
+    <div>
     <div id="AllProducts">
       <section>
         <h1
@@ -77,6 +78,7 @@ const AllProducts = () => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 };
