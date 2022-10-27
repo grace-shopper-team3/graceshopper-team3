@@ -14,7 +14,10 @@ const Order_Product = db.define("order_product", {
     },
   },
   subtotal: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.VIRTUAL,
+    get() {
+      return this.price * this.quantityInCart;
+    },
   },
 });
 
