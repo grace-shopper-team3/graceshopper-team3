@@ -19,6 +19,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//Do we need to query single user??
 router.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.id, {

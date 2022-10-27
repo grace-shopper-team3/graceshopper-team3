@@ -8,40 +8,44 @@ const SingleProduct = () => {
 
   const { productId } = useParams();
 
+  const addToCart = (ev) => {
+    ev.preventDefault();
+    //placeholder for redux slice thunk
+  };
+
   useEffect(() => {
     dispatch(fetchSingleProduct(productId));
   }, [dispatch]);
 
-  const product = useSelector((state) => state.singleProduct.singleProduct);
+  const product = useSelector((state) => state.singleProduct.aProduct);
+  const { name, category, imageUrl, price, description } = product;
 
   return (
     <div>
       <div>
-        {!product.imageUrl ? (
-          <h4> Loading... </h4>
-        ) : (
-          <div>
-            <h3> {product.name} </h3>
-            <div>Category: {product.category}</div>
-            <div
+        <div>
+          <h3> {name} </h3>
+          <div>Category: {category}</div>
+          <div
+            style={{
+              display: `flex`,
+              justifyContent: `center`,
+            }}
+          >
+            <img
+              src={imageUrl}
               style={{
-                display: `flex`,
-                justifyContent: `center`,
+                height: `36rem`,
+                marginRight: `36rem`,
               }}
-            >
-              <img
-                src={product.imageUrl}
-                style={{
-                  height: `36rem`,
-                  marginRight: `36rem`,
-                }}
-              />
-            </div>
-            <div>$ {product.price}</div>
-            <div>Description: {product.description}</div>
-            <Link className="btn btn-primary">ADD TO CART</Link>
+            />
           </div>
-        )}
+          <div>$ {price}</div>
+          <div>Description: {description}</div>
+          <button className="btn btn-primary" onClick={() => addToCart()}>
+            ADD TO CART
+          </button>
+        </div>
       </div>
     </div>
   );
