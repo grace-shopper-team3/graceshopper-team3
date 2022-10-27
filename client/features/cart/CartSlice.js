@@ -70,18 +70,18 @@ const cartSlice = createSlice({
     builder.addCase(fetchCart.fulfilled, (state, action) => {
       state.cart = action.payload;
     });
-    builder.addCase(addItemToCart.fulfilled, (state, action) => {
-      state.cart = action.payload;
-    });
-    builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
-      state.cart = action.payload;
-    });
-    builder.addCase(decrementItemInCart.fulfilled, (state, action) => {
-      state.cart = action.payload;
-    });
-    builder.addCase(removeFromCart.fulfilled, (state, action) => {
-      state.cart = action.payload;
-    });
+    // builder.addCase(addItemToCart.fulfilled, (state, action) => {
+    //   state.cart = action.payload;
+    // });
+    // builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
+    //   state.cart = action.payload;
+    // });
+    // builder.addCase(decrementItemInCart.fulfilled, (state, action) => {
+    //   state.cart = action.payload;
+    // });
+    // builder.addCase(removeFromCart.fulfilled, (state, action) => {
+    //   state.cart = action.payload;
+    // });
   },
 });
 export const selectCart = (state) => {
