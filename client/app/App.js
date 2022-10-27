@@ -1,5 +1,5 @@
 import React from "react";
-import BottomNav from "../features/navbar/BottomNav";
+import Footer from "../features/navbar/Footer";
 
 import Navbar from "../features/navbar/Navbar";
 import AppRoutes from "./AppRoutes";
@@ -9,7 +9,7 @@ const App = () => {
     <div>
       <Navbar />
       <AppRoutes />
-      <BottomNav />
+      <Footer />
     </div>
   );
 };
