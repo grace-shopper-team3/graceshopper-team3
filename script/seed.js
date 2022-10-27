@@ -99,6 +99,7 @@ async function seed() {
     }),
   ]);
 
+  // Creating Orders
   const orders = await Promise.all([
     Order.create({ status: "unfulfilled", userId: 1 }),
     Order.create({ status: "fulfilled", userId: 2 }),
@@ -155,6 +156,11 @@ async function seed() {
       orderOne: orders[0],
       orderTwo: orders[1],
       orderThree: orders[2],
+    },
+    order_products: {
+      order_products_One: order_products[0],
+      order_products_Two: order_products[1],
+      order_products_Three: order_products[2],
     },
   };
 }

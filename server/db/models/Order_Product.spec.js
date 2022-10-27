@@ -3,7 +3,7 @@
 const { expect } = require("chai");
 const {
   db,
-  models: { Product, Order_Product },
+  models: { User, Order, Product, Order_Product },
 } = require("../index");
 const seed = require("../../../script/seed");
 
@@ -21,19 +21,9 @@ describe("Order_Product model", () => {
       const orderTwo = await Order_Product.findAll({
         where: { orderId: 2 },
       });
-      console.log("CHECK", orderTwo);
+
       expect(orderOne).to.have.length(2);
       expect(orderTwo).to.have.length(1);
-    });
-  });
-
-  xdescribe("containsProductPrice", function () {
-    it("should contain product details associated with order", async function () {
-      const some_order = await Order_Product.findByPk(1, {
-        include: { model: Product },
-      });
-      console.log("SOME_ORDER", "HELLO");
-      //expect(some_order.products.price).to.equal(4.0);
     });
   });
 });
