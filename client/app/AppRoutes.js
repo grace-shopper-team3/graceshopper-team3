@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
+// o: the case of this import will put an end to your chance of deploying properly 👇
+//  .../allProducts/AllProducts should be the proper reference here
 import AllProducts from "../features/AllProducts/AllProducts";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import Cart from "../features/cart/Cart";

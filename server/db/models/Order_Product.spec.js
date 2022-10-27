@@ -1,5 +1,6 @@
 /* global describe beforeEach it */
 
+// o: good work attempting to create tests 🙂
 const { expect } = require("chai");
 const {
   db,

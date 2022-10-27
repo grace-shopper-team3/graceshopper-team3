@@ -12,11 +12,17 @@ const SingleProduct = () => {
     dispatch(fetchSingleProduct(productId));
   }, [dispatch]);
 
+  // o: you are nesting singleProduct within singleProduct 🤔 ... there's probably
+  //  a better structure for this so its more clear
   const product = useSelector((state) => state.singleProduct.singleProduct);
 
   return (
     <div>
       <div>
+        {/* 
+          o: why are you doing this exactly? this logic seems strange to me...
+            also, destructuring is your friend
+        */}
         {!product.imageUrl ? (
           <h4> Loading... </h4>
         ) : (

@@ -9,6 +9,8 @@ const AllProducts = () => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
+  // o: you are nesting allProducts within allProducts 🤔 ... there's probably
+  //  a better structure for this so its more clear
   const allproducts = useSelector((state) => state.allProducts.allProducts);
 
   return (
@@ -26,7 +28,10 @@ const AllProducts = () => {
       <section>
         <div className="container">
           <div className={"row"}>
+            {/* o: destructuring is your friend */}
             {allproducts.map((product) => (
+              // o: instead of hardcoding the styles like, try setting up a styles
+              //  object as described here 👉 https://css-tricks.com/different-ways-to-write-css-in-react/#aa-write-inline-styles
               <div
                 key={product.id}
                 className="col-sm-4"

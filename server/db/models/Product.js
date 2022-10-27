@@ -12,6 +12,7 @@ const Product = db.define("product", {
   },
   imageUrl: {
     type: Sequelize.STRING,
+    // o: very curious about this default imageUrl 🤔
     default:
       "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
   },
@@ -23,6 +24,7 @@ const Product = db.define("product", {
       min: 0,
     },
   },
+  // o: let's talk about this during our Sprint Meeting
   category: {
     type: Sequelize.STRING,
   },

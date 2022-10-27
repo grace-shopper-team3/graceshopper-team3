@@ -75,6 +75,8 @@ const Cart = (props) => {
                         Active
                       </span>
                     </td>
+                    {/* o: I am assuming this is a test? if not, you should not
+                          be hardcoding this */}
                     <td>$3000.00</td>
                     <td></td>
                   </tr>

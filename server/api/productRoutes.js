@@ -17,6 +17,7 @@ router.get("/", async (req, res, next) => {
 //GET/api/products/:productId
 router.get("/:productId", async (req, res, next) => {
   try {
+    // o: make sure to check for the scenario where Product is not found
     const aProduct = await Product.findByPk(req.params.productId);
     res.json(aProduct);
   } catch (err) {

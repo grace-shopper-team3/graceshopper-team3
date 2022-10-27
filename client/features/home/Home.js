@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
  * COMPONENT
  */
 const Home = (props) => {
+  // o: please remove unused code
   // const username = useSelector((state) => state.auth.me.username);
 
   // return (

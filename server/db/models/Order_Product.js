@@ -13,6 +13,8 @@ const Order_Product = db.define("order_product", {
       min: 0,
     },
   },
+  // o: what is the difference between subtotal and price... let's chat about
+  //  this during our Sprint Meeting
   subtotal: {
     type: Sequelize.DECIMAL(10, 2),
   },
