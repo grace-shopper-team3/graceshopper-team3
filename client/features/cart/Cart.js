@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Cart = (props) => {
   const navigate = useNavigate();
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row g-1" style={{ padding: "20px" }}>
         <div className="row">
           <div className="col-md-6">
@@ -46,17 +46,7 @@ const Cart = (props) => {
                       </div>
                     </td>
                     <td>
-                      <form action="/action_page.php">
-                        <input
-                          type="number"
-                          id="quantity"
-                          name="quantity"
-                          value="1"
-                          min="1"
-                          max="5"
-                        />
-                      </form>
-                      {/* <p className="fw-normal mb-1">
+                      <p className="fw-normal mb-1">
                         <button
                           type="button"
                           className="btn btn-outline-secondary"
@@ -70,7 +60,7 @@ const Cart = (props) => {
                         >
                           +
                         </button>
-                      </p> */}
+                      </p>
                       <p className="text-muted mb-0">
                         <button
                           type="button"
