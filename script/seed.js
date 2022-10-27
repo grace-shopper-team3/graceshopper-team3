@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product },
+  models: { User, Product, Order },
 } = require("../server/db");
 
 /**
@@ -17,6 +17,7 @@ async function seed() {
   const users = await Promise.all([
     User.create({ username: "cody", password: "123" }),
     User.create({ username: "murphy", password: "123" }),
+    User.create({ username: "nina", password: "Respira" }),
   ]);
 
   // Creating Products
@@ -98,6 +99,12 @@ async function seed() {
     }),
   ]);
 
+  const orders = await Promise.all([
+    Order.create({ status: "unfulfilled", userId: 1 }),
+    Order.create({ status: "fulfilled", userId: 2 }),
+    Order.create({ status: "unfulfilled", userId: 3 }),
+  ]);
+
   console.log(`seeded ${users.length} users, and ${products.length} products.`);
   console.log(`seeded successfully`);
   return {
@@ -116,6 +123,11 @@ async function seed() {
       StarLord: products[7],
       MoonKnight: products[8],
       CaptainAmerica: products[9],
+    },
+    orders: {
+      orderOne: orders[0],
+      orderTwo: orders[1],
+      orderThree: orders[2],
     },
   };
 }
