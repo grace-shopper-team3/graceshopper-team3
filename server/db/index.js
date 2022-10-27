@@ -12,6 +12,25 @@ User.hasMany(Order);
 Order.belongsTo(User);
 Product.belongsToMany(Order, { through: Order_Product });
 
+Product.filterByPriceHigher = async function (price) {
+  const products = await Product.findAll();
+  const filteredProducts = products.filter((element) => element.price >= price);
+  return filteredProducts;
+};
+
+Product.filterByPriceLower = async function (price) {
+  const products = await Product.findAll();
+  const filteredProducts = products.filter((element) => element.price <= price);
+  return filteredProducts;
+};
+
+Order.complete = function (userId) {
+  return this.update(
+    { status: "fulfilled" },
+    { where: { status: "unfulfilled", userId: userId } }
+  );
+};
+
 module.exports = {
   db,
   models: {
