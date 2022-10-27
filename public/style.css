@@ -13,6 +13,7 @@
 
 body {
   font-family: sans-serif;
+  min-height:100vh;
 }
 
 a {
@@ -28,12 +29,11 @@ nav a {
   margin: 1em;
 }
 
-/* can use this to change the color of our navbar */
 nav {
-  /* background-color: #F6bd60; */
   height: 60px;
   align-content: center;
 }
+
 form div {
   margin: 1em;
   display: inline-block;
