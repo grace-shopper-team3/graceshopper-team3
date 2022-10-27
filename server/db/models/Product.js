@@ -26,6 +26,9 @@ const Product = db.define("product", {
   category: {
     type: Sequelize.STRING,
   },
+  quantity: {
+    type: Sequelize.INTEGER,
+  },
 });
 
 module.exports = Product;
