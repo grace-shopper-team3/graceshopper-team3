@@ -113,21 +113,18 @@ async function seed() {
       productId: 1,
       quantityInCart: 1,
       price: 4,
-      subtotal: 4,
     }),
     Order_Product.create({
       orderId: 1,
       productId: 2,
       quantityInCart: 2,
       price: 4,
-      subtotal: 8,
     }),
     Order_Product.create({
       orderId: 2,
       productId: 3,
       quantityInCart: 3,
       price: 5,
-      subtotal: 15,
     }),
   ]);
 

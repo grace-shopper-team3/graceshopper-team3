@@ -11,6 +11,9 @@ const Order_Product = require("./models/Order_Product");
 User.hasMany(Order);
 Order.belongsTo(User);
 Product.belongsToMany(Order, { through: Order_Product });
+Order.belongsToMany(Product, { through: Order_Product });
+Order_Product.belongsTo(Order);
+Order_Product.belongsTo(Product);
 
 Product.filterByPriceHigher = async function (price) {
   const products = await Product.findAll();
