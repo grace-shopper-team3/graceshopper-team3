@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  min-height:100vh;
 }
 
 a {
@@ -34,3 +35,14 @@ background-color: #F6bd60;
 padding:10px;
 font-weight:bold
 }
+
+.footer {
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+

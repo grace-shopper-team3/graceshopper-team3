@@ -12,12 +12,12 @@ User.hasMany(Order);
 Order.belongsTo(User);
 Product.belongsToMany(Order, { through: Order_Product });
 
-
-
 module.exports = {
   db,
   models: {
     User,
     Product,
+    Order,
+    Order_Product,
   },
 };

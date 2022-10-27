@@ -67,9 +67,7 @@ const AllProducts = () => {
                   <div className="card-body text-center">
                     <h5 className="card-title">{product.name}</h5>
                     <p>$ {product.price}</p>
-                    <a href="#" className="btn btn-primary">
-                      ADD TO CART
-                    </a>
+                    <Link className="btn btn-primary">ADD TO CART</Link>
                   </div>
                 </div>
               </div>
