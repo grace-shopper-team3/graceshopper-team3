@@ -5,11 +5,16 @@ const Order_Product = db.define("order_product", {
   quantityInCart: {
     type: Sequelize.INTEGER,
   },
-  subtotal: {
+  price: {
     type: Sequelize.DECIMAL(10, 2),
+    allowNull: false,
     validate: {
+      notEmpty: true,
       min: 0,
     },
+  },
+  subtotal: {
+    type: Sequelize.DECIMAL(10, 2),
   },
 });
 

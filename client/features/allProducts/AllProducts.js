@@ -21,7 +21,7 @@ const AllProducts = () => {
             backgroundColor: `#F6BD60`,
           }}
         >
-          All FunkoPops
+          All PunkoFops
         </h1>
       </section>
       <section>
@@ -49,12 +49,6 @@ const AllProducts = () => {
                   }}
                 >
                   <Link to={`/products/${product.id}`}>
-                    {/* <img
-                      style={{ height: `15rem` }}
-                      className="card-img-top"
-                      src={product.imageUrl}
-                      alt="Card image cap"
-                    ></img> */}
                     <div
                       style={{
                         width: `14rem`,
@@ -64,13 +58,18 @@ const AllProducts = () => {
                       }}
                       className="card-img-top"
                     ></div>
+                    <h5
+                      className="card-title text-center"
+                      style={{ color: `black` }}
+                    >
+                      {product.name}
+                    </h5>
                   </Link>
                   <div className="card-body text-center">
-                    <h5 className="card-title">{product.name}</h5>
-                    <p>$ {product.price}</p>
-                    <a href="#" className="btn btn-primary">
+                    <p>${product.price}</p>
+                    <Link href="#" className="btn btn-primary">
                       ADD TO CART
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
