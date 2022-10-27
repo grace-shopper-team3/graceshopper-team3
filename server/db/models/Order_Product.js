@@ -15,9 +15,6 @@ const Order_Product = db.define("order_product", {
   },
   subtotal: {
     type: Sequelize.DECIMAL(10, 2),
-    // set(){
-    //   this.setDataValues("subtotal", this.price)
-    // }
   },
 });
 
