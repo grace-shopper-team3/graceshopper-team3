@@ -66,9 +66,9 @@ const AllProducts = () => {
                   </Link>
                   <div className="card-body text-center">
                     <p>${product.price}</p>
-                    <a href="#" className="btn btn-primary">
+                    <Link href="#" className="btn btn-primary">
                       ADD TO CART
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

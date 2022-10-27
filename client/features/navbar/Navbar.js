@@ -18,10 +18,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <div className="navbar-header ">
             <Link to="/">
-              <img
-                style={{ width: 70, height: 40 }}
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Funko.svg/1200px-Funko.svg.png"
-              />
+              <img style={{ width: 70, height: 40 }} src="punko.png" />
             </Link>
 
             <Link to="/">Home</Link>
