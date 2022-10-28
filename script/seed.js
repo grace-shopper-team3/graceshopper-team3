@@ -18,6 +18,8 @@ async function seed() {
     User.create({ username: "cody", password: "123" }),
     User.create({ username: "murphy", password: "123" }),
     User.create({ username: "nina", password: "Respira" }),
+    User.create({ username: "dylan", password: "567" }),
+    User.create({ username: "oswald", password: "987" }),
   ]);
 
   // Creating Products
@@ -104,6 +106,8 @@ async function seed() {
     Order.create({ status: "unfulfilled", userId: 1 }),
     Order.create({ status: "fulfilled", userId: 2 }),
     Order.create({ status: "unfulfilled", userId: 3 }),
+    Order.create({ status: "fulfilled", userId: 2 }),
+    Order.create({ status: "fulfilled", userId: 4 }),
   ]);
 
   // Creating Order_Products
@@ -112,19 +116,26 @@ async function seed() {
       orderId: 1,
       productId: 1,
       quantityInCart: 1,
-      price: 4,
     }),
     Order_Product.create({
       orderId: 1,
       productId: 2,
       quantityInCart: 2,
-      price: 4,
     }),
     Order_Product.create({
       orderId: 2,
       productId: 3,
       quantityInCart: 3,
-      price: 5,
+    }),
+    Order_Product.create({
+      orderId: 3,
+      productId: 3,
+      quantityInCart: 3,
+    }),
+    Order_Product.create({
+      orderId: 5,
+      productId: 1,
+      quantityInCart: 1,
     }),
   ]);
 

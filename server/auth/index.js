@@ -14,6 +14,12 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
+    for (let key in req.body) {
+      if (req.body[key] === "") {
+        delete req.body[key];
+      }
+    }
+
     const { username } = req.body;
     const user = await User.create({ username });
     res.send({ token: await user.generateToken() });
