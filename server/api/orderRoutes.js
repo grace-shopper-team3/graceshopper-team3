@@ -6,13 +6,17 @@ const {
 module.exports = router;
 
 router.get("/:userId/cart", async (req, res, next) => {
+  const userId = req.params.userId;
   try {
-    const orderDets = await Order_Product.findAll({
-      where: { orderId: req.params.orderId },
-      include: { model: Product },
+    const order = await Order.findOne({
+      where: [{ userId: userId }, { status: "unfulfilled" }],
     });
 
-    res.json(orderDets);
+    const ordersDets = await Order_Product.findAll({
+      where: { orderId: order.id },
+      include: { model: Product },
+    });
+    res.json(ordersDets);
   } catch (err) {
     next(err);
   }

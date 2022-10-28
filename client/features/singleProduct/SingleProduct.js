@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import { fetchCart } from "../cart/CartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
 const SingleProduct = () => {
@@ -11,6 +12,7 @@ const SingleProduct = () => {
   const addToCart = (ev) => {
     ev.preventDefault();
     //placeholder for redux slice thunk
+    dispatch(fetchCart());
   };
 
   useEffect(() => {
@@ -54,13 +56,16 @@ const SingleProduct = () => {
                 {" "}
                 {name}{" "}
               </h1>
-              <h4>
-                <div style={{ marginTop: `3%` }}>Category: {category}</div>
+              <div>
+                <h4 style={{ marginTop: `3%` }}>Category: {category}</h4>
                 <h1 style={{ marginTop: `5%` }}>${price}</h1>
-                <div style={{ marginTop: `5%` }}>{description}</div>
-              </h4>
+                <h4 style={{ marginTop: `5%` }}>{description}</h4>
+              </div>
               <section>
-                <button className="btn btn-primary" onClick={() => addToCart()}>
+                <button
+                  className="btn btn-primary"
+                  onClick={(ev) => addToCart(ev)}
+                >
                   ADD TO CART
                 </button>
               </section>
