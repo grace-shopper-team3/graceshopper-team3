@@ -4,7 +4,6 @@ import { authenticate } from "../../app/store";
 import { Link } from "react-router-dom";
 
 const AuthNewUser = ({ name }) => {
-  const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
@@ -46,7 +45,12 @@ const AuthNewUser = ({ name }) => {
 
                   <div className="d-grid gap-2">
                     <label htmlFor="email">E-mail</label>
-                    <input name="email" type="email" required />
+                    <input
+                      name="email"
+                      pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                      type="email"
+                      required
+                    />
                   </div>
 
                   <div className="d-grid gap-2">
@@ -69,7 +73,6 @@ const AuthNewUser = ({ name }) => {
                       Already have an account? <Link to="/login">Log in</Link>
                     </small>
                   </div>
-                  <div style={{ color: "red" }}> {error} </div>
                 </div>
               </form>
             </div>
