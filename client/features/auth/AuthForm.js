@@ -19,7 +19,7 @@ const AuthForm = ({ name, displayName }) => {
     const username = evt.target.username.value;
     const password = evt.target.password.value;
     await dispatch(authenticate({ username, password, method: "login" }));
-    // navigate(`/${id}/home`);
+    navigate(`/${id}/home`);
   };
 
   return (
