@@ -78,7 +78,6 @@ export const authSlice = createSlice({
     });
     builder.addCase(authenticate.fulfilled, (state, action) => {
       state.authenticate = action.payload;
-      console.log(state.authenticate);
     });
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;

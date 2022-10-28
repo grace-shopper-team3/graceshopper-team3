@@ -14,11 +14,11 @@ const AuthForm = ({ name, displayName }) => {
 
   const { error } = useSelector((state) => state.auth);
 
-  const handleSubmit = async (evt) => {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    await dispatch(authenticate({ username, password, method: "login" }));
+    dispatch(authenticate({ username, password, method: "login" }));
   };
 
   return (
