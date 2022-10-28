@@ -98,7 +98,41 @@ async function seed() {
     }),
   ]);
 
-  console.log(`seeded ${users.length} users, and ${products.length} products.`);
+  // Creating Orders
+  const orders = await Promise.all([
+    Order.create({ status: "unfulfilled", userId: 1 }),
+    Order.create({ status: "fulfilled", userId: 2 }),
+    Order.create({ status: "unfulfilled", userId: 3 }),
+  ]);
+
+  // Creating Order_Products
+  const order_products = await Promise.all([
+    Order_Product.create({
+      orderId: 1,
+      productId: 1,
+      quantityInCart: 1,
+      price: 4,
+      subtotal: 0,
+    }),
+    Order_Product.create({
+      orderId: 1,
+      productId: 2,
+      quantityInCart: 2,
+      price: 4,
+      subtotal: 0,
+    }),
+    Order_Product.create({
+      orderId: 2,
+      productId: 3,
+      quantityInCart: 3,
+      price: 5,
+      subtotal: 0,
+    }),
+  ]);
+
+  console.log(
+    `seeded ${users.length} users, ${products.length} products, ${orders.length} orders, and ${order_products.length} order_products.`
+  );
   console.log(`seeded successfully`);
   return {
     users: {
