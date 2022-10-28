@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import { fetchCart } from "../cart/CartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
 const SingleProduct = () => {
@@ -11,9 +12,11 @@ const SingleProduct = () => {
   const addToCart = (ev) => {
     ev.preventDefault();
     //placeholder for redux slice thunk
+    dispatch(fetchCart());
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(fetchSingleProduct(productId));
   }, [dispatch]);
 
@@ -24,27 +27,50 @@ const SingleProduct = () => {
     <div>
       <div>
         <div>
-          <h3> {name} </h3>
-          <div>Category: {category}</div>
           <div
             style={{
               display: `flex`,
               justifyContent: `center`,
+              alignItems: `center`,
             }}
           >
             <img
               src={imageUrl}
               style={{
                 height: `36rem`,
-                marginRight: `36rem`,
+                //marginRight: `36rem`,
               }}
             />
+            <div
+              style={{
+                flex: `0 0 50%`,
+                padding: `10px`,
+              }}
+            >
+              <h1
+                style={{
+                  fontSize: `600%`,
+                  //fontFamily: `TT-Norms-Black`,
+                }}
+              >
+                {" "}
+                {name}{" "}
+              </h1>
+              <div>
+                <h4 style={{ marginTop: `3%` }}>Category: {category}</h4>
+                <h1 style={{ marginTop: `5%` }}>${price}</h1>
+                <h4 style={{ marginTop: `5%` }}>{description}</h4>
+              </div>
+              <section>
+                <button
+                  className="btn btn-primary"
+                  onClick={(ev) => addToCart(ev)}
+                >
+                  ADD TO CART
+                </button>
+              </section>
+            </div>
           </div>
-          <div>$ {price}</div>
-          <div>Description: {description}</div>
-          <button className="btn btn-primary" onClick={() => addToCart()}>
-            ADD TO CART
-          </button>
         </div>
       </div>
     </div>

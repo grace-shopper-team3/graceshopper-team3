@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
 import { Link } from "react-router-dom";
 
-/**
-  The AuthForm component can be used for Login or Sign Up.
-  Props for Login: name="login", displayName="Login"
-  Props for Sign up: name="signup", displayName="Sign Up"
-**/
-
-const AuthForm = ({ name, displayName }) => {
-  const dispatch = useDispatch();
-
+const AuthNewUser = ({ name }) => {
   const { error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const name = evt.target.name.value;
+    const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: "login" }));
+
+    dispatch(
+      authenticate({ name, email, username, password, method: "signup" })
+    );
   };
 
   return (
@@ -37,32 +35,38 @@ const AuthForm = ({ name, displayName }) => {
               <form onSubmit={handleSubmit} name={name}>
                 <div className="row">
                   <div className="d-grid gap-2">
-                    <h2>Login</h2>
+                    <h2>Sign Up</h2>
                   </div>
                   <div className="d-grid gap-2">
-                    <label htmlFor="username" className="form-label">
-                      Username
+                    <label htmlFor="name" className="form-label">
+                      Name
                     </label>
+                    <input name="name" type="text" required />
+                  </div>
 
+                  <div className="d-grid gap-2">
+                    <label htmlFor="email">E-mail</label>
+                    <input name="email" type="email" required />
+                  </div>
+
+                  <div className="d-grid gap-2">
+                    <label htmlFor="username">Username</label>
                     <input name="username" type="text" required />
                   </div>
-                </div>
-                <div className="row">
-                  <div className="d-grid gap-2">
-                    <label htmlFor="password" className="form-label">
-                      Password
-                    </label>
 
+                  <div className="d-grid gap-2">
+                    <label htmlFor="password">Password</label>
                     <input name="password" type="password" required />
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="d-grid gap-2">
                     <button type="submit" className="btn btn-primary">
-                      {displayName}
+                      Sign Up
                     </button>
                     <small>
-                      New to Punko? <Link to="/signup">Sign up now</Link>
+                      Already have an account? <Link to="/login">Log in</Link>
                     </small>
                   </div>
                   <div style={{ color: "red" }}> {error} </div>
@@ -76,4 +80,4 @@ const AuthForm = ({ name, displayName }) => {
   );
 };
 
-export default AuthForm;
+export default AuthNewUser;
