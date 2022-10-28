@@ -11,6 +11,8 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/login");
   };
+  const name = useSelector((state) => state.auth.me.name);
+  console.log(name);
 
   return (
     <div>
@@ -25,20 +27,16 @@ const Navbar = () => {
             <Link to="/products">All Products</Link>
           </div>
           <form className="navbar-form navbar-left">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-              />
-            </div>
-            <button type="submit" className="btn btn-default">
-              Submit
-            </button>
             {isLoggedIn ? (
-              <button type="button" onClick={logoutAndRedirectHome}>
-                Logout
-              </button>
+              <>
+                <small>Welcome back, {name}! </small>
+                <button
+                  className="btn btn-link"
+                  onClick={logoutAndRedirectHome}
+                >
+                  Logout
+                </button>
+              </>
             ) : (
               <>
                 <Link to="/login">Login</Link>

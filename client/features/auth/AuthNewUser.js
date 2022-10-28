@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
+import { Link } from "react-router-dom";
 
-const AuthNewUser = ({ name, displayName }) => {
+const AuthNewUser = ({ name }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     const name = evt.target.name.value;
     const email = evt.target.email.value;
     const username = evt.target.username.value;
@@ -21,40 +21,61 @@ const AuthNewUser = ({ name, displayName }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">
-            <small>Name</small>
-          </label>
-          <input name="name" type="text" required />
+      <section className="vh-100">
+        <div className="container py-5 h-100">
+          <div className="row d-flex align-items-center justify-content-center h-100">
+            <div className="col-md-8 col-lg-7 col-xl-6">
+              <img
+                src="https://cdn.shopify.com/s/files/1/1052/2158/products/58145_Marvel_InfinitySaga_Iron_Man_MegaPOP_GLAM-WEB.png?v=1637702532"
+                className="img-fluid"
+                alt="Phone image"
+              />
+            </div>
+            <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <form onSubmit={handleSubmit} name={name}>
+                <div className="row">
+                  <div className="d-grid gap-2">
+                    <h2>Sign Up</h2>
+                  </div>
+                  <div className="d-grid gap-2">
+                    <label htmlFor="name" className="form-label">
+                      Name
+                    </label>
+                    <input name="name" type="text" required />
+                  </div>
+
+                  <div className="d-grid gap-2">
+                    <label htmlFor="email">E-mail</label>
+                    <input name="email" type="email" required />
+                  </div>
+
+                  <div className="d-grid gap-2">
+                    <label htmlFor="username">Username</label>
+                    <input name="username" type="text" required />
+                  </div>
+
+                  <div className="d-grid gap-2">
+                    <label htmlFor="password">Password</label>
+                    <input name="password" type="password" required />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="d-grid gap-2">
+                    <button type="submit" className="btn btn-primary">
+                      Sign Up
+                    </button>
+                    <small>
+                      Already have an account? <Link to="/login">Log in</Link>
+                    </small>
+                  </div>
+                  <div style={{ color: "red" }}> {error} </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="email">
-            <small>E-mail</small>
-          </label>
-          <input name="email" type="email" required />
-        </div>
-        <div>
-          <label htmlFor="username">
-            <small>Username</small>
-          </label>
-          <input name="username" type="text" required />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" required />
-        </div>
-        <div>
-          <button type="submit">Sign Up</button>
-        </div>
-        {error === "User already exists" ? (
-          <div> {error} </div>
-        ) : (
-          console.log(error)
-        )}
-      </form>
+      </section>
     </div>
   );
 };
