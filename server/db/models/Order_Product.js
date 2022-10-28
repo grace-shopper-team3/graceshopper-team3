@@ -7,10 +7,10 @@ const Order_Product = db.define("order_product", {
     defaultValue: 1,
   },
   subtotal: {
-    type: Sequelize.VIRTUAL,
-    // get() {
-    //   return this.product.price * this.quantityInCart;
-    // },
+    type: Sequelize.DECIMAL(10, 2),
+    set(val) {
+      this.setDataValue("subtotal", this.price * this.quantityInCart + val);
+    },
   },
 });
 
