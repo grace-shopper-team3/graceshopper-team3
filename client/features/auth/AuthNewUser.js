@@ -8,47 +8,52 @@ const AuthNewUser = ({ name, displayName }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // const formName = evt.target.name;
+
     const name = evt.target.name.value;
     const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
 
-    dispatch(authenticate({ username, password, method: "signup" }));
+    dispatch(
+      authenticate({ name, email, username, password, method: "signup" })
+    );
   };
 
   return (
     <div>
-      {/* <form onSubmit={handleSubmit} name={name}> */}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">
             <small>Name</small>
           </label>
-          <input name="name" type="text" />
+          <input name="name" type="text" required />
         </div>
         <div>
           <label htmlFor="email">
             <small>E-mail</small>
           </label>
-          <input name="email" type="email" />
+          <input name="email" type="email" required />
         </div>
         <div>
           <label htmlFor="username">
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
+          <input name="username" type="text" required />
         </div>
         <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input name="password" type="password" required />
         </div>
         <div>
           <button type="submit">Sign Up</button>
         </div>
-        {error && <div> {error} </div>}
+        {error === "User already exists" ? (
+          <div> {error} </div>
+        ) : (
+          console.log(error)
+        )}
       </form>
     </div>
   );
