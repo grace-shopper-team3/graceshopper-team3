@@ -1,19 +1,11 @@
 @font-face {
-  font-family: TT-Norms-Fonts;
-  src: url("/TT-Norms-Fonts.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "tt_normsblack";
-  src: url("ttnorms-black-webfont.woff2") format("woff2"),
-    url("ttnorms-black-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+  font-family: TT-Norms-Black;
+  src: url(TT-Norms-Fonts/TTNorms-Black.otf);
 }
 
 body {
   font-family: sans-serif;
-  min-height:100vh;
+  min-height: 100vh;
 }
 
 a {
