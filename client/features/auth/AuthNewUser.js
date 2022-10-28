@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
 import { Link } from "react-router-dom";
 
 const AuthNewUser = ({ name }) => {
   const dispatch = useDispatch();
-
+  // const { error } = useSelector((state) => state.auth);
+  const [error, setError] = useState("");
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
@@ -16,6 +17,7 @@ const AuthNewUser = ({ name }) => {
     dispatch(
       authenticate({ name, email, username, password, method: "signup" })
     );
+    setError("Incorrect username/password");
   };
 
   return (
@@ -73,6 +75,7 @@ const AuthNewUser = ({ name }) => {
                       Already have an account? <Link to="/login">Log in</Link>
                     </small>
                   </div>
+                  {error ? <div style={{ color: "red" }}> {error} </div> : null}
                 </div>
               </form>
             </div>
