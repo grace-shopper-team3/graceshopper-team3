@@ -14,8 +14,8 @@ const Navbar = () => {
   const { name } = useSelector((state) => state.auth.me);
 
   return (
-    <div>
-      <nav className="navbar navbar-light bg-light">
+    <div className="sticky-top">
+      <nav className="navbar sticky-top navbar-light bg-light">
         <div className="container-fluid">
           <div className="navbar-header ">
             <Link to="/">
