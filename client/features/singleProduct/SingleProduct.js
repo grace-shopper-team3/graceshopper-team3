@@ -39,9 +39,10 @@ const SingleProduct = () => {
                 marginRight: `36rem`,
               }}
             />
+
+            <div>$ {price}</div>
+            <div>Description: {description}</div>
           </div>
-          <div>$ {price}</div>
-          <div>Description: {description}</div>
           <button className="btn btn-primary" onClick={() => addToCart()}>
             ADD TO CART
           </button>
