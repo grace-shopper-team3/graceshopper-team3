@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -10,15 +10,28 @@ import { Link } from "react-router-dom";
 **/
 
 const AuthForm = ({ name, displayName }) => {
-  const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate;
+  const { error } = useSelector((state) => state.auth);
+  const { id } = useSelector((state) => state.auth.me);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: "login" }));
+    await dispatch(authenticate({ username, password, method: "login" }));
+    // navigate(`/${id}/home`);
   };
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await dispatch(authenticate({ username, password, method: "login" }));
+  //   setUsername("");
+  //   setPassword("");
+  //   // navigate(`/${id}/home`);
+  // };
 
   return (
     <div>
@@ -42,6 +55,12 @@ const AuthForm = ({ name, displayName }) => {
                     <label htmlFor="username" className="form-label">
                       Username
                     </label>
+                    {/* <input
+                      type="text"
+                      onChange={(e) => setUsername(e.target.value.username)}
+                      required
+                    /> */}
+
                     <input name="username" type="text" required />
                   </div>
                 </div>
@@ -50,6 +69,11 @@ const AuthForm = ({ name, displayName }) => {
                     <label htmlFor="password" className="form-label">
                       Password
                     </label>
+                    {/* <input
+                      type="password"
+                      onChange={(e) => setUsername(e.target.value.password)}
+                      required
+                    /> */}
                     <input name="password" type="password" required />
                   </div>
                 </div>
