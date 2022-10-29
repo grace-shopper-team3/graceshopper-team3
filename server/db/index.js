@@ -27,28 +27,13 @@ Product.filterByPriceLower = async function (price) {
   return filteredProducts;
 };
 
-Order.complete = function (userId) {
-  return this.update(
-    { status: "fulfilled" },
-    { where: { status: "unfulfilled", userId: userId } }
-  );
-};
-
-Order_Product.incrementQty = async function (productId, orderId) {
-  return await this.update(
-    { quantityInCart: quantityInCart + 1 },
-    { where: [{ productId: productId }, { orderId: orderId }] }
-  );
-};
-
-Order_Product.decrementQty = async function (productId, orderId) {
-  const result = await this.update(
-    { quantityInCart: quantityInCart - 1 },
-    { where: [{ productId: productId }, { orderId: orderId }] }
-  );
-
-  return result;
-};
+// Do we need this? it only returns a number
+// Order.complete = async function (userId) {
+//   return await this.update(
+//     { status: "fulfilled" },
+//     { where: { status: "unfulfilled", userId: userId } }
+//   );
+// };
 
 module.exports = {
   db,
