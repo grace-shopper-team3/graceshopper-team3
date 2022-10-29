@@ -78,7 +78,7 @@ const AllProducts = () => {
           </div>
         </section>
       </div>
-
+    </div>
   );
 };
 

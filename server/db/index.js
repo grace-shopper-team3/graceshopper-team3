@@ -34,6 +34,22 @@ Order.complete = function (userId) {
   );
 };
 
+Order_Product.incrementQty = async function (productId, orderId) {
+  return await this.update(
+    { quantityInCart: quantityInCart + 1 },
+    { where: [{ productId: productId }, { orderId: orderId }] }
+  );
+};
+
+Order_Product.decrementQty = async function (productId, orderId) {
+  const result = await this.update(
+    { quantityInCart: quantityInCart - 1 },
+    { where: [{ productId: productId }, { orderId: orderId }] }
+  );
+
+  return result;
+};
+
 module.exports = {
   db,
   models: {
