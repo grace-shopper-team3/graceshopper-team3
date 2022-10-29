@@ -5,7 +5,7 @@ const {
 
 module.exports = router;
 
-// GET api/orders ------ LoggedIn user
+// GET api/order_products ------ LoggedIn user
 // To render unchecked-out cart
 // If user has fulfilled order, this route returns null or 500server error.
 router.get("/:userId/cart", async (req, res, next) => {
@@ -25,23 +25,82 @@ router.get("/:userId/cart", async (req, res, next) => {
   }
 });
 
-// GET api/orders_products ------ LoggedIn user
-// To render unchecked-out cart
-// If user has fulfilled order, this route returns null or 500server error.
-// router.get("/:orderId/cart", async (req, res, next) => {
-//   const userId = req.params.userId;
-//   try {
-//     const ordersDets = await Order_Product.findAll({
-//       where: { orderId: order.id },
-//       include: { model: Product },
-//     });
-//     res.json(ordersDets);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// POST api/order_products------ LoggedIn user
+// To use for add to cart button click
+router.post("/:userId/cart", async (req, res, next) => {
+  let userId = req.params.userId;
+  let productId = req.body.productId;
 
-// GET api/orders_product ------ LoggedIn user
+  try {
+    const order = await Order.findOrCreate({
+      where: { userId: userId, status: "unfulfilled" },
+    });
+
+    if (order[1]) {
+      //const addProduct = Order.addProduct(req.params.productId)
+      const newOrder_product = await Order_Product.create({
+        productId: productId,
+        orderId: order[0].id,
+      });
+      res.json(newOrder_product);
+    } else {
+      const addProduct = await Order_Product.create({
+        productId: productId,
+        orderId: order[0].id,
+      });
+      res.json(addProduct);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+// PUT api/order_products
+// To change quantity of products which are added to cart from cart or singleProduct pages
+router.put("/:userId/cart", async (req, res, next) => {
+  const userId = req.params.userId;
+  const productId = req.body.productId;
+  const qty = req.body.quantityInCart;
+
+  try {
+    const order = await Order.findOne({
+      where: [{ userId: userId }, { status: "unfulfilled" }],
+    });
+
+    const updatedOrder_product = await Order_Product.update(
+      { quantityInCart: qty },
+      {
+        where: { productId: productId, orderId: order.id },
+        returning: true,
+        plain: true,
+      }
+    );
+    res.json(updatedOrder_product[1]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//  DELETE api/order_products
+// To delete product row from Order_product if remove button is clicked
+router.delete("/:userId/cart", async (req, res, next) => {
+  const userId = req.params.userId;
+  const productId = req.body.productId;
+
+  try {
+    const order = await Order.findOne({
+      where: [{ userId: userId }, { status: "unfulfilled" }],
+    });
+    const updatedItem = await Order_Product.destroy({
+      where: { productId: productId, orderId: order.id },
+    });
+    res.json(updatedItem); //only sends num of deletion back
+  } catch (err) {
+    next(err);
+  }
+});
+
+// GET api/order_products ------ LoggedIn user
 // To render order history
 router.get("/:userId/history", async (req, res, next) => {
   const userId = req.params.userId;
@@ -51,119 +110,18 @@ router.get("/:userId/history", async (req, res, next) => {
     });
 
     // Resolve this for users with multiple fulfilled orders
-    // const orderDets = orders.map(async (order) => {
+    // const ordersDets = orders.map(async (order) => {
     //   await Order_Product.findAll({
     //     where: { orderId: order.id },
     //     include: { model: Product },
     //   });
     // });
 
-    const ordersDets = await Order_Product.findOne({
+    const ordersDets = await Order_Product.findAll({
       where: { orderId: orders[0].id },
       include: { model: Product },
     });
-
     res.json(ordersDets);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// POST api/orders_product ------ LoggedIn user
-// To use for add to cart button click
-router.post("/:userId/cart", async (req, res, next) => {
-  let userId = req.params.userId;
-  let productId = req.body.productId;
-
-  try {
-    const existingOrder = await Order.findOne({
-      where: [{ userId: userId }, { status: "unfulfilled" }],
-    });
-
-    if (existingOrder !== null) {
-      //const addProduct = Order.addProduct(req.params.productId)
-      const addProduct = await Order_Product.create({
-        productId: productId,
-        orderId: existingOrder.id,
-      });
-      res.json(addProduct);
-    } else {
-      const newOrder = await Order.create({
-        //put this in order route specifically
-        userId: userId,
-        status: "unfulfilled",
-      });
-
-      const newOrder_product = await Order_Product.create({
-        productId: productId,
-        orderId: newOrder.id,
-      });
-      res.json(newOrder_product);
-    }
-  } catch (err) {
-    next(err);
-  }
-});
-
-// PUT api/orders
-// To render checkout page on clicking checkout
-router.put("/:userId/checkout", async (req, res, next) => {
-  const userId = req.params.userId;
-
-  try {
-    const fulfill = await Order.complete(userId);
-
-    const completedOrder = await Order.findAll({
-      where: { orderId: fulfill.id },
-      include: { model: Product },
-    });
-    res.json(completedOrder);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// PUT api/orders
-// To change quantity of products which are added to cart from cart or singleProduct pages
-router.put("/:userId", async (req, res, next) => {
-  const userId = req.params.userId;
-  const productId = req.body.productId;
-  const qty = req.body.quantityInCart;
-
-  try {
-    const order = await Order.findOne({
-      userId: userId,
-      status: "unfulfilled",
-    });
-
-    const updatedOrder_product = await Order_Product.update(
-      {
-        quantityInCart: qty,
-      },
-      { where: [{ productId: productId }, { orderId: order.id }] }
-    );
-    res.json(updatedOrder_product);
-  } catch (err) {
-    next(err);
-  }
-});
-
-//  DELETE api/orders
-// To delete product row from Order_product if qty hits 0 & if remove button is clicked
-//Need to think how to delete product of qty is 0
-router.delete("/:userId", async (req, res, next) => {
-  const userId = req.params.userId;
-  const productId = req.body.productId;
-
-  try {
-    const order = await Order.findOne({
-      userId: userId,
-      status: "unfulfilled",
-    });
-    const updatedItem = await Order_Product.destroy({
-      where: [{ productId: productId }, { orderId: order.id }],
-    });
-    res.json(updatedItem);
   } catch (err) {
     next(err);
   }
