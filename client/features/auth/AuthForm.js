@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 
 const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
-  // const { error } = useSelector((state) => state.auth);
+  const { error } = useSelector((state) => state.auth);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -22,7 +22,7 @@ const AuthForm = ({ name, displayName }) => {
 
     dispatch(authenticate({ username, password, method: "login" }));
 
-    setError("Incorrect username/password");
+    // setError("Incorrect username/password");
   };
 
   return (
@@ -66,7 +66,10 @@ const AuthForm = ({ name, displayName }) => {
                       {displayName}
                     </button>
                     <small>
-                      New to Punko? <Link to="/signup">Sign up now</Link>
+                      New to Punko?{" "}
+                      <Link to="/signup" replace>
+                        Sign up now
+                      </Link>
                     </small>
                   </div>
                   {error ? <div style={{ color: "red" }}> {error} </div> : null}

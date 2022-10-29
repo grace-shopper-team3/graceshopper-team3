@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 
 const AuthNewUser = ({ name }) => {
   const dispatch = useDispatch();
-  // const { error } = useSelector((state) => state.auth);
-  const [error, setError] = useState("");
+  const { error } = useSelector((state) => state.auth);
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
+    console.log("name", name);
     const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
@@ -17,7 +18,7 @@ const AuthNewUser = ({ name }) => {
     dispatch(
       authenticate({ name, email, username, password, method: "signup" })
     );
-    setError("Incorrect username/password");
+
   };
 
   return (
@@ -42,7 +43,7 @@ const AuthNewUser = ({ name }) => {
                     <label htmlFor="name" className="form-label">
                       Name
                     </label>
-                    <input name="name" type="text" required />
+                    <input name="name" pattern="\S+" type="text" required />
                   </div>
 
                   <div className="d-grid gap-2">
@@ -57,12 +58,17 @@ const AuthNewUser = ({ name }) => {
 
                   <div className="d-grid gap-2">
                     <label htmlFor="username">Username</label>
-                    <input name="username" type="text" required />
+                    <input name="username" type="text" pattern="\S+" required />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="password">Password</label>
-                    <input name="password" type="password" required />
+                    <input
+                      name="password"
+                      pattern="\S+"
+                      type="password"
+                      required
+                    />
                   </div>
                 </div>
 
