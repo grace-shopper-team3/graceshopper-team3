@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
 import { Link } from "react-router-dom";
@@ -11,19 +11,23 @@ import { Link } from "react-router-dom";
 
 const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
-  // const [error, setError] = useState("");
 
   const { error } = useSelector((state) => state.auth);
+  const [isError, setIsError] = useState(false);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-
     dispatch(authenticate({ username, password, method: "login" }));
-
-    // setError("Incorrect username/password");
   };
+  useEffect(() => {
+    if (error) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+    }
+  }, [error]);
 
   return (
     <div>
@@ -48,7 +52,12 @@ const AuthForm = ({ name, displayName }) => {
                       Username
                     </label>
 
-                    <input name="username" type="text" required />
+                    <input
+                      onChange={(event) => setIsError(false)}
+                      name="username"
+                      type="text"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="row">
@@ -57,7 +66,12 @@ const AuthForm = ({ name, displayName }) => {
                       Password
                     </label>
 
-                    <input name="password" type="password" required />
+                    <input
+                      onChange={(event) => setIsError(false)}
+                      name="password"
+                      type="password"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="row">
@@ -72,7 +86,7 @@ const AuthForm = ({ name, displayName }) => {
                       </Link>
                     </small>
                   </div>
-                  {error ? <div style={{ color: "red" }}> {error} </div> : null}
+                  {isError ? <div style={{ color: "red" }}> {error} </div> : ""}
                 </div>
               </form>
             </div>

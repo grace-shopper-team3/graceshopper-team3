@@ -18,7 +18,6 @@ const AuthNewUser = ({ name }) => {
     dispatch(
       authenticate({ name, email, username, password, method: "signup" })
     );
-
   };
 
   return (
@@ -43,12 +42,19 @@ const AuthNewUser = ({ name }) => {
                     <label htmlFor="name" className="form-label">
                       Name
                     </label>
-                    <input name="name" pattern="\S+" type="text" required />
+                    <input
+                      onChange={(event) => setIsError(false)}
+                      name="name"
+                      pattern="\S+"
+                      type="text"
+                      required
+                    />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="email">E-mail</label>
                     <input
+                      onChange={(event) => setIsError(false)}
                       name="email"
                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                       type="email"
@@ -58,12 +64,19 @@ const AuthNewUser = ({ name }) => {
 
                   <div className="d-grid gap-2">
                     <label htmlFor="username">Username</label>
-                    <input name="username" type="text" pattern="\S+" required />
+                    <input
+                      onChange={(event) => setIsError(false)}
+                      name="username"
+                      type="text"
+                      pattern="\S+"
+                      required
+                    />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="password">Password</label>
                     <input
+                      onChange={(event) => setIsError(false)}
                       name="password"
                       pattern="\S+"
                       type="password"
