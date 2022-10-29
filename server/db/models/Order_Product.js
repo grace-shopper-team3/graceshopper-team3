@@ -6,7 +6,7 @@ const Order_Product = db.define("order_product", {
     type: Sequelize.INTEGER,
     defaultValue: 1,
   },
-  // ERROR WHEN SEEDING
+  // COMMENTS : ERROR WHEN SEEDING
   // subtotal: {
   //   type: Sequelize.DECIMAL(10, 2),
   //   set(val = 0) {
@@ -16,7 +16,7 @@ const Order_Product = db.define("order_product", {
   //     );
   //   },
 
-  // ERROR IN POST ROUTE FOR ADDTOCART
+  // COMMENTS : ERROR IN POST ROUTE FOR ADDTOCART
   // type: Sequelize.VIRTUAL,
   // get() {
   //   this.product.price * this.quantityInCart;
