@@ -13,40 +13,9 @@ const Footer = () => {
               aliquam sequi voluptate quas.
             </p>
           </section>
-          <section className="">
-            <div className="row">
-              <div className="col">
-                <h5 className="text-uppercase">Account</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>Account</li>
-                  <li>Order History</li>
-                </ul>
-              </div>
-
-              <div className="col">
-                <h5 className="text-uppercase">Assistance</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>Returns Policy</li>
-                  <li>Terms & Conditions</li>
-                </ul>
-              </div>
-
-              <div className="col">
-                <h5 className="text-uppercase">Connect With Us</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>Contact Us</li>
-                </ul>
-              </div>
-            </div>
-          </section>
         </div>
 
-        <div className="text-center p-3">
-          © 2022 Copyright: Grace Hopper Team 3
-        </div>
+        <div className="text-center p-3">© 2022 Copyright: Team T.E.C.H.</div>
       </footer>
     </div>
   );
