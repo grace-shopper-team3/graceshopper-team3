@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column" style={{ paddingTop: 10 }}>
       <footer className="mt-auto bg-dark text-center text-white">
         <div className="container p-4">
           <section className="mb-4">
