@@ -1,14 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
+  const { shoppingCart, setShoppingCart, addItemToCart } = props;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
+  // const [shoppingCart, setShoppingCart] = useState([]);
+
+  console.log("shopping cart", shoppingCart);
   const allproducts = useSelector((state) => state.allProducts.products);
 
   return (
@@ -67,9 +71,14 @@ const AllProducts = () => {
                     </Link>
                     <div className="card-body text-center">
                       <p>${product.price}</p>
-                      <Link href="#" className="btn btn-primary">
+                      <button
+                        href="#"
+                        value={product.name}
+                        className="btn btn-primary"
+                        onClick={addItemToCart}
+                      >
                         ADD TO CART
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

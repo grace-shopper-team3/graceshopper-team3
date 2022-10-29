@@ -4,16 +4,16 @@ import { useParams, Link } from "react-router-dom";
 import { fetchCart } from "../cart/CartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
-const SingleProduct = () => {
+const SingleProduct = (props) => {
   const dispatch = useDispatch();
-
+  const { shoppingCart, setShoppingCart, addItemToCart } = props;
   const { productId } = useParams();
 
-  const addToCart = (ev) => {
-    ev.preventDefault();
-    //placeholder for redux slice thunk
-    dispatch(fetchCart());
-  };
+  // const addToCart = (ev) => {
+  //   ev.preventDefault();
+  //   //placeholder for redux slice thunk
+  //   dispatch(fetchCart());
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,11 +63,19 @@ const SingleProduct = () => {
               </div>
               <section>
                 <button
+                  href="#"
+                  value={name}
+                  className="btn btn-primary"
+                  onClick={addItemToCart}
+                >
+                  ADD TO CART
+                </button>
+                {/* <button
                   className="btn btn-primary"
                   onClick={(ev) => addToCart(ev)}
                 >
                   ADD TO CART
-                </button>
+                </button> */}
               </section>
             </div>
           </div>

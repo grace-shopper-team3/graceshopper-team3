@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
@@ -13,7 +13,13 @@ import Checkout from "../features/checkout/checkout";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
+  const [shoppingCart, setShoppingCart] = useState([]);
 
+  function addItemToCart(e) {
+    const item = e.target.value;
+    console.log("item", e.target);
+    setShoppingCart([...shoppingCart, item]);
+  }
   useEffect(() => {
     dispatch(me());
   }, []);
@@ -24,9 +30,27 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/products" element={<AllProducts />} />
-          <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/products"
+            element={
+              <AllProducts
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+                addItemToCart={addItemToCart}
+              />
+            }
+          />
+          <Route
+            path="/products/:productId"
+            element={
+              <SingleProduct
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+                addItemToCart={addItemToCart}
+              />
+            }
+          />
+          <Route path="/cart" element={<Cart shoppingCart={shoppingCart} />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       ) : (
@@ -37,9 +61,27 @@ const AppRoutes = () => {
             element={<AuthForm name="login" displayName="Login" />}
           />
           <Route path="/signup" element={<AuthNewUser />} />
-          <Route path="/products" element={<AllProducts />} />
-          <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/products"
+            element={
+              <AllProducts
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+                addItemToCart={addItemToCart}
+              />
+            }
+          />
+          <Route
+            path="/products/:productId"
+            element={
+              <SingleProduct
+                shoppingCart={shoppingCart}
+                setShoppingCart={setShoppingCart}
+                addItemToCart={addItemToCart}
+              />
+            }
+          />
+          <Route path="/cart" element={<Cart shoppingCart={shoppingCart} />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
