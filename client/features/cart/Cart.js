@@ -12,6 +12,7 @@ import {
 
 const Cart = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
@@ -38,7 +39,11 @@ const Cart = (props) => {
     dispatch(fetchCart(userId));
   }, [dispatch, userId]);
 
-  const navigate = useNavigate();
+  const handleCheckout = (userId) => {
+    dispatch(fulfillOrder(userId));
+    navigate("/checkout");
+  };
+
   return (
     <div className="container-fluid">
       <div className="row g-1" style={{ padding: "20px" }}>
@@ -170,7 +175,7 @@ const Cart = (props) => {
             <button
               className="btn btn-primary"
               onClick={() => {
-                navigate("/checkout");
+                handleCheckout(userInfo.id);
               }}
             >
               Checkout
