@@ -65,7 +65,7 @@ export const removeFromCart = createAsyncThunk(
   async ({ userId, productId }) => {
     try {
       console.log("made it to removeFromCart cart!", userId, productId);
-      await axios.delete(`/api/order_products/${userId}/cart`, {
+      await axios.delete(`/api/order_products/${userId}/${productId}/cart`, {
         productId,
       });
       return productId;
@@ -111,7 +111,7 @@ const cartSlice = createSlice({
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
       state.cart = state.cart.filter(
-        (product) => product.productId !== action.payload.productId
+        (product) => product.productId !== action.meta.arg.productId
       );
     });
   },
