@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { me } from "../auth/authSlice";
-import { fetchSingleProduct } from "../singleProduct/singleProductSlice";
 import {
   fetchCart,
   incrementItemInCart,
   decrementItemInCart,
   removeFromCart,
 } from "./CartSlice";
+import { fulfillOrder } from "../checkout/checkoutSlice";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
@@ -17,9 +16,6 @@ const Cart = (props) => {
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
   const cart = useSelector((state) => state.cart.cart);
-
-  console.log("cart", cart);
-  console.log("userId", userId);
 
   const incrementItem = (productId, quantityInCart) => {
     dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
@@ -30,7 +26,6 @@ const Cart = (props) => {
   };
 
   const removeItem = (productId) => {
-    console.log("removeItem", userId, productId);
     dispatch(removeFromCart({ userId, productId }));
   };
 
@@ -43,6 +38,12 @@ const Cart = (props) => {
     dispatch(fulfillOrder(userId));
     navigate("/checkout");
   };
+
+  console.log(cart);
+  // const total = cart.reduce(
+  //   (accum, elem) => accum + elem.quantityInCart * elem.product.price,
+  //   0
+  // );
 
   return (
     <div className="container-fluid">
@@ -151,7 +152,7 @@ const Cart = (props) => {
                 <p> Subtotal (3 items):</p>
               </div>
               <div className="col-4">
-                <p> $3024.00</p>
+                <p> $5675.70</p>
               </div>
             </div>
             <div className="row">
@@ -168,7 +169,7 @@ const Cart = (props) => {
                 <h3>Total: </h3>
               </div>
               <div className="col-4">
-                <h3>{3024.0 + 5.99}</h3>
+                <h3>$30000000</h3>
               </div>
             </div>
 

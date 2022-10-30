@@ -6,7 +6,6 @@ export const fetchCart = createAsyncThunk(
   async (userId) => {
     try {
       const { data } = await axios.get(`/api/order_products/${userId}/cart`);
-      console.log(`data for axios GET request`, data);
       return data;
     } catch (error) {
       console.log(error);
@@ -64,7 +63,6 @@ export const removeFromCart = createAsyncThunk(
   "deleteOrder_Product",
   async ({ userId, productId }) => {
     try {
-      console.log("made it to removeFromCart cart!", userId, productId);
       await axios.delete(`/api/order_products/${userId}/${productId}/cart`, {
         productId,
       });
@@ -99,7 +97,6 @@ const cartSlice = createSlice({
       });
     });
     builder.addCase(decrementItemInCart.fulfilled, (state, action) => {
-      console.log("state.cart", state.cart);
       state.cart = state.cart.map((item) => {
         let product = item.product;
         if (item.productId === action.payload.productId) {

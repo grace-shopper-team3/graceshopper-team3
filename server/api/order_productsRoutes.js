@@ -38,16 +38,23 @@ router.post("/:userId/cart", async (req, res, next) => {
 
     if (order[1]) {
       //const addProduct = Order.addProduct(req.params.productId)
-      const newOrder_product = await Order_Product.create({
-        productId: productId,
-        orderId: order[0].id,
-      });
+      const newOrder_product = await Order_Product.create(
+        {
+          productId: productId,
+          orderId: order[0].id,
+        },
+        { include: { model: Product } }
+      );
       res.json(newOrder_product);
     } else {
-      const addProduct = await Order_Product.create({
-        productId: productId,
-        orderId: order[0].id,
-      });
+      const addProduct = await Order_Product.create(
+        {
+          productId: productId,
+          orderId: order[0].id,
+        },
+        { include: { model: Product } }
+      );
+      await addProduct.reload();
       res.json(addProduct);
     }
   } catch (err) {
@@ -58,7 +65,6 @@ router.post("/:userId/cart", async (req, res, next) => {
 // PUT api/order_products
 // To change quantity of products which are added to cart from cart or singleProduct pages
 router.put("/:userId/cart", async (req, res, next) => {
-
   const userId = req.params.userId;
   const productId = req.body.productId;
   const qty = req.body.quantityInCart;
@@ -85,7 +91,6 @@ router.put("/:userId/cart", async (req, res, next) => {
 //  DELETE api/order_products
 // To delete product row from Order_product if remove button is clicked
 router.delete("/:userId/:productId/cart", async (req, res, next) => {
-
   const userId = req.params.userId;
   const productId = req.params.productId;
 
@@ -96,7 +101,6 @@ router.delete("/:userId/:productId/cart", async (req, res, next) => {
 
     const updatedItem = await Order_Product.destroy({
       where: { productId: productId, orderId: order.id },
-
     });
     res.json(updatedItem); //only sends num of deletion back
   } catch (err) {
