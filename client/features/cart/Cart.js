@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -39,6 +40,14 @@ const Cart = (props) => {
   }, [dispatch, userId]);
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const handleCheckout = (userId) => {
+    dispatch(fulfillOrder(userId));
+    navigate("/checkout");
+  };
+
   return (
     <div className="container-fluid">
       <div className="row g-1" style={{ padding: "20px" }}>
@@ -170,7 +179,7 @@ const Cart = (props) => {
             <button
               className="btn btn-primary"
               onClick={() => {
-                navigate("/checkout");
+                handleCheckout(userInfo.id);
               }}
             >
               Checkout
