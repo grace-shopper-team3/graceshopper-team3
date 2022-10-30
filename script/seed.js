@@ -1144,7 +1144,7 @@ async function seed() {
       orderId: 1,
       productId: 2,
       quantityInCart: 2,
-      subtotal: 0,
+      subtotal: 0,  
     }),
     Order_Product.create({
       orderId: 2,

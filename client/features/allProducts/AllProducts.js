@@ -2,12 +2,26 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
+import { addItemToCart } from "../cart/CartSlice";
+import singleProductSlice from "../singleProduct/singleProductSlice";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
+
+  const styles = {
+    addedToCart: {
+      background: `#999`,
+      color: `#555`,
+      cursor: `not-allowed`,
+    },
+  };
+
+  const addToCart = () => {
+    dispatch(addItemToCart());
+  };
 
   const allproducts = useSelector((state) => state.allProducts.products);
 
@@ -67,7 +81,11 @@ const AllProducts = () => {
                     </Link>
                     <div className="card-body text-center">
                       <p>${product.price}</p>
-                      <Link href="#" className="btn btn-primary">
+                      <Link
+                        href="#"
+                        className="btn btn-primary"
+                        onClick={addItemToCart}
+                      >
                         ADD TO CART
                       </Link>
                     </div>

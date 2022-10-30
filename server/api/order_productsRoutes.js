@@ -58,6 +58,7 @@ router.post("/:userId/cart", async (req, res, next) => {
 // PUT api/order_products
 // To change quantity of products which are added to cart from cart or singleProduct pages
 router.put("/:userId/cart", async (req, res, next) => {
+
   const userId = req.params.userId;
   const productId = req.body.productId;
   const qty = req.body.quantityInCart;
@@ -83,16 +84,19 @@ router.put("/:userId/cart", async (req, res, next) => {
 
 //  DELETE api/order_products
 // To delete product row from Order_product if remove button is clicked
-router.delete("/:userId/cart", async (req, res, next) => {
+router.delete("/:userId/:productId/cart", async (req, res, next) => {
+
   const userId = req.params.userId;
-  const productId = req.body.productId;
+  const productId = req.params.productId;
 
   try {
     const order = await Order.findOne({
       where: [{ userId: userId }, { status: "unfulfilled" }],
     });
+
     const updatedItem = await Order_Product.destroy({
       where: { productId: productId, orderId: order.id },
+
     });
     res.json(updatedItem); //only sends num of deletion back
   } catch (err) {
