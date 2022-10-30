@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 const EmptyCart = () => {
   return (
     <div class="container-fluid">
@@ -34,5 +33,4 @@ const EmptyCart = () => {
     </div>
   );
 };
-
 export default EmptyCart;

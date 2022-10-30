@@ -1,14 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Checkout = (props) => {
-  const { name } = useSelector((state) => state.auth.me);
+  const { id, name } = useSelector((state) => state.auth.me);
   const capitalizeAll = (str) => {
     return str?.toUpperCase();
   };
 
-  console.log(useSelector((state) => state.auth.me));
+  const orderInfo = useSelector((state) => state.checkoutOrder.fulfilledOrder);
+  const total = orderInfo.reduce(
+    (accum, elem) => accum + elem.quantityInCart * elem.product.price,
+    0
+  );
+  const date = new Date();
 
   return (
     <div className="container mt-5 mb-5">
@@ -34,14 +39,20 @@ const Checkout = (props) => {
                             <span className="d-block text-muted">
                               Order Date
                             </span>
-                            <span>{/* order date */}</span>
+                            <span>
+                              {date.getFullYear() +
+                                "/" +
+                                (date.getMonth() + 1) +
+                                "/" +
+                                date.getDate()}
+                            </span>
                           </div>
                         </td>
 
                         <td>
                           <div className="py-2">
                             <span className="d-block text-muted">Order No</span>
-                            <span>{/* order no */}</span>
+                            <span>{orderInfo[0]?.orderId}</span>
                           </div>
                         </td>
                       </tr>
@@ -52,35 +63,35 @@ const Checkout = (props) => {
                 <div className="product border-bottom table-responsive">
                   <table className="table table-borderless">
                     <tbody>
-                      <tr>
-                        <td width="20%">
-                          placeholder for item image
-                          {/* <img
-                            src="https://i.imgur.com/u11K1qd.jpg"
-                            width="90"
-                          /> */}
-                        </td>
+                      {orderInfo.map((elem) => (
+                        <tr key={elem.productId}>
+                          <td width="20%">
+                            <img
+                              src={elem.product.imageUrl}
+                              style={{ width: 50, height: 60 }}
+                            />
+                          </td>
 
-                        <td width="60%">
-                          <span className="font-weight-bold">
-                            placeholder for item name
-                            {/* {itemName} */}
-                          </span>
-                          <div className="product-qty">
-                            <span className="d-block">
-                              Quantity:
-                              {/* add quantity */}
-                            </span>
-                          </div>
-                        </td>
-                        <td width="20%">
-                          <div className="text-right">
+                          <td width="60%">
                             <span className="font-weight-bold">
-                              placeholder for item subtotal
+                              {elem.product.name}
                             </span>
-                          </div>
-                        </td>
-                      </tr>
+                            <div className="product-qty">
+                              <span className="d-block">
+                                Quantity:
+                                {elem.quantityInCart}
+                              </span>
+                            </div>
+                          </td>
+                          <td width="20%">
+                            <div className="text-right">
+                              <span className="font-weight-bold">
+                                {elem.quantityInCart * elem.product.price}
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -97,7 +108,7 @@ const Checkout = (props) => {
                           </td>
                           <td>
                             <div className="text-right">
-                              <span>{/* {subtotal} */}</span>
+                              <span>${total}</span>
                             </div>
                           </td>
                         </tr>
@@ -126,7 +137,7 @@ const Checkout = (props) => {
                           <td>
                             <div className="text-right">
                               <span className="font-weight-bold">
-                                {/* {subtotal + 5.99} */}
+                                ${total + 5.99}
                               </span>
                             </div>
                           </td>
