@@ -38,16 +38,23 @@ router.post("/:userId/cart", async (req, res, next) => {
 
     if (order[1]) {
       //const addProduct = Order.addProduct(req.params.productId)
-      const newOrder_product = await Order_Product.create({
-        productId: productId,
-        orderId: order[0].id,
-      });
+      const newOrder_product = await Order_Product.create(
+        {
+          productId: productId,
+          orderId: order[0].id,
+        },
+        { include: { model: Product } }
+      );
       res.json(newOrder_product);
     } else {
-      const addProduct = await Order_Product.create({
-        productId: productId,
-        orderId: order[0].id,
-      });
+      const addProduct = await Order_Product.create(
+        {
+          productId: productId,
+          orderId: order[0].id,
+        },
+        { include: { model: Product } }
+      );
+      await addProduct.reload();
       res.json(addProduct);
     }
   } catch (err) {
@@ -83,14 +90,15 @@ router.put("/:userId/cart", async (req, res, next) => {
 
 //  DELETE api/order_products
 // To delete product row from Order_product if remove button is clicked
-router.delete("/:userId/cart", async (req, res, next) => {
+router.delete("/:userId/:productId/cart", async (req, res, next) => {
   const userId = req.params.userId;
-  const productId = req.body.productId;
+  const productId = req.params.productId;
 
   try {
     const order = await Order.findOne({
       where: [{ userId: userId }, { status: "unfulfilled" }],
     });
+
     const updatedItem = await Order_Product.destroy({
       where: { productId: productId, orderId: order.id },
     });

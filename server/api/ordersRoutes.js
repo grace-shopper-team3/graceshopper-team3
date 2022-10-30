@@ -19,7 +19,12 @@ router.put("/:userId/checkout", async (req, res, next) => {
         plain: true,
       }
     );
-    res.json(fulfill[1]);
+
+    const orderDets = await Order_Product.findAll({
+      where: { orderId: fulfill[1].id },
+      include: { model: Product },
+    });
+    res.json(orderDets);
   } catch (err) {
     next(err);
   }
