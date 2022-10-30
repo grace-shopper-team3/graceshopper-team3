@@ -36,7 +36,7 @@ const Cart = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchCart(userId));
-  }, [dispatch]);
+  }, [dispatch, userId]);
 
   const navigate = useNavigate();
   return (

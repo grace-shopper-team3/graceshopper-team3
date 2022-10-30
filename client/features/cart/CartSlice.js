@@ -64,12 +64,11 @@ export const removeFromCart = createAsyncThunk(
   "deleteOrder_Product",
   async ({ userId, productId }) => {
     try {
-      console.log("made it to removeFromCart cart!", 2, userId, productId);
+      console.log("made it to removeFromCart cart!", userId, productId);
       await axios.delete(`/api/order_products/${userId}/cart`, {
-        productId: productId,
+        productId,
       });
-      //console.log("data", data);
-      return null;
+      return productId;
     } catch (error) {
       console.log(error);
     }
@@ -111,7 +110,6 @@ const cartSlice = createSlice({
       });
     });
     builder.addCase(removeFromCart.fulfilled, (state, action) => {
-      console.log("please", state.cart, action.payload);
       state.cart = state.cart.filter(
         (product) => product.productId !== action.payload.productId
       );
