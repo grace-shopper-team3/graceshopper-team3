@@ -6,12 +6,12 @@ const Order_Product = db.define("order_product", {
     type: Sequelize.INTEGER,
     defaultValue: 1,
   },
-  subtotal: {
-    type: Sequelize.DECIMAL(10, 2),
-    set(val) {
-      this.setDataValue("subtotal", this.price * this.quantityInCart + val);
-    },
-  },
+  // subtotal: {
+  //   type: Sequelize.DECIMAL(10, 2),
+  //   set(val) {
+  //     this.setDataValue("subtotal", this.price * this.quantityInCart + val);
+  //   },
+  // },
 });
 
 module.exports = Order_Product;

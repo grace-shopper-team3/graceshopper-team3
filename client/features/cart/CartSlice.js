@@ -5,25 +5,23 @@ export const fetchCart = createAsyncThunk(
   "fetchOrder_Products",
   async (userId) => {
     try {
-      console.log("made it to fetch cart!");
       const { data } = await axios.get(`/api/order_products/${userId}/cart`);
       console.log(`data for axios GET request`, data);
-
       return data;
     } catch (error) {
       console.log(error);
     }
-    //will fix this later when api is setup
   }
 );
 
 export const addItemToCart = createAsyncThunk(
   "addOrder_Product",
-  async (userId) => {
+  async ({ userId, productId }) => {
     try {
-      const { data } = await axios.post(`/api/order_products/${userId}/cart`); //check w backend route
+      const { data } = await axios.post(`/api/order_products/${userId}/cart`, {
+        productId,
+      });
       return data;
-      //will fix this later when api is setup
     } catch (error) {
       console.log(error);
     }
@@ -31,12 +29,15 @@ export const addItemToCart = createAsyncThunk(
 );
 
 export const incrementItemInCart = createAsyncThunk(
-  "addOrder_Product",
-  async () => {
+  "incrementOrder_Product",
+  async ({ userId, productId, quantityInCart }) => {
     try {
-      const { data } = await axios.put(`/api/order_products/${userId}/cart`); //check w backend route
+      quantityInCart++;
+      const { data } = await axios.put(`/api/order_products/${userId}/cart`, {
+        productId,
+        quantityInCart,
+      });
       return data;
-      //will fix this later when api is setup
     } catch (error) {
       console.log(error);
     }
@@ -44,12 +45,15 @@ export const incrementItemInCart = createAsyncThunk(
 );
 
 export const decrementItemInCart = createAsyncThunk(
-  "addOrder_Product",
-  async (userId, productId, quantityInCart) => {
+  "decrementOrder_Product",
+  async ({ userId, productId, quantityInCart }) => {
     try {
-      const { data } = await axios.put(`/api/order_products/${userId}/cart`); //check w backend route
+      quantityInCart--;
+      const { data } = await axios.put(`/api/order_products/${userId}/cart`, {
+        productId,
+        quantityInCart,
+      });
       return data;
-      //will fix this later when api is setup
     } catch (error) {
       console.log(error);
     }
@@ -57,15 +61,15 @@ export const decrementItemInCart = createAsyncThunk(
 );
 
 export const removeFromCart = createAsyncThunk(
-  "fetchOrder_Products",
-  async (userId, productId) => {
+  "deleteOrder_Product",
+  async ({ userId, productId }) => {
     try {
-      const { data } = await axios.delete(
-        `/api/order_products/${userId}/cart`,
-        productId
-      ); //check w backend route
-      return data;
-      //will fix this later when api is setup
+      console.log("made it to removeFromCart cart!", 2, userId, productId);
+      await axios.delete(`/api/order_products/${userId}/cart`, {
+        productId: productId,
+      });
+      //console.log("data", data);
+      return null;
     } catch (error) {
       console.log(error);
     }
@@ -82,18 +86,36 @@ const cartSlice = createSlice({
     builder.addCase(fetchCart.fulfilled, (state, action) => {
       state.cart = action.payload;
     });
-    // builder.addCase(addItemToCart.fulfilled, (state, action) => {
-    //   state.cart = action.payload;
-    // });
-    // builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
-    //   state.cart = action.payload;
-    // });
-    // builder.addCase(decrementItemInCart.fulfilled, (state, action) => {
-    //   state.cart = action.payload;
-    // });
-    // builder.addCase(removeFromCart.fulfilled, (state, action) => {
-    //   state.cart = action.payload;
-    // });
+    builder.addCase(addItemToCart.fulfilled, (state, action) => {
+      state.cart.push(action.payload);
+    });
+    builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
+      state.cart = state.cart.map((item) => {
+        let product = item.product;
+        if (item.productId === action.payload.productId) {
+          item = action.payload;
+          item["product"] = product;
+        }
+        return item;
+      });
+    });
+    builder.addCase(decrementItemInCart.fulfilled, (state, action) => {
+      console.log("state.cart", state.cart);
+      state.cart = state.cart.map((item) => {
+        let product = item.product;
+        if (item.productId === action.payload.productId) {
+          item = action.payload;
+          item["product"] = product;
+        }
+        return item;
+      });
+    });
+    builder.addCase(removeFromCart.fulfilled, (state, action) => {
+      console.log("please", state.cart, action.payload);
+      state.cart = state.cart.filter(
+        (product) => product.productId !== action.payload.productId
+      );
+    });
   },
 });
 export const selectCart = (state) => {

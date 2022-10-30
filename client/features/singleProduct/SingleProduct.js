@@ -1,27 +1,34 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { fetchCart } from "../cart/CartSlice";
+import { me } from "../auth/authSlice";
+import { addItemToCart, fetchCart, selectCart } from "../cart/CartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
-
   const { productId } = useParams();
 
   const addToCart = (ev) => {
     ev.preventDefault();
     //placeholder for redux slice thunk
-    dispatch(fetchCart());
+    console.log("productId", productId);
+    dispatch(addItemToCart({ userId, productId }));
   };
+
+  //console.log(userId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(fetchSingleProduct(productId));
+    dispatch(me);
+    dispatch(fetchCart(userId));
   }, [dispatch]);
 
   const product = useSelector((state) => state.singleProduct.aProduct);
   const { name, category, imageUrl, price, description } = product;
+  const userInfo = useSelector((state) => state.auth.me);
+  const userId = userInfo.id;
 
   return (
     <div>
