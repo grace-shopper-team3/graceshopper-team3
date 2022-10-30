@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart } from "../cart/CartSlice";
-import singleProductSlice from "../singleProduct/singleProductSlice";
 
 const AllProducts = () => {
+  const userInfo = useSelector((state) => state.auth.me);
+  const userId = userInfo.id;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
@@ -19,8 +21,9 @@ const AllProducts = () => {
     },
   };
 
-  const addToCart = () => {
-    dispatch(addItemToCart());
+  const addToCart = (ev, productId) => {
+    ev.preventDefault();
+    dispatch(addItemToCart({ userId, productId }));
   };
 
   const allproducts = useSelector((state) => state.allProducts.products);
@@ -81,13 +84,12 @@ const AllProducts = () => {
                     </Link>
                     <div className="card-body text-center">
                       <p>${product.price}</p>
-                      <Link
-                        href="#"
+                      <button
                         className="btn btn-primary"
-                        onClick={addItemToCart}
+                        onClick={(ev) => addToCart(ev, product.id)}
                       >
                         ADD TO CART
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

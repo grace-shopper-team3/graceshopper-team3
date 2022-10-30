@@ -52,7 +52,7 @@ const Checkout = (props) => {
                         <td>
                           <div className="py-2">
                             <span className="d-block text-muted">Order No</span>
-                            <span>{orderInfo[0].orderId}</span>
+                            <span>{orderInfo[0]?.orderId}</span>
                           </div>
                         </td>
                       </tr>
