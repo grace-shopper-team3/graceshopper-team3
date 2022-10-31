@@ -76,9 +76,9 @@ export const authSlice = createSlice({
     builder.addCase(me.rejected, (state, action) => {
       state.error = action.error;
     });
-    builder.addCase(authenticate.fulfilled, (state, action) => {
-      state.authenticate = action.payload;
-    });
+    // builder.addCase(authenticate.fulfilled, (state, action) => {
+    //   state.me = action.payload;
+    // });
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;
     });
