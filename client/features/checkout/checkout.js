@@ -73,20 +73,19 @@ const Checkout = (props) => {
                           </td>
 
                           <td width="60%">
-                            <span className="font-weight-bold">
+                            <span style={{ fontWeight: "bold" }}>
                               {elem.product.name}
                             </span>
-                            <div className="product-qty">
-                              <span className="d-block">
-                                Quantity:
-                                {elem.quantityInCart}
-                              </span>
-                            </div>
+                            {/* <div className="product-qty"> */}
+                            <span className="d-block">
+                              Quantity: {elem.quantityInCart}
+                            </span>
+                            {/* </div> */}
                           </td>
                           <td width="20%">
                             <div className="text-right">
                               <span className="font-weight-bold">
-                                {elem.quantityInCart * elem.product.price}
+                                $ {elem.quantityInCart * elem.product.price}
                               </span>
                             </div>
                           </td>
