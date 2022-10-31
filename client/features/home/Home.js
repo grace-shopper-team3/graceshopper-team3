@@ -58,7 +58,7 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div className="container text-center">
+      <div className="container text-center" style={{ paddingBottom: "10px" }}>
         <div className="row g-3">
           <div className="col-6">
             <div className="bundle">DC Universe</div>
