@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../app/store";
 import { Link } from "react-router-dom";
 
 const AuthNewUser = ({ name }) => {
-  const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { error } = useSelector((state) => state.auth);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
+    console.log("name", name);
     const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
@@ -17,6 +18,7 @@ const AuthNewUser = ({ name }) => {
     dispatch(
       authenticate({ name, email, username, password, method: "signup" })
     );
+
   };
 
   return (
@@ -41,22 +43,32 @@ const AuthNewUser = ({ name }) => {
                     <label htmlFor="name" className="form-label">
                       Name
                     </label>
-                    <input name="name" type="text" required />
+                    <input name="name" pattern="\S+" type="text" required />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="email">E-mail</label>
-                    <input name="email" type="email" required />
+                    <input
+                      name="email"
+                      pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                      type="email"
+                      required
+                    />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="username">Username</label>
-                    <input name="username" type="text" required />
+                    <input name="username" type="text" pattern="\S+" required />
                   </div>
 
                   <div className="d-grid gap-2">
                     <label htmlFor="password">Password</label>
-                    <input name="password" type="password" required />
+                    <input
+                      name="password"
+                      pattern="\S+"
+                      type="password"
+                      required
+                    />
                   </div>
                 </div>
 
@@ -69,7 +81,7 @@ const AuthNewUser = ({ name }) => {
                       Already have an account? <Link to="/login">Log in</Link>
                     </small>
                   </div>
-                  <div style={{ color: "red" }}> {error} </div>
+                  {error ? <div style={{ color: "red" }}> {error} </div> : null}
                 </div>
               </form>
             </div>

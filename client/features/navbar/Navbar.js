@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
+import Cart from "../cart/Cart";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -12,6 +13,10 @@ const Navbar = () => {
     navigate("/home");
   };
   const { name } = useSelector((state) => state.auth.me);
+  const capitalizeFirst = (str) => {
+    return str?.charAt(0).toUpperCase() + str?.slice(1);
+  };
+  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <div className="sticky-top">
@@ -30,13 +35,14 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <form className="navbar-form navbar-left">
-                <small>Welcome back, {name}! </small>
+                <small>Welcome back, {capitalizeFirst(name)}! </small>
                 <button
                   className="btn btn-link"
                   onClick={logoutAndRedirectHome}
                 >
                   Logout
                 </button>
+
                 <Link to="/cart">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

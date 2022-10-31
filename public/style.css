@@ -3,10 +3,10 @@
   src: url(TT-Norms-Fonts/TTNorms-Black.otf);
 }
 
-body {
+/* body {
   font-family: sans-serif;
   min-height: 100vh;
-}
+} */
 
 a {
   text-decoration: none;
@@ -39,3 +39,5 @@ img {
   padding: 10px;
   font-weight: bold;
 }
+
+
