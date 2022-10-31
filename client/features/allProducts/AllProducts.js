@@ -35,7 +35,7 @@ const AllProducts = () => {
     image: {
       width: `14rem`,
       height: `16rem`,
-      // backgroundImage: `url(${product.imageUrl})`,
+      backgroundImage: `url(${product.imageUrl})`,
       backgroundSize: `cover`,
     },
   };
