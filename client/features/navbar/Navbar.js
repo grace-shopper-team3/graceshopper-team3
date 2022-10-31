@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
 import Cart from "../cart/Cart";
+import Profile from "../auth/Profile";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -35,14 +36,29 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <form className="navbar-form navbar-left">
-                <small>Welcome back, {capitalizeFirst(name)}! </small>
+                <div className="btn-group">
+                  <button
+                    type="button"
+                    className="btn btn-linkdropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Welcome back, {capitalizeFirst(name)}!
+                  </button>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to="/profile">
+                        My Account
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
                 <button
                   className="btn btn-link"
                   onClick={logoutAndRedirectHome}
                 >
                   Logout
                 </button>
-
                 <Link to="/cart">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
