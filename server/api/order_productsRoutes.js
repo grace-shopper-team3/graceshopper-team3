@@ -27,36 +27,30 @@ router.get("/:userId/cart", async (req, res, next) => {
 
 // POST api/order_products------ LoggedIn user
 // To use for add to cart button click
+// MESSY BUT WORKS - NEED TO CLEAN UP
 router.post("/:userId/cart", async (req, res, next) => {
   let userId = req.params.userId;
-  let productId = req.body.productId;
+  let productId = +req.body.productId;
 
   try {
     const order = await Order.findOrCreate({
       where: { userId: userId, status: "unfulfilled" },
     });
 
-    if (order[1]) {
-      //const addProduct = Order.addProduct(req.params.productId)
-      const newOrder_product = await Order_Product.create(
-        {
-          productId: productId,
-          orderId: order[0].id,
-        },
-        { include: { model: Product } }
-      );
-      res.json(newOrder_product);
-    } else {
-      const addProduct = await Order_Product.create(
-        {
-          productId: productId,
-          orderId: order[0].id,
-        },
-        { include: { model: Product } }
-      );
-      await addProduct.reload();
-      res.json(addProduct);
+    //const addProduct = Order.addProduct(req.params.productId)
+    const addProduct = await Order_Product.findOrCreate({
+      where: { productId: productId, orderId: order[0].id },
+    });
+    const addedIns = await Order_Product.findOne({
+      where: { orderId: order[0].id, productId: productId },
+      include: { model: Product },
+    });
+    if (!addProduct[1]) {
+      await addedIns.increment("quantityInCart");
+
+      await addedIns.reload();
     }
+    res.json(addedIns);
   } catch (err) {
     next(err);
   }
