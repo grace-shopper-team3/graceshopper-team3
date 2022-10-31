@@ -17,7 +17,6 @@ const Cart = (props) => {
 
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
-  // const cart = useSelector((state) => state.cart.cart);
 
   const incrementItem = (productId, quantityInCart) => {
     dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
@@ -40,12 +39,6 @@ const Cart = (props) => {
     dispatch(fulfillOrder(userId));
     navigate("/checkout");
   };
-
-  // const quantity = cart.reduce(
-  //   (accum, element) => accum + element.quantityInCart,
-  //   0
-  // );
-  // console.log(quantity);
 
   return (
     <>

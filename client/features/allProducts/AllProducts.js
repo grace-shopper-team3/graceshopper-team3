@@ -13,7 +13,6 @@ const AllProducts = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
-    // dispatch(fetchCart(userId));
   }, [dispatch]);
 
   const styles = {

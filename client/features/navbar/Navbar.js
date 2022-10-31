@@ -18,16 +18,6 @@ const Navbar = (props) => {
   const capitalizeFirst = (str) => {
     return str?.charAt(0).toUpperCase() + str?.slice(1);
   };
-  // const cart = () => {
-  // const cart = useSelector((state) => state.cart.cart);
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   dispatch(fetchCart(userId));
-  // }, [dispatch, userId]);
-
-  //
-
-  console.log("CART", cart);
 
   return (
     <div className="sticky-top">
@@ -56,7 +46,6 @@ const Navbar = (props) => {
 
                 <Link to="/cart">
                   <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {/* {quantity} */}
                     {cart && cart.length
                       ? cart.reduce(
                           (accum, element) => accum + element.quantityInCart,

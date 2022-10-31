@@ -26,25 +26,9 @@ const AppRoutes = () => {
     dispatch(fetchCart(userId));
   }, [dispatch, userId]);
 
-  // const cart = () => {
-  //   useEffect(() => {
-  //     window.scrollTo(0, 0);
-  //     dispatch(fetchCart(userId));
-  //   }, [dispatch, userId]);
-  //   if (isLoggedIn) useSelector((state) => state.cart.cart);
-  // };
-
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
-  // const quantity =
-  // console.log(
-  //   cart.reduce((accum, element) => accum + element.quantityInCart, 0),
-  //   "qty"
-  // );
-  // console.log(
-  //   cart.reduce((accum, element) => accum + element.quantityInCart, 0)
-  // );
-  // console.log(quantity);
+
   return (
     <div>
       {isLoggedIn ? (
