@@ -76,11 +76,10 @@ const Checkout = (props) => {
                             <span style={{ fontWeight: "bold" }}>
                               {elem.product.name}
                             </span>
-                            {/* <div className="product-qty"> */}
+
                             <span className="d-block">
                               Quantity: {elem.quantityInCart}
                             </span>
-                            {/* </div> */}
                           </td>
                           <td width="20%">
                             <div className="text-right">
