@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
-  // const [error, setError] = useState("");
 
   const { error } = useSelector((state) => state.auth);
 
@@ -21,8 +20,6 @@ const AuthForm = ({ name, displayName }) => {
     const password = evt.target.password.value;
 
     dispatch(authenticate({ username, password, method: "login" }));
-
-    // setError("Incorrect username/password");
   };
 
   return (
