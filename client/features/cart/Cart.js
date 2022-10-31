@@ -45,7 +45,7 @@ const Cart = (props) => {
   return (
     <>
       {cart && cart.length ? (
-        <div className="container-fluid">
+        <div className="container-fluid min-vh-100">
           <div className="row g-1" style={{ padding: "20px" }}>
             <div className="row">
               <div className="col-md-6">
