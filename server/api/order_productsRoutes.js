@@ -36,27 +36,19 @@ router.post("/:userId/cart", async (req, res, next) => {
       where: { userId: userId, status: "unfulfilled" },
     });
 
-    if (order[1]) {
-      //const addProduct = Order.addProduct(req.params.productId)
-      const newOrder_product = await Order_Product.create(
-        {
-          productId: productId,
-          orderId: order[0].id,
-        },
-        { include: { model: Product } }
-      );
-      res.json(newOrder_product);
-    } else {
-      const addProduct = await Order_Product.create(
-        {
-          productId: productId,
-          orderId: order[0].id,
-        },
-        { include: { model: Product } }
-      );
-      await addProduct.reload();
-      res.json(addProduct);
+    //const addProduct = Order.addProduct(req.params.productId)
+    const addProduct = await Order_Product.findOrCreate(
+      {
+        productId: productId,
+        orderId: order[0].id,
+      },
+      { include: { model: Product } }
+    );
+    if (!addProduct[1]) {
+      await addProduct.increment("quantityInCart");
     }
+    await addProduct.reload();
+    res.json(addProduct);
   } catch (err) {
     next(err);
   }
