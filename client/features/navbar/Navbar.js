@@ -32,7 +32,9 @@ const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/products">All Products</Link>
           </div>
+          {/* o: this could benefit from separating into components */}
           {isLoggedIn ? (
+            // o: you don't need the fragment here
             <>
               <form className="navbar-form navbar-left">
                 <small>Welcome back, {capitalizeFirst(name)}! </small>
@@ -58,6 +60,7 @@ const Navbar = () => {
               </form>
             </>
           ) : (
+            // o: you don't need the fragment here
             <>
               <form className="navbar-form navbar-left">
                 <Link to="/login">Login</Link>

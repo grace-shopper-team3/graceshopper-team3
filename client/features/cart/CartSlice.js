@@ -1,3 +1,5 @@
+// o: be consistent with naming, this slice file is capitalized whereas others are not
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 

@@ -135,6 +135,7 @@ const Checkout = (props) => {
                           <td>
                             <div className="text-right">
                               <span className="font-weight-bold">
+                                {/* o: why + 5.99? */}
                                 ${total + 5.99}
                               </span>
                             </div>

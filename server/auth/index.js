@@ -14,6 +14,7 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
+    // o: you shouldn't do this here (will explain in CR)
     for (let key in req.body) {
       if (req.body[key] === "") {
         delete req.body[key];
@@ -21,6 +22,7 @@ router.post("/signup", async (req, res, next) => {
     }
 
     const { name, email, username, password } = req.body;
+    // o: good work
     const user = await User.create({ name, email, username, password });
     res.send({ token: await user.generateToken() });
   } catch (err) {

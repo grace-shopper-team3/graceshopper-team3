@@ -44,6 +44,8 @@ const Cart = (props) => {
 
   return (
     <>
+    {/* o: you can separate the cart into its own container since you already
+          did that for the EmptyCart */}
       {cart && cart.length ? (
         <div className="container-fluid min-vh-100">
           <div className="row g-1" style={{ padding: "20px" }}>

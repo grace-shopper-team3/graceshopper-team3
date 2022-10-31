@@ -39,6 +39,7 @@ const AllProducts = () => {
     dispatch(addItemToCart({ userId, productId }));
   };
 
+  // o: use camelCase please
   const allproducts = useSelector((state) => state.allProducts.products);
 
   return (

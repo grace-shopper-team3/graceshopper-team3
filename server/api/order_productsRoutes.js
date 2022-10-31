@@ -1,3 +1,5 @@
+// o: adding Routes at the end of files in an api directory is redundant
+
 const router = require("express").Router();
 const {
   models: { User, Order, Order_Product, Product },

@@ -9,6 +9,7 @@ module.exports = router;
 // ------ Admin only
 router.get("/", getToken, async (req, res, next) => {
   try {
+    // o: you can place this in a middleware for brevity but good work (more in CR)
     if (req.user.isAdmin) {
       const users = await User.findAll({
         // explicitly select only the id and username fields - even though

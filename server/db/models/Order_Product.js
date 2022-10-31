@@ -10,6 +10,7 @@ const Order_Product = db.define("order_product", {
     },
   },
 
+  // o: remove if not needed
   // COMMENTS : ERROR WHEN SEEDING
   // subtotal: {
   //   type: Sequelize.DECIMAL(10, 2),

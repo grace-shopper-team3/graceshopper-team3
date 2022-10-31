@@ -20,6 +20,8 @@ const SingleProduct = () => {
   };
 
   useEffect(() => {
+    // o: you can make this a smooth scroll by using:
+    //    window.scrollTo({ top: 0, left: 0, behavior: "smooth"})
     window.scrollTo(0, 0);
     dispatch(fetchSingleProduct(productId));
     dispatch(fetchCart(userId));

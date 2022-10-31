@@ -9,6 +9,7 @@ const App = () => {
     <div>
       <Navbar />
       <AppRoutes />
+      {/* o: ahem!? */}
       {/* <Footer /> */}
     </div>
   );

@@ -18,6 +18,7 @@ router.get("/", async (req, res, next) => {
 // GET/api/products/:productId
 router.get("/:productId", async (req, res, next) => {
   try {
+    // o: check not found
     const aProduct = await Product.findByPk(req.params.productId);
     res.json(aProduct);
   } catch (err) {
@@ -42,12 +43,15 @@ router.post("/", getToken, async (req, res, next) => {
 // PUT/api/products   --------- Admin only
 router.put("/:productId", getToken, async (req, res, next) => {
   try {
+    // o: you are doing this in two places it seems
     if (req.user.isAdmin) {
       for (let key in req.body) {
         if (req.body[key] === "") {
           delete req.body[key];
         }
       }
+
+      // o: check for not found
       const product = await Product.findByPk(req.params.productId);
 
       const editProduct = await product.update(req.body);
@@ -65,6 +69,7 @@ router.put("/:productId", getToken, async (req, res, next) => {
 router.delete("/:productId", getToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
+      // o: what about when productId is not found???
       await Product.destroy({
         where: { id: req.params.productId },
       });

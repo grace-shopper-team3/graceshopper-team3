@@ -1,3 +1,5 @@
+// o: there is no admin check in this file
+
 const {
   models: { User },
 } = require("../db");
