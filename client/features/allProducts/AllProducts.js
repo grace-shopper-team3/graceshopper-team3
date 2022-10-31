@@ -32,12 +32,6 @@ const AllProducts = () => {
       justifyContent: `center`,
       alignItems: `center`,
     },
-    image: {
-      width: `14rem`,
-      height: `16rem`,
-      backgroundImage: `url(${product.imageUrl})`,
-      backgroundSize: `cover`,
-    },
   };
 
   const addToCart = (ev, productId) => {
@@ -67,7 +61,15 @@ const AllProducts = () => {
                 <div key={product.id} className="col-sm-4" style={styles.row}>
                   <div className="card border-secondary" style={styles.card}>
                     <Link to={`/products/${product.id}`}>
-                      <div style={styles.image} className="card-img-top"></div>
+                      <div
+                        style={{
+                          width: `14rem`,
+                          height: `16rem`,
+                          backgroundImage: `url(${product.imageUrl})`,
+                          backgroundSize: `cover`,
+                        }}
+                        className="card-img-top"
+                      ></div>
                       <h5
                         className="card-title text-center"
                         style={{ color: `black` }}
