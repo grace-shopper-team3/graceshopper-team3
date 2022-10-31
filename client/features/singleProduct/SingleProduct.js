@@ -11,14 +11,12 @@ const SingleProduct = () => {
 
   const addToCart = (ev) => {
     ev.preventDefault();
-    //placeholder for redux slice thunk
     cart.map((item) => {
       if (item.productId === productId) {
         document.getElementById("addToCart").disabled = true;
       }
     });
     dispatch(addItemToCart({ userId, productId }));
-    //dispatch(fetchCart(userId));
   };
 
   useEffect(() => {
@@ -47,7 +45,6 @@ const SingleProduct = () => {
               src={imageUrl}
               style={{
                 height: `36rem`,
-                //marginRight: `36rem`,
               }}
             />
             <div
@@ -59,7 +56,6 @@ const SingleProduct = () => {
               <h1
                 style={{
                   fontSize: `600%`,
-                  //fontFamily: `TT-Norms-Black`,
                 }}
               >
                 {" "}
