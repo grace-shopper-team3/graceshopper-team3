@@ -3,7 +3,7 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
-const { getToken } = require("./adminCheckMiddleware");
+const { getToken, isAdmin } = require("./adminCheckMiddleware");
 
 // GET/api/products
 router.get("/", async (req, res, next) => {
@@ -26,52 +26,40 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST/api/products   --------- Admin only
-router.post("/", getToken, async (req, res, next) => {
+router.post("/", getToken, isAdmin, async (req, res, next) => {
   try {
-    if (req.user.isAdmin) {
-      const newProduct = await Product.create(req.body);
-      res.status(201).json(newProduct);
-    } else {
-      res.status(403).json({ error: "Unauthorized" });
-    }
+    const newProduct = await Product.create(req.body);
+    res.status(201).json(newProduct);
   } catch (err) {
     next(err);
   }
 });
 
 // PUT/api/products   --------- Admin only
-router.put("/:productId", getToken, async (req, res, next) => {
+router.put("/:productId", getToken, isAdmin, async (req, res, next) => {
   try {
-    if (req.user.isAdmin) {
-      for (let key in req.body) {
-        if (req.body[key] === "") {
-          delete req.body[key];
-        }
+    for (let key in req.body) {
+      if (req.body[key] === "") {
+        delete req.body[key];
       }
-      const product = await Product.findByPk(req.params.productId);
-
-      const editProduct = await product.update(req.body);
-
-      res.json(editProduct);
-    } else {
-      res.status(403).json({ error: "Unauthorized" });
     }
+    const product = await Product.findByPk(req.params.productId);
+
+    const editProduct = await product.update(req.body);
+
+    res.json(editProduct);
   } catch (err) {
     next(err);
   }
 });
 
 // DELETE api/products   --------- Admin only
-router.delete("/:productId", getToken, async (req, res, next) => {
+router.delete("/:productId", getToken, isAdmin, async (req, res, next) => {
   try {
-    if (req.user.isAdmin) {
-      await Product.destroy({
-        where: { id: req.params.productId },
-      });
-      res.status(200).send(req.params.productId);
-    } else {
-      res.status(403).json({ error: "Unauthorized" });
-    }
+    await Product.destroy({
+      where: { id: req.params.productId },
+    });
+    res.status(200).send(req.params.productId);
   } catch (err) {
     next(err);
   }
