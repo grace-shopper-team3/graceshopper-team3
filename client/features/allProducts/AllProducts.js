@@ -19,6 +19,25 @@ const AllProducts = () => {
       color: `#555`,
       cursor: `not-allowed`,
     },
+    row: {
+      marginTop: `30px`,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    card: {
+      width: `18rem`,
+      height: `25rem`,
+      display: `flex`,
+      justifyContent: `center`,
+      alignItems: `center`,
+    },
+    image: {
+      width: `14rem`,
+      height: `16rem`,
+      backgroundImage: `url(${product.imageUrl})`,
+      backgroundSize: `cover`,
+    },
   };
 
   const addToCart = (ev, productId) => {
@@ -45,36 +64,10 @@ const AllProducts = () => {
           <div className="container">
             <div className={"row"}>
               {allproducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="col-sm-4"
-                  style={{
-                    marginTop: `30px`,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    className="card border-secondary"
-                    style={{
-                      width: `18rem`,
-                      height: `25rem`,
-                      display: `flex`,
-                      justifyContent: `center`,
-                      alignItems: `center`,
-                    }}
-                  >
+                <div key={product.id} className="col-sm-4" style={styles.row}>
+                  <div className="card border-secondary" style={styles.card}>
                     <Link to={`/products/${product.id}`}>
-                      <div
-                        style={{
-                          width: `14rem`,
-                          height: `16rem`,
-                          backgroundImage: `url(${product.imageUrl})`,
-                          backgroundSize: `cover`,
-                        }}
-                        className="card-img-top"
-                      ></div>
+                      <div style={styles.image} className="card-img-top"></div>
                       <h5
                         className="card-title text-center"
                         style={{ color: `black` }}

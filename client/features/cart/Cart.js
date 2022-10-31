@@ -68,7 +68,7 @@ const Cart = (props) => {
                             <div className="d-flex align-items-center">
                               <Link to={`/products/${item.productId}`}>
                                 <img
-                                  src={item ? `${item.product.imageUrl}` : null}
+                                  src={`${item.product.imageUrl}`}
                                   alt=""
                                   style={{ width: "60px", height: "70px" }}
                                 />
@@ -82,7 +82,7 @@ const Cart = (props) => {
                                       textDecoration: "underline",
                                     }}
                                   >
-                                    {item ? `${item.product.name}` : null}
+                                    {`${item.product.name}`}
                                   </p>
                                 </Link>
                               </div>
@@ -151,26 +151,22 @@ const Cart = (props) => {
                     <p>
                       {" "}
                       Subtotal (
-                      {cart
-                        ? cart.reduce(
-                            (accum, element) => accum + element.quantityInCart,
-                            0
-                          )
-                        : null}{" "}
+                      {cart.reduce(
+                        (accum, element) => accum + element.quantityInCart,
+                        0
+                      )}{" "}
                       items):
                     </p>
                   </div>
                   <div className="col-4">
                     <p>
                       $
-                      {cart && cart.length > 0
-                        ? cart.reduce(
-                            (accum, element) =>
-                              accum +
-                              element.quantityInCart * element.product.price,
-                            0
-                          )
-                        : null}
+                      {cart.reduce(
+                        (accum, element) =>
+                          accum +
+                          element.quantityInCart * element.product.price,
+                        0
+                      )}
                     </p>
                   </div>
                 </div>
@@ -190,14 +186,12 @@ const Cart = (props) => {
                   <div className="col-4">
                     <h3>
                       $
-                      {cart && cart.length > 0
-                        ? cart.reduce(
-                            (accum, element) =>
-                              accum +
-                              element.quantityInCart * element.product.price,
-                            0
-                          ) + 5.99
-                        : null}
+                      {cart.reduce(
+                        (accum, element) =>
+                          accum +
+                          element.quantityInCart * element.product.price,
+                        0
+                      ) + 5.99}
                     </h3>
                   </div>
                 </div>
