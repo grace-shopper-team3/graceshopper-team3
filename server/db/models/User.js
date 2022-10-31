@@ -26,6 +26,7 @@ const User = db.define("user", {
     validate: {
       isEmail: true,
     },
+    unique: true,
   },
 });
 

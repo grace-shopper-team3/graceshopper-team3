@@ -13,7 +13,7 @@ const Product = db.define("product", {
   imageUrl: {
     type: Sequelize.STRING,
     default:
-      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      "https://media.gamestop.com/i/gamestop/11113248/Funko-POP-Foldable-Protector-5-Pack",
   },
   price: {
     type: Sequelize.DECIMAL(10, 2),
