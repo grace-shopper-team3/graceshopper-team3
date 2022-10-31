@@ -68,7 +68,7 @@ const Checkout = (props) => {
                           <td width="20%">
                             <img
                               src={elem.product.imageUrl}
-                              style={{ width: 50, height: 60 }}
+                              style={{ width: "60px", height: "70px" }}
                             />
                           </td>
 
