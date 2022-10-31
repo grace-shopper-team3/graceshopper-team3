@@ -11,12 +11,13 @@ import { fulfillOrder } from "../checkout/checkoutSlice";
 import EmptyCart from "../cart/EmptyCart";
 
 const Cart = (props) => {
+  const { cart } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
-  const cart = useSelector((state) => state.cart.cart);
+  // const cart = useSelector((state) => state.cart.cart);
 
   const incrementItem = (productId, quantityInCart) => {
     dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
@@ -40,7 +41,11 @@ const Cart = (props) => {
     navigate("/checkout");
   };
 
-  console.log(cart);
+  // const quantity = cart.reduce(
+  //   (accum, element) => accum + element.quantityInCart,
+  //   0
+  // );
+  // console.log(quantity);
 
   return (
     <>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
 import Cart from "../cart/Cart";
+import { fetchCart } from "../cart/CartSlice";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { cart } = props;
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,11 +14,20 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/home");
   };
-  const { name } = useSelector((state) => state.auth.me);
+  const { name, userId } = useSelector((state) => state.auth.me);
   const capitalizeFirst = (str) => {
     return str?.charAt(0).toUpperCase() + str?.slice(1);
   };
-  const cart = useSelector((state) => state.cart.cart);
+  // const cart = () => {
+  // const cart = useSelector((state) => state.cart.cart);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   dispatch(fetchCart(userId));
+  // }, [dispatch, userId]);
+
+  //
+
+  console.log("CART", cart);
 
   return (
     <div className="sticky-top">
@@ -44,6 +55,15 @@ const Navbar = () => {
                 </button>
 
                 <Link to="/cart">
+                  <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {/* {quantity} */}
+                    {cart && cart.length
+                      ? cart.reduce(
+                          (accum, element) => accum + element.quantityInCart,
+                          0
+                        )
+                      : 0}
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -62,7 +82,29 @@ const Navbar = () => {
               <form className="navbar-form navbar-left">
                 <Link to="/login">Login</Link>
                 <Link to="/signup">Sign Up</Link>
+                {/* <Link to="/cart">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-cart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  </svg>
+                </Link> */}
+
                 <Link to="/cart">
+                  <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {/* {quantity} */}
+                    {cart && cart.length
+                      ? cart.reduce(
+                          (accum, element) => accum + element.quantityInCart,
+                          0
+                        )
+                      : 0}
+                  </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart } from "../cart/CartSlice";
+import { fetchCart } from "../cart/CartSlice";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
+  const { cart } = props;
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
+    // dispatch(fetchCart(userId));
   }, [dispatch]);
 
   const styles = {

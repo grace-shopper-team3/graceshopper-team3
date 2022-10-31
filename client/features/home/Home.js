@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchAllProducts } from "../allProducts/allProductsSlice";
+import { fetchCart } from "../cart/CartSlice";
 
 /**
  * COMPONENT
  */
 const Home = (props) => {
+  const userInfo = useSelector((state) => state.auth.me);
+  const userId = userInfo.id;
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchCart(userId));
+  // }, [dispatch, userId]);
+
+  // const cart = useSelector((state) => state.cart.cart);
+  // const quantity = (arr) => {
+  //   let accum = 0;
+  //   for (let i = 0; i < arr.length; i++) {
+  //     let curr = arr[i];
+  //     accum += curr.quantityInCart;
+  //   }
+  //   return accum;
+  // };
+  // console.log(quantity(cart));
   return (
     <div className="container-fluid">
       <div
