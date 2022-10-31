@@ -12,6 +12,9 @@ const Navbar = () => {
     navigate("/home");
   };
   const { name } = useSelector((state) => state.auth.me);
+  const capitalizeFirst = (str) => {
+    return str?.charAt(0).toUpperCase() + str?.slice(1);
+  };
 
   return (
     <div className="sticky-top">
@@ -30,7 +33,7 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <form className="navbar-form navbar-left">
-                <small>Welcome back, {name}! </small>
+                <small>Welcome back, {capitalizeFirst(name)}! </small>
                 <button
                   className="btn btn-link"
                   onClick={logoutAndRedirectHome}
