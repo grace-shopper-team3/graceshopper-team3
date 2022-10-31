@@ -3,6 +3,7 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
+const { getToken, isAdmin } = require("./adminCheckMiddleware");
 
 // GET/api/products
 router.get("/", async (req, res, next) => {
@@ -25,7 +26,7 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST/api/products   --------- Admin only
-router.post("/", async (req, res, next) => {
+router.post("/", getToken, isAdmin, async (req, res, next) => {
   try {
     const newProduct = await Product.create(req.body);
     res.status(201).json(newProduct);
@@ -35,7 +36,7 @@ router.post("/", async (req, res, next) => {
 });
 
 // PUT/api/products   --------- Admin only
-router.put("/:productId", async (req, res, next) => {
+router.put("/:productId", getToken, isAdmin, async (req, res, next) => {
   try {
     for (let key in req.body) {
       if (req.body[key] === "") {
@@ -53,7 +54,7 @@ router.put("/:productId", async (req, res, next) => {
 });
 
 // DELETE api/products   --------- Admin only
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/:productId", getToken, isAdmin, async (req, res, next) => {
   try {
     await Product.destroy({
       where: { id: req.params.productId },
