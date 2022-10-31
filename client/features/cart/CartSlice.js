@@ -1,14 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchSingleProduct } from '../singleProduct/singleProductSlice';
 import axios from "axios";
+
+const TOKEN = 'token';
 
 export const fetchCart = createAsyncThunk(
   "fetchOrder_Products",
   async (userId) => {
-    try {
+    // const token = window.localStorage.getItem(TOKEN);
+    if(token) {
       const { data } = await axios.get(`/api/order_products/${userId}/cart`);
       return data;
-    } catch (error) {
-      console.log(error);
+    }else{
+      return JSON.parse(window.localStorage.products)
     }
   }
 );
@@ -16,13 +20,18 @@ export const fetchCart = createAsyncThunk(
 export const addItemToCart = createAsyncThunk(
   "addOrder_Product",
   async ({ userId, productId }) => {
-    try {
+    const token = window.localStorage.getItem(TOKEN);
+    if(token) {
       const { data } = await axios.post(`/api/order_products/${userId}/cart`, {
         productId,
       });
+      console.log(data)
       return data;
-    } catch (error) {
-      console.log(error);
+
+    } else  {
+      const { data } = await axios.get(`/api/products/${productId}`);
+      console.log('productData',data)
+      window.localStorage.setItem('products', JSON.stringify(data))
     }
   }
 );
@@ -72,6 +81,17 @@ export const removeFromCart = createAsyncThunk(
     }
   }
 );
+
+export const compareCarts = createAsyncThunk(
+	'/cart/compare',
+	async (user, {dispatch}) => {
+		const localArray = JSON.parse(window.localStorage.products)
+		window.localStorage.products = JSON.stringify([])
+		await dispatch(removeAllFromCart(user.products))
+		await dispatch(addAllToCart(localArray))
+		await dispatch(fetchCart())
+	}
+)
 
 const cartSlice = createSlice({
   name: "cart",

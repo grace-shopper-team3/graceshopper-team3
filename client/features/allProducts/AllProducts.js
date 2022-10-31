@@ -94,7 +94,6 @@ const AllProducts = () => {
         </section>
       </div>
     </div>
-    </div>
   );
 };
 

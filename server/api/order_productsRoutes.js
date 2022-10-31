@@ -1,9 +1,12 @@
 const router = require("express").Router();
+const { token } = require("morgan");
 const {
   models: { User, Order, Order_Product, Product },
 } = require("../db");
 
 module.exports = router;
+
+const TOKEN= 'token'
 
 // GET api/order_products ------ LoggedIn user
 // To render unchecked-out cart
