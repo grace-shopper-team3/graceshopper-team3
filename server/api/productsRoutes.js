@@ -3,6 +3,7 @@ const {
   models: { Product },
 } = require("../db");
 module.exports = router;
+const { getToken } = require("./adminCheckMiddleware");
 
 // GET/api/products
 router.get("/", async (req, res, next) => {
@@ -25,13 +26,13 @@ router.get("/:productId", async (req, res, next) => {
 });
 
 // POST/api/products   --------- Admin only
-router.post("/", async (req, res, next) => {
+router.post("/", getToken, async (req, res, next) => {
   try {
-    if (req.user && req.user.isAdmin) {
+    if (req.user.isAdmin) {
       const newProduct = await Product.create(req.body);
       res.status(201).json(newProduct);
     } else {
-      res.status(401).json({ error: "Unauthorized" });
+      res.status(403).json({ error: "Unauthorized" });
     }
   } catch (err) {
     next(err);
@@ -39,9 +40,9 @@ router.post("/", async (req, res, next) => {
 });
 
 // PUT/api/products   --------- Admin only
-router.put("/:productId", async (req, res, next) => {
+router.put("/:productId", getToken, async (req, res, next) => {
   try {
-    if (req.user && req.user.isAdmin) {
+    if (req.user.isAdmin) {
       for (let key in req.body) {
         if (req.body[key] === "") {
           delete req.body[key];
@@ -53,7 +54,7 @@ router.put("/:productId", async (req, res, next) => {
 
       res.json(editProduct);
     } else {
-      res.status(401).json({ error: "Unauthorized" });
+      res.status(403).json({ error: "Unauthorized" });
     }
   } catch (err) {
     next(err);
@@ -61,15 +62,15 @@ router.put("/:productId", async (req, res, next) => {
 });
 
 // DELETE api/products   --------- Admin only
-router.delete("/:productId", async (req, res, next) => {
+router.delete("/:productId", getToken, async (req, res, next) => {
   try {
-    if (req.user && req.user.isAdmin) {
+    if (req.user.isAdmin) {
       await Product.destroy({
         where: { id: req.params.productId },
       });
       res.status(200).send(req.params.productId);
     } else {
-      res.status(401).json({ error: "Unauthorized" });
+      res.status(403).json({ error: "Unauthorized" });
     }
   } catch (err) {
     next(err);
