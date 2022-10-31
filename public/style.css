@@ -3,10 +3,10 @@
   src: url(TT-Norms-Fonts/TTNorms-Black.otf);
 }
 
-/* body {
-  font-family: sans-serif;
-  min-height: 100vh;
-} */
+@font-face {
+  font-family: merel-black;
+  src: url(merel-black/Merel\ Light.otf);
+}
 
 a {
   text-decoration: none;
@@ -39,4 +39,3 @@ img {
   padding: 10px;
   font-weight: bold;
 }
-
