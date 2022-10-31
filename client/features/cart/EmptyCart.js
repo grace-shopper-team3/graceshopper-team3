@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 const EmptyCart = () => {
   return (
     <div class="container-fluid">
@@ -17,13 +18,13 @@ const EmptyCart = () => {
                 <h3>
                   <strong>Your Cart is Empty</strong>
                 </h3>
-                {/* <h4>Add something to make me happy :)</h4> */}
+
                 <Link
                   to="/products"
                   class="btn btn-primary cart-btn-transform m-3"
                   data-abc="true"
                 >
-                  continue shopping
+                  Continue Shopping
                 </Link>
               </div>
             </div>
