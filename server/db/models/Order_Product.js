@@ -5,8 +5,11 @@ const Order_Product = db.define("order_product", {
   quantityInCart: {
     type: Sequelize.INTEGER,
     defaultValue: 1,
+    validate: {
+      min: 1,
+    },
   },
-  
+
   // COMMENTS : ERROR WHEN SEEDING
   // subtotal: {
   //   type: Sequelize.DECIMAL(10, 2),
@@ -23,7 +26,6 @@ const Order_Product = db.define("order_product", {
   //   this.product.price * this.quantityInCart;
   // },
   //},
-
 });
 
 module.exports = Order_Product;
