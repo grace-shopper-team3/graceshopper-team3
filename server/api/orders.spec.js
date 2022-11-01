@@ -14,8 +14,8 @@ describe("Order routes", () => {
     await seed();
   });
 
-  describe("/api/orders/:userId/checkout", () => {
-    it("GET /api/orders/:userId/checkout", async () => {
+  describe("/api/orders/checkout", () => {
+    it("GET /api/orders/checkout", async () => {
       //Here we want to test that before an Order is submitted, a user will have an
       //unfufilled order. And after they will have no unfulfilled orders, AND one more fufilled order than they had before.
       //const res = await request(app).get("/api/products").expect(200);

@@ -7,22 +7,15 @@ import { fetchCart } from "./CartSlice";
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart.cart);
   const userInfo = useSelector((state) => state.auth.me);
-  const userId = userInfo.id;
   const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(fetchCart(userId));
-  }, [dispatch, userId]);
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   return (
-    <>
-      {cart && cart.length ? (
-        <FilledCart cart={cart} userId={userId} userInfo={userInfo} />
-      ) : (
-        <EmptyCart />
-      )}
-    </>
+    <>{cart && cart.length ? <FilledCart cart={cart} /> : <EmptyCart />}</>
   );
 };
 
