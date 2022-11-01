@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import authReducer from "../features/auth/authSlice";
 import allProductsSliceReducer from "../features/allProducts/allProductsSlice";
 import singleProductSliceReducer from "../features/singleProduct/singleProductSlice";
-import cartSliceReducer from "../features/cart/cartSlice";
+import cartSliceReducer from "../features/cart/CartSlice";
 import checkoutSliceReducer from "../features/checkout/checkoutSlice";
 
 const store = configureStore({

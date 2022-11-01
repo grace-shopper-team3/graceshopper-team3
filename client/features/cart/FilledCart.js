@@ -4,10 +4,10 @@ import {
   incrementItemInCart,
   decrementItemInCart,
   removeFromCart,
-} from "./cartSlice";
+} from "./CartSlice";
+import { fulfillOrder } from "../checkout/checkoutSlice";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import Payment from "../checkout/Payment";
 
 const FilledCart = (props) => {
   const dispatch = useDispatch();
@@ -24,6 +24,11 @@ const FilledCart = (props) => {
 
   const removeItem = (productId) => {
     dispatch(removeFromCart({ productId }));
+  };
+
+  const handleCheckout = () => {
+    dispatch(fulfillOrder());
+    navigate("/checkout");
   };
 
   return (
@@ -197,7 +202,20 @@ const FilledCart = (props) => {
                 </h3>
               </div>
             </div>
-            <Payment cart={cart} />
+
+            <button
+              className="btn btn-dark"
+              style={{
+                fontFamily: "merel-black",
+                color: "black",
+                backgroundColor: "#F6BD60",
+              }}
+              onClick={() => {
+                handleCheckout();
+              }}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </div>

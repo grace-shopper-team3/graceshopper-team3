@@ -117,11 +117,7 @@ const cartSlice = createSlice({
       state.cart = action.payload;
     });
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
-      if (!state.cart) {
-        state.cart = action.payload;
-      } else if (state.cart.length > 1) {
-        state.cart.push(action.payload);
-      }
+      state.cart.push(action.payload);
     });
     builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
       state.cart = state.cart.map((item) => {

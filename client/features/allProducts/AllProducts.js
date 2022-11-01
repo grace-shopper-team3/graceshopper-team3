@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
-import { addItemToCart, fetchCart } from "../cart/cartSlice";
+import { addItemToCart, fetchCart } from "../cart/CartSlice";
 import { useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -234,8 +234,8 @@ const AllProducts = () => {
               <div className="row">
                 {currentItems
                   ? currentItems.map((product) => (
-                      <div className="col-sm" key={product.id}>
-                        <div style={styles.row}>
+                      <div className="col-sm">
+                        <div key={product.id} style={styles.row}>
                           <div
                             className="card border-secondary"
                             style={styles.card}

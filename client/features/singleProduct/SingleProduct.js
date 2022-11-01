@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { addItemToCart, fetchCart, selectCart } from "../cart/cartSlice";
+import { addItemToCart, fetchCart, selectCart } from "../cart/CartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
 const SingleProduct = () => {
