@@ -24,26 +24,34 @@ const Profile = () => {
   };
   return (
     <div className="container rounded bg-white mt-5 mb-5">
+      <div className="d-flex justify-content-center mb-3">
+        <h2 className="text-right" style={{ fontSize: "60px" }}>
+          Welcome Back, {capitalizeFirst(name)}!
+        </h2>
+      </div>
       <div className="row">
-        <div className="col-md-3 border-right">
+        <div className="col-md-5 border-right">
           <div className="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
               className="rounded-circle mt-5"
-              width="150px"
+              width="200px"
               src="https://i5.walmartimages.com/asr/9730786f-fa24-4330-ac97-ed27d8cbd965.9ddfc005b61e51d2308bff4221582031.png"
             />
-            <span className="font-weight-bold">{capitalizeFirst(name)}</span>
-            <span className="text-black-50">{email}</span>
+            <span className="font-weight-bold" style={{ fontSize: "30px" }}>
+              {capitalizeFirst(name)}
+            </span>
+            <span className="text-black-50" style={{ fontSize: "20px" }}>
+              {email}
+            </span>
             <span> </span>
           </div>
         </div>
-        <div className="col-md-5 border-right">
+        <div className="col-md-5 border-left">
           <form className="p-3 py-5" onSubmit={update}>
             <div className="d-flex justify-content-center mb-3">
-              <h3 className="text-right">MY ACCOUNT</h3>
-            </div>
-            <div className="d-flex justify-content-center mb-3">
-              <h5 className="text-right">Profile Settings</h5>
+              <h4 className="text-right" style={{ fontFamily: "merel-black" }}>
+                Update Account Details
+              </h4>
             </div>
 
             <div className="row mt-3">
@@ -76,12 +84,19 @@ const Profile = () => {
                   onChange={(e) => setUpdateEmail(e.target.value)}
                 />
               </div>
-            </div>
-
-            <div className="mt-5 text-center">
-              <button className="btn btn-primary profile-button" type="submit">
-                Update Profile
-              </button>
+              <div className=" text-center">
+                <button
+                  className="btn btn-dark"
+                  style={{
+                    fontFamily: "merel-black",
+                    color: "black",
+                    backgroundColor: "#F6BD60",
+                  }}
+                  type="submit"
+                >
+                  Update Profile
+                </button>
+              </div>
             </div>
           </form>
         </div>

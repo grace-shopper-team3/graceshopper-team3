@@ -24,7 +24,7 @@ h2, strong{
  font-size:50px;
 }
 
-input, label, small, th, p, td, h3 {
+input, label, small, th, p, td, h3 , span{
   font-family: "merel-black";
 }
 a {
@@ -66,5 +66,26 @@ img {
 .navbar .navbar-nav .nav-link:hover {
 background-color: #F6BD60;
 color: black;
+}
+
+ul.pagination {
+justify-content:center;
+background-Color: "black"
+}
+
+a.page-link {
+  color:black;
+  background-color:white;
+
+}
+
+ li.page-item.active a.page-link{
+  color:black;
+  background-color: #F6BD60;
+  border: black
+
+}
+li.page-item.disabled {
+color:black
 }
 
