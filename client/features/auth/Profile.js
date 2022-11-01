@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editProfile } from "../auth/authSlice";
+// import { editProfile } from "../auth/authSlice";
 
 const Profile = () => {
   const { name, email } = useSelector((state) => state.auth.me);

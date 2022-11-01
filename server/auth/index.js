@@ -34,11 +34,11 @@ router.get("/me", async (req, res, next) => {
   }
 });
 
-router.put("/me", async (req, res, next) => {
-  try {
-    const user = await User.findByToken(req.headers.authorization);
-    res.send(await user.update(req.body));
-  } catch (ex) {
-    next(ex);
-  }
-});
+// router.put("/me", async (req, res, next) => {
+//   try {
+//     const user = await User.findByToken(req.headers.authorization);
+//     res.send(await user.update(req.body));
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
