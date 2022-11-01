@@ -62,20 +62,32 @@ const Home = (props) => {
       <div className="container text-center" style={{ paddingBottom: "10px" }}>
         <div className="row g-3">
           <div className="col-6">
-            <Link to={`/products`} state={{ homeCategory: "DC" }}>
+            <Link
+              to={`/products`}
+              state={{ homeCategory: "DC" }}
+              style={{ textDecoration: `none`, color: `blue` }}
+            >
               <div className="bundle">DC Universe</div>
             </Link>
           </div>
           <div className="col-6">
-            <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
+            <Link
+              to={`/products`}
+              state={{ homeCategory: "Marvel" }}
+              style={{ textDecoration: `none`, color: `blue` }}
+            >
               <div className="bundle">Marvel</div>
             </Link>
           </div>
           <div className="col-6">
-            <div className="bundle">Disney</div>
+            <div className="bundle" style={{ color: `blue` }}>
+              Disney
+            </div>
           </div>
           <div className="col-6">
-            <div className="bundle">Pokemon</div>
+            <div className="bundle" style={{ color: `blue` }}>
+              Pokemon
+            </div>
           </div>
         </div>
       </div>
