@@ -7,9 +7,9 @@ import { useLocation } from "react-router-dom";
 
 const AllProducts = () => {
   const location = useLocation();
-  console.log("LOCATION.STATE", location.state);
   let homeCategory = null;
   location.state ? ({ homeCategory } = location.state) : null;
+
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
 
@@ -40,7 +40,7 @@ const AllProducts = () => {
     },
   };
 
-  const filterCategory = (ev) => {
+  const filterCategoryButton = (ev) => {
     const category = ev.target.text;
     if (category === "All") {
       setProductList(allProducts);
@@ -51,7 +51,7 @@ const AllProducts = () => {
     }
   };
 
-  const filterPrice = (ev) => {
+  const filterPriceButton = (ev) => {
     const price = ev.target.text;
     if (price === "All") {
       setProductList(allProducts);
@@ -64,7 +64,6 @@ const AllProducts = () => {
       const filteredArray = allProducts.filter((product) => product.price < 25);
       setProductList(filteredArray);
     }
-    console.log(productList);
   };
 
   const addToCart = (ev, productId) => {
@@ -75,8 +74,16 @@ const AllProducts = () => {
   const allProducts = useSelector((state) => state.allProducts.products);
   let [productList, setProductList] = useState([]);
 
+  //Checks that allProducts and productList are avilable. Then sets productList
   productList.length === 0 && allProducts.length > 0
     ? setProductList(allProducts)
+    : null;
+
+  //Checks if we came from a home page category link, and filters if we did.
+  productList.length === 0 && allProducts.length > 0 && homeCategory
+    ? setProductList(
+        allProducts.filter((item) => item.category === homeCategory)
+      )
     : null;
 
   return (
@@ -108,21 +115,21 @@ const AllProducts = () => {
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterCategory(ev)}
+                onClick={(ev) => filterCategoryButton(ev)}
               >
                 All
               </a>
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterCategory(ev)}
+                onClick={(ev) => filterCategoryButton(ev)}
               >
                 Marvel
               </a>
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterCategory(ev)}
+                onClick={(ev) => filterCategoryButton(ev)}
               >
                 DC
               </a>
@@ -143,21 +150,21 @@ const AllProducts = () => {
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterPrice(ev)}
+                onClick={(ev) => filterPriceButton(ev)}
               >
                 All
               </a>
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterPrice(ev)}
+                onClick={(ev) => filterPriceButton(ev)}
               >
                 Under $25
               </a>
               <a
                 className="dropdown-item"
                 href="#"
-                onClick={(ev) => filterPrice(ev)}
+                onClick={(ev) => filterPriceButton(ev)}
               >
                 Over $25
               </a>
