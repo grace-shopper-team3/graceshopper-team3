@@ -33,6 +33,17 @@ const SingleProduct = () => {
     <div>
       <div>
         <div>
+          <section>
+            <h1
+              style={{
+                textAlign: `center`,
+                backgroundColor: `#F6BD60`,
+              }}
+            >
+              {name}
+            </h1>
+          </section>
+
           <div
             style={{
               display: `flex`,
@@ -52,19 +63,24 @@ const SingleProduct = () => {
                 padding: `10px`,
               }}
             >
-              <h1
+              {/* <h1
                 style={{
                   fontSize: `600%`,
                 }}
               >
                 {" "}
                 {name}{" "}
-              </h1>
+              </h1> */}
               <div>
-                <h4 style={{ marginTop: `3%` }}>Category: {category}</h4>
-                <h1 style={{ marginTop: `5%` }}>${price}</h1>
                 <h4 style={{ marginTop: `5%` }}>{description}</h4>
+                <h3 style={{ marginTop: `3%`, fontWeight: "bolder" }}>
+                  Category: {category}
+                </h3>
+                <h4 style={{ marginTop: `2%`, fontWeight: "bolder" }}>
+                  ${price}
+                </h4>
               </div>
+
               <section>
                 <button
                   className="btn btn-primary"

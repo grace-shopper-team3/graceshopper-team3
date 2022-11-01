@@ -9,27 +9,27 @@ const Home = (props) => {
   return (
     <div className="container-fluid">
       <div
-        id="carouselExampleControls"
+        id="carousel-control-width"
         className="carousel slide"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner">
+        <div className="carousel-inner" id="carousel">
           <div className="carousel-item active">
             <img
               src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
-              className="d-block w-100"
+              className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://assets-prd.ignimgs.com/2022/07/25/black-panther-funko-pops-1658775848280.png?width=1280"
-              className="d-block w-100"
+              className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://assets-prd.ignimgs.com/2022/04/18/thor-love-thunder-funko-pops-1650298520364.png?width=1280"
-              className="d-block w-100"
+              className=" w-100"
             />
           </div>
         </div>
@@ -70,12 +70,6 @@ const Home = (props) => {
             <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
               <div className="bundle">Marvel</div>
             </Link>
-          </div>
-          <div className="col-6">
-            <div className="bundle">Disney</div>
-          </div>
-          <div className="col-6">
-            <div className="bundle">Pokemon</div>
           </div>
         </div>
       </div>

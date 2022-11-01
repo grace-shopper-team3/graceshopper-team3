@@ -96,8 +96,7 @@ const AllProducts = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
-            
-              All PunkoFops
+              PunkoFops
             </h1>
           </section>
 

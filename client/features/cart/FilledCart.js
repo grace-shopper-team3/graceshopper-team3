@@ -34,17 +34,17 @@ const FilledCart = (props) => {
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center h-100">
+        <div className="row d-flex justify-content-center p-2 h-100">
           <div className="col-md-8 col-lg-7 col-xl-6">
             <h2>Cart</h2>
             <div className="card" style={{ width: "30rem" }}>
-              <table className="table align-middle mb-0">
+              <table className="table align-middle  mb-0">
                 <thead>
                   <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th></th>
-                    <th>Total</th>
+                    <th style={{ color: "gray" }}>Product</th>
+                    <th style={{ color: "gray" }}>Quantity</th>
+                    <th style={{ color: "gray" }}></th>
+                    <th style={{ color: "gray" }}>Total</th>
                   </tr>
                 </thead>
 
@@ -66,6 +66,7 @@ const FilledCart = (props) => {
                                 className="fw-bold mb-1"
                                 style={{
                                   color: "black",
+                                  fontWeight: "bolder",
                                   textDecoration: "underline",
                                 }}
                               >
@@ -134,7 +135,7 @@ const FilledCart = (props) => {
             <div className="card" style={{ width: "30rem" }}></div>
             <div className="row">
               <div className="col-8">
-                <p>
+                <p style={{ color: "gray" }}>
                   {" "}
                   Subtotal (
                   {cart.reduce(
@@ -157,7 +158,7 @@ const FilledCart = (props) => {
             </div>
             <div className="row">
               <div className="col-8">
-                <p> Delivery:</p>
+                <p style={{ color: "gray" }}> Delivery:</p>
               </div>
               <div className="col-4">
                 <p> $5.99</p>

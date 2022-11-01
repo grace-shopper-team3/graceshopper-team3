@@ -17,7 +17,7 @@ const EmptyCart = () => {
                     className="img-fluid mb-4 mr-3"
                   />
                   <h3>
-                    <strong>Your Cart is Empty</strong>
+                    <strong>Your Cart is Empty!</strong>
                   </h3>
 
                   <Link
