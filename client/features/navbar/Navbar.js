@@ -45,7 +45,11 @@ const Navbar = () => {
                 Products
               </Link>
             </li>
-            {isLoggedIn ? <LoggedInNavbar /> : <NotLoggedInNavbar />}
+            {isLoggedIn ? (
+              <LoggedInNavbar cart={cart} />
+            ) : (
+              <NotLoggedInNavbar />
+            )}
           </ul>
         </div>
       </div>

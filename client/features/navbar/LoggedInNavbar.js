@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../app/store";
+import { fetchCart } from "../cart/CartSlice";
 
-const LoggedInNavbar = () => {
+const LoggedInNavbar = (props) => {
+  const { cart } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
     // navigate("/home");
   };
-  const { name } = useSelector((state) => state.auth.me);
-  const capitalizeFirst = (str) => {
-    return str?.charAt(0).toUpperCase() + str?.slice(1);
-  };
+  const { name, id } = useSelector((state) => state.auth.me);
+  // const capitalizeFirst = (str) => {
+  //   return str?.charAt(0).toUpperCase() + str?.slice(1);
+  // };
+
+  useEffect(() => {
+    dispatch(fetchCart(id));
+  }, [dispatch, id]);
 
   return (
     <>
@@ -55,6 +61,15 @@ const LoggedInNavbar = () => {
 
       <li className="nav-item justify-content-end">
         <Link className="nav-link active" aria-current="page" to="/cart">
+          <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {cart && cart.length
+              ? cart.reduce(
+                  (accum, element) => accum + element.quantityInCart,
+                  0
+                )
+              : 0}
+          </span>
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
