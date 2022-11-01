@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAllProducts,
-  fetchCategoryProducts,
-  fetchPriceProducts,
-} from "./allProductsSlice";
+import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart, fetchCart } from "../cart/CartSlice";
+import { useLocation } from "react-router-dom";
 
 const AllProducts = () => {
+  const location = useLocation();
+  console.log("LOCATION.STATE", location.state);
+  let homeCategory = null;
+  location.state ? ({ homeCategory } = location.state) : null;
   const userInfo = useSelector((state) => state.auth.me);
   const userId = userInfo.id;
 
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(fetchAllProducts());
-    setProductList(allProducts);
   }, [dispatch]);
 
   const styles = {
@@ -40,21 +41,17 @@ const AllProducts = () => {
   };
 
   const filterCategory = (ev) => {
-    ev.preventDefault();
-    if (ev.target.text === "All") {
-      setProductList(allProducts);
-      return;
-    }
     const category = ev.target.text;
-    const filteredArray = allProducts.filter(
-      (product) => product.category === category
-    );
-    setProductList(filteredArray);
-    console.log(productList);
+    if (category === "All") {
+      setProductList(allProducts);
+    } else {
+      setProductList(
+        allProducts.filter((product) => product.category === category)
+      );
+    }
   };
 
   const filterPrice = (ev) => {
-    ev.preventDefault();
     const price = ev.target.text;
     if (price === "All") {
       setProductList(allProducts);
@@ -171,7 +168,7 @@ const AllProducts = () => {
           <div className="container">
             <div className={"row"}>
               {productList.map((product) => (
-                <div key={product.id} className="col-sm-4" style={styles.row}>
+                <div key={product.id} className="col-sm-3" style={styles.row}>
                   <div className="card border-secondary" style={styles.card}>
                     <Link to={`/products/${product.id}`}>
                       <div
