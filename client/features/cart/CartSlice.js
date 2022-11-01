@@ -45,14 +45,18 @@ export const incrementItemInCart = createAsyncThunk(
     const token = window.localStorage.getItem(TOKEN);
     try {
       quantityInCart++;
-      const { data } = await axios.put(`/api/order_products/cart`, {
-        productId,
-        quantityInCart,
-      }, {
-        headers: {
-          authorization: token,
+      const { data } = await axios.put(
+        `/api/order_products/cart`,
+        {
+          productId,
+          quantityInCart,
         },
-      });
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
       return data;
     } catch (error) {
       console.log(error);
@@ -66,14 +70,18 @@ export const decrementItemInCart = createAsyncThunk(
     const token = window.localStorage.getItem(TOKEN);
     try {
       quantityInCart--;
-      const { data } = await axios.put(`/api/order_products/cart`, {
-        productId,
-        quantityInCart,
-      }, {
-        headers: {
-          authorization: token,
+      const { data } = await axios.put(
+        `/api/order_products/cart`,
+        {
+          productId,
+          quantityInCart,
         },
-      });
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
       return data;
     } catch (error) {
       console.log(error);

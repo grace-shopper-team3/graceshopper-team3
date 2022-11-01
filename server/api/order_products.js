@@ -30,8 +30,8 @@ router.get("/cart", getToken, async (req, res, next) => {
 // To use for add to cart button click
 // MESSY BUT WORKS - NEED TO CLEAN UP
 router.post("/cart", getToken, async (req, res, next) => {
-  let userId = req.user.id;
-  let productId = +req.body.productId;
+  const userId = req.user.id;
+  const productId = +req.body.productId;
 
   try {
     const order = await Order.findOrCreate({

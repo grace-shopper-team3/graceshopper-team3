@@ -27,6 +27,14 @@ Product.filterByPriceLower = async function (price) {
   return filteredProducts;
 };
 
+Product.filterByCategory = async function (category) {
+  const products = await Product.findAll();
+  const filteredProducts = products.filter(
+    (element) => element.category === category
+  );
+  return filteredProducts;
+};
+
 module.exports = {
   db,
   models: {
