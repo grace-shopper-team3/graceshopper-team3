@@ -68,16 +68,25 @@ const Home = (props) => {
               <div className="row">
                 <div className="col-lg-4 d-none d-lg-block">
                   <div className="card">
-                    <img
-                      src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
-                      className="card-img-top"
-                      style={{ height: "300px" }}
-                    />
+                    <Link
+                      to={`/products`}
+                      state={{ homePrice: 25 }}
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "black",
+                      }}
+                    >
+                      <img
+                        src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
+                        className="card-img-top"
+                        style={{ height: "300px" }}
+                      />{" "}
+                    </Link>
 
                     <div className="card-body">
                       <Link
                         to={`/products`}
-                        state={{ homeCategory: "Marvel" }}
+                        state={{ homePrice: 25 }}
                         style={{
                           fontFamily: "merel-black",
                           color: "black",

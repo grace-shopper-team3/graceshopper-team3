@@ -15,7 +15,9 @@ const AllProducts = () => {
 
   const location = useLocation();
   let homeCategory = null;
+  let homePrice = null;
   location.state ? ({ homeCategory } = location.state) : null;
+  location.state ? ({ homePrice } = location.state) : null;
 
   const userInfo = useSelector((state) => state.auth.me);
 
@@ -98,13 +100,23 @@ const AllProducts = () => {
     : null;
 
   //Checks if we came from a home page category link, and filters if we did.
-  productList.length === 0 && allProducts.length > 0 && homeCategory
+  productList &&
+  productList.length === 0 &&
+  allProducts.length > 0 &&
+  homeCategory
     ? setProductList(
         allProducts.filter((item) => item.category === homeCategory)
       )
     : null;
 
-  productList.length > 0 && currentItems.length === 0
+  productList && productList.length === 0 && allProducts.length > 0 && homePrice
+    ? setProductList(allProducts.filter((item) => item.price <= homePrice))
+    : null;
+
+  productList &&
+  productList.length > 0 &&
+  currentItems &&
+  currentItems.length === 0
     ? setCurrentItems(productList.slice(0, 12))
     : null;
 
@@ -152,21 +164,21 @@ const AllProducts = () => {
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterCategory(ev)}
+                        onClick={(ev) => filterCategoryButton(ev)}
                       >
                         All
                       </a>
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterCategory(ev)}
+                        onClick={(ev) => filterCategoryButton(ev)}
                       >
                         Marvel
                       </a>
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterCategory(ev)}
+                        onClick={(ev) => filterCategoryButton(ev)}
                       >
                         DC
                       </a>
@@ -197,21 +209,21 @@ const AllProducts = () => {
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterPrice(ev)}
+                        onClick={(ev) => filterPriceButton(ev)}
                       >
                         All
                       </a>
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterPrice(ev)}
+                        onClick={(ev) => filterPriceButton(ev)}
                       >
                         Under $25
                       </a>
                       <a
                         className="dropdown-item"
                         href="#"
-                        onClick={(ev) => filterPrice(ev)}
+                        onClick={(ev) => filterPriceButton(ev)}
                       >
                         Over $25
                       </a>
@@ -219,6 +231,28 @@ const AllProducts = () => {
                   </div>
                 </div>
               </div>
+
+              <ReactPaginate
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakLabel="..."
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                containerClassName="pagination"
+                activeClassName="active"
+                //renderOnZeroPageCount={null}
+              />
+
               <div className="row">
                 {currentItems
                   ? currentItems.map((product) => (
@@ -261,11 +295,11 @@ const AllProducts = () => {
                                 className="btn btn-dark"
                                 onClick={(ev) => addToCart(ev, product.id)}
                                 style={{
-                              marginTop: `-10px`,
-                              fontFamily: "merel-black",
-                              color: "black",
-                              backgroundColor: "#F6BD60",
-                            }}
+                                  marginTop: `-10px`,
+                                  fontFamily: "merel-black",
+                                  color: "black",
+                                  backgroundColor: "#F6BD60",
+                                }}
                               >
                                 ADD TO CART
                               </button>
