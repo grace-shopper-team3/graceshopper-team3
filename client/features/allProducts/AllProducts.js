@@ -10,7 +10,6 @@ import { addItemToCart, fetchCart } from "../cart/CartSlice";
 
 const AllProducts = () => {
   const userInfo = useSelector((state) => state.auth.me);
-  const userId = userInfo.id;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -72,7 +71,7 @@ const AllProducts = () => {
 
   const addToCart = (ev, productId) => {
     ev.preventDefault();
-    dispatch(addItemToCart({ userId, productId }));
+    dispatch(addItemToCart({ productId }));
   };
 
   const allProducts = useSelector((state) => state.allProducts.products);

@@ -16,19 +16,18 @@ const SingleProduct = () => {
         document.getElementById("addToCart").disabled = true;
       }
     });
-    dispatch(addItemToCart({ userId, productId }));
+    dispatch(addItemToCart({ productId }));
   };
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(fetchSingleProduct(productId));
-    dispatch(fetchCart(userId));
+    dispatch(fetchCart());
   }, [dispatch]);
 
   const product = useSelector((state) => state.singleProduct.aProduct);
   const { name, category, imageUrl, price, description } = product;
   const userInfo = useSelector((state) => state.auth.me);
-  const userId = userInfo.id;
 
   return (
     <div>
