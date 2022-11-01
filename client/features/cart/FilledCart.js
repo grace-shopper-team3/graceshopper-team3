@@ -31,10 +31,11 @@ const FilledCart = (props) => {
   };
 
   return (
-    <div className="container-fluid min-vh-100">
-      <div className="row g-1" style={{ padding: "20px" }}>
-        <div className="row">
-          <div className="col-md-6">
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+        {/* <div className="row g-1" style={{ padding: "20px" }}> */}
+        <div className="row d-flex justify-content-center h-100">
+          <div className="col-md-8 col-lg-7 col-xl-6">
             <h2>Cart</h2>
             <div className="card" style={{ width: "30rem" }}>
               <table className="table align-middle mb-0">
@@ -127,7 +128,8 @@ const FilledCart = (props) => {
               </table>
             </div>
           </div>
-          <div className="col-md-4">
+          {/* SECOND COMPONENT */}
+          <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <h2>Order Summary</h2>
             <div className="card" style={{ width: "30rem" }}></div>
             <div className="row">
@@ -189,7 +191,7 @@ const FilledCart = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
