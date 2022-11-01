@@ -6,7 +6,7 @@ import {
   fetchPriceProducts,
 } from "./allProductsSlice";
 import { Link } from "react-router-dom";
-import { addItemToCart, fetchCart } from "../cart/CartSlice";
+import { addItemToCart, fetchCart } from "../cart/cartSlice";
 
 const AllProducts = () => {
   const userInfo = useSelector((state) => state.auth.me);
@@ -178,8 +178,8 @@ const AllProducts = () => {
             <div className="container py-5 h-100">
               <div className="row">
                 {productList.map((product) => (
-                  <div className="col-sm">
-                    <div key={product.id} style={styles.row}>
+                  <div className="col-sm" key={product.id}>
+                    <div style={styles.row}>
                       <div
                         className="card border-secondary"
                         style={styles.card}
