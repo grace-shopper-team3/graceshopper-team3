@@ -15,7 +15,7 @@ const Navbar = () => {
         <Link to="/">
           <img
             style={{ width: 70, height: 40 }}
-            src="https://i.imgur.com/gxa6IWX.png"
+            src="https://i.imgur.com/uCg6rjL.png"
           />
         </Link>
         <button

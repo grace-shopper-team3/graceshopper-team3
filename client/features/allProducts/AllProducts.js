@@ -4,8 +4,15 @@ import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart, fetchCart } from "../cart/CartSlice";
 import { useLocation } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 const AllProducts = () => {
+  const itemsPerPage = 12;
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(3);
+
   const location = useLocation();
   let homeCategory = null;
   location.state ? ({ homeCategory } = location.state) : null;
@@ -15,15 +22,19 @@ const AllProducts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+
+    productList.length > 0
+      ? setPageCount(Math.ceil(productList.length / itemsPerPage))
+      : null;
+    productList
+      ? setCurrentItems(productList.slice(itemOffset, endOffset))
+      : null;
     dispatch(fetchAllProducts());
-  }, [dispatch]);
+  }, [itemOffset, itemsPerPage, productList]);
 
   const styles = {
-    disabled: {
-      background: `#999`,
-      color: `#555`,
-      cursor: `not-allowed`,
-    },
     row: {
       marginTop: `30px`,
       display: "flex",
@@ -37,6 +48,14 @@ const AllProducts = () => {
       justifyContent: `center`,
       alignItems: `center`,
     },
+  };
+
+  const handlePageClick = (ev) => {
+    const newOffset = (ev.selected * itemsPerPage) % productList.length;
+    console.log(
+      `User requested page number ${ev.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
   };
 
   const filterCategoryButton = (ev) => {
@@ -85,6 +104,12 @@ const AllProducts = () => {
       )
     : null;
 
+  productList.length > 0 && currentItems.length === 0
+    ? setCurrentItems(productList.slice(0, 12))
+    : null;
+
+  console.log("currentItems", currentItems);
+
   return (
     <div>
       <section className="vh-100">
@@ -119,21 +144,21 @@ const AllProducts = () => {
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterCategory(ev)}
+                  onClick={(ev) => filterCategoryButton(ev)}
                 >
                   All
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterCategory(ev)}
+                  onClick={(ev) => filterCategoryButton(ev)}
                 >
                   Marvel
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterCategory(ev)}
+                  onClick={(ev) => filterCategoryButton(ev)}
                 >
                   DC
                 </a>
@@ -158,21 +183,21 @@ const AllProducts = () => {
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterPrice(ev)}
+                  onClick={(ev) => filterPriceButton(ev)}
                 >
                   All
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterPrice(ev)}
+                  onClick={(ev) => filterPriceButton(ev)}
                 >
                   Under $25
                 </a>
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={(ev) => filterPrice(ev)}
+                  onClick={(ev) => filterPriceButton(ev)}
                 >
                   Over $25
                 </a>
@@ -180,56 +205,78 @@ const AllProducts = () => {
             </div>
           </section>
           <section>
+            <ReactPaginate
+              nextLabel="next >"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={2}
+              pageCount={pageCount}
+              previousLabel="< previous"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+              //renderOnZeroPageCount={null}
+            />
             <div className="container py-5 h-100">
               <div className="row">
-                {productList.map((product) => (
-                  <div className="col-sm">
-                    <div key={product.id} style={styles.row}>
-                      <div
-                        className="card border-secondary"
-                        style={styles.card}
-                      >
-                        <Link
-                          to={`/products/${product.id}`}
-                          style={{ textDecoration: `none` }}
-                        >
+                {currentItems
+                  ? currentItems.map((product) => (
+                      <div className="col-sm">
+                        <div key={product.id} style={styles.row}>
                           <div
-                            style={{
-                              width: `14rem`,
-                              height: `16rem`,
-                              backgroundImage: `url(${product.imageUrl})`,
-                              backgroundSize: `cover`,
-                            }}
-                            className="card-img-top"
-                          ></div>
-                          <h5
-                            className="card-title text-center"
-                            style={{
-                              color: `black`,
-                              marginTop: `20px`,
-                              fontSize: `135%`,
-                            }}
+                            className="card border-secondary"
+                            style={styles.card}
                           >
-                            {product.name}
-                          </h5>
-                        </Link>
-                        <div
-                          className="card-body text-center"
-                          style={{ fontSize: `135%`, marginTop: `-15px` }}
-                        >
-                          <p>${product.price}</p>
-                          <button
-                            className="btn btn-primary"
-                            onClick={(ev) => addToCart(ev, product.id)}
-                            style={{ marginTop: `-30px` }}
-                          >
-                            ADD TO CART
-                          </button>
+                            <Link
+                              to={`/products/${product.id}`}
+                              style={{ textDecoration: `none` }}
+                            >
+                              <div
+                                style={{
+                                  width: `14rem`,
+                                  height: `16rem`,
+                                  backgroundImage: `url(${product.imageUrl})`,
+                                  backgroundSize: `cover`,
+                                }}
+                                className="card-img-top"
+                              ></div>
+                              <h5
+                                className="card-title text-center"
+                                style={{
+                                  color: `black`,
+                                  marginTop: `20px`,
+                                  fontSize: `135%`,
+                                }}
+                              >
+                                {product.name}
+                              </h5>
+                            </Link>
+                            <div
+                              className="card-body text-center"
+                              style={{ fontSize: `135%`, marginTop: `-15px` }}
+                            >
+                              <p>${product.price}</p>
+                              <button
+                                className="btn btn-primary"
+                                onClick={(ev) => addToCart(ev, product.id)}
+                                style={{ marginTop: `-30px` }}
+                              >
+                                ADD TO CART
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    ))
+                  : null}
               </div>
             </div>
           </section>
