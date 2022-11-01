@@ -8,7 +8,6 @@
   src: url(merel-black/Merel\ Light.otf);
 }
 
-
 label {
   display: block;
 }
@@ -42,9 +41,7 @@ h5 {
 button {
   color: #f6bd60;
 }
-/* .nav-link{
-font-family: "TT-Norms-Black";
-} */
+
 .nav-link{
   font-family: "merel-black";
   }

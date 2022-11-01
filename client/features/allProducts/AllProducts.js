@@ -124,7 +124,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <section className="vh-100">
+      <section className="">
         <div id="AllProducts">
           <section>
             <h1
@@ -144,7 +144,8 @@ const AllProducts = () => {
                   <div className="col-md-2 dropdown">
                     <button
                       className="btn  dropdown-toggle"
-                      type="button"z
+                      type="button"
+                      z
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
@@ -250,6 +251,7 @@ const AllProducts = () => {
                 breakLinkClassName="page-link"
                 containerClassName="pagination"
                 activeClassName="active"
+
                 //renderOnZeroPageCount={null}
               />
 
