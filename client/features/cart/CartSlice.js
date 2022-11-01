@@ -2,12 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchSingleProduct } from '../singleProduct/singleProductSlice';
 import axios from "axios";
 
+
 const TOKEN = 'token';
 
 export const fetchCart = createAsyncThunk(
   "fetchOrder_Products",
   async (userId) => {
-    // const token = window.localStorage.getItem(TOKEN);
+    const token = window.localStorage.getItem(TOKEN);
     if(token) {
       const { data } = await axios.get(`/api/order_products/${userId}/cart`);
       return data;
@@ -19,19 +20,20 @@ export const fetchCart = createAsyncThunk(
 
 export const addItemToCart = createAsyncThunk(
   "addOrder_Product",
-  async ({ userId, productId }) => {
+  async ({ userId, productId }, {dispatch}) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
       const { data } = await axios.post(`/api/order_products/${userId}/cart`, {
         productId,
       });
-      console.log(data)
+      // console.log(data)
       return data;
 
     } else  {
-      const { data } = await axios.get(`/api/products/${productId}`);
-      console.log('productData',data)
-      window.localStorage.setItem('products', JSON.stringify(data))
+      const { payload } = await dispatch(fetchSingleProduct(productId))
+
+		  return payload
+
     }
   }
 );
@@ -82,17 +84,7 @@ export const removeFromCart = createAsyncThunk(
   }
 );
 
-export const compareCarts = createAsyncThunk(
-	'/cart/compare',
-	async (user, {dispatch}) => {
-		const localArray = JSON.parse(window.localStorage.products)
-		window.localStorage.products = JSON.stringify([])
-		await dispatch(removeAllFromCart(user.products))
-		await dispatch(addAllToCart(localArray))
-		await dispatch(fetchCart())
-	}
-)
-
+let localArry = []
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -104,7 +96,11 @@ const cartSlice = createSlice({
       state.cart = action.payload;
     });
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
+      
       state.cart.push(action.payload);
+      localArry.push(action.payload);
+      console.log(localArry)
+      window.localStorage.setItem('products', JSON.stringify(localArry))
     });
     builder.addCase(incrementItemInCart.fulfilled, (state, action) => {
       state.cart = state.cart.map((item) => {
