@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const Checkout = (props) => {
   const { id, name } = useSelector((state) => state.auth.me);
@@ -10,7 +11,7 @@ const Checkout = (props) => {
 
   const orderInfo = useSelector((state) => state.checkoutOrder.fulfilledOrder);
   const total = orderInfo.reduce(
-    (accum, elem) => accum + elem.quantityInCart * elem.product.price,
+    (accum, elem) => accum + elem.order_product.quantityInCart * elem.price,
     0
   );
   const date = new Date();
@@ -52,7 +53,7 @@ const Checkout = (props) => {
                         <td>
                           <div className="py-2">
                             <span className="d-block text-muted">Order No</span>
-                            <span>{orderInfo[0]?.orderId}</span>
+                            <span>{orderInfo[0]?.order_product.orderId}</span>
                           </div>
                         </td>
                       </tr>
@@ -64,27 +65,28 @@ const Checkout = (props) => {
                   <table className="table table-borderless">
                     <tbody>
                       {orderInfo.map((elem) => (
-                        <tr key={elem.productId}>
+                        <tr key={uuidv4()}>
                           <td width="20%">
                             <img
-                              src={elem.product.imageUrl}
+                              src={elem.imageUrl}
                               style={{ width: "60px", height: "70px" }}
                             />
                           </td>
 
                           <td width="60%">
                             <span style={{ fontWeight: "bold" }}>
-                              {elem.product.name}
+                              {elem.name}
                             </span>
 
                             <span className="d-block">
-                              Quantity: {elem.quantityInCart}
+                              Quantity: {elem.order_product.quantityInCart}
                             </span>
                           </td>
                           <td width="20%">
                             <div className="text-right">
                               <span className="font-weight-bold">
-                                $ {elem.quantityInCart * elem.product.price}
+                                ${" "}
+                                {elem.order_product.quantityInCart * elem.price}
                               </span>
                             </div>
                           </td>

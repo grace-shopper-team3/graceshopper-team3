@@ -9,6 +9,7 @@ import {
 } from "./CartSlice";
 import { fulfillOrder } from "../checkout/checkoutSlice";
 import EmptyCart from "../cart/EmptyCart";
+import { v4 as uuidv4 } from "uuid";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
@@ -19,28 +20,26 @@ const Cart = (props) => {
   const cart = useSelector((state) => state.cart.cart);
 
   const incrementItem = (productId, quantityInCart) => {
-    dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(incrementItemInCart({ productId, quantityInCart }));
   };
 
   const decrementItem = (productId, quantityInCart) => {
-    dispatch(decrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(decrementItemInCart({ productId, quantityInCart }));
   };
 
   const removeItem = (productId) => {
-    dispatch(removeFromCart({ userId, productId }));
+    dispatch(removeFromCart({ productId }));
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(fetchCart(userId));
-  }, [dispatch, userId]);
+    dispatch(fetchCart());
+  }, [dispatch]);
 
-  const handleCheckout = (userId) => {
-    dispatch(fulfillOrder(userId));
+  const handleCheckout = () => {
+    dispatch(fulfillOrder());
     navigate("/checkout");
   };
-
-  console.log(cart);
 
   return (
     <>
@@ -62,8 +61,8 @@ const Cart = (props) => {
                     </thead>
 
                     {cart.map((item) => (
-                      <tbody>
-                        <tr key={item.productId}>
+                      <tbody key={uuidv4()}>
+                        <tr>
                           <td>
                             <div className="d-flex align-items-center">
                               <Link to={`/products/${item.productId}`}>
@@ -199,7 +198,7 @@ const Cart = (props) => {
                 <button
                   className="btn btn-primary"
                   onClick={() => {
-                    handleCheckout(userInfo.id);
+                    handleCheckout();
                   }}
                 >
                   Checkout

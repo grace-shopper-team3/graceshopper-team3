@@ -27,14 +27,6 @@ Product.filterByPriceLower = async function (price) {
   return filteredProducts;
 };
 
-// Do we need this? it only returns a number
-// Order.complete = async function (userId) {
-//   return await this.update(
-//     { status: "fulfilled" },
-//     { where: { status: "unfulfilled", userId: userId } }
-//   );
-// };
-
 module.exports = {
   db,
   models: {
