@@ -124,7 +124,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <section className="vh-100">
+      <section className="">
         <div id="AllProducts">
           <section>
             <h1
@@ -138,13 +138,14 @@ const AllProducts = () => {
           </section>
 
           <section>
-            <div className="container py-5 h-100">
+            <div className="container py-3 h-100">
               <div className="row p-2">
-                <div className="d-flex   justify-content-start">
-                  <div className="col-md-2 dropdown">
+                <div className="d-flex">
+                  <div className="col-lg-2 dropdown">
                     <button
                       className="btn  dropdown-toggle"
                       type="button"
+                      z
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
@@ -183,10 +184,8 @@ const AllProducts = () => {
                         DC
                       </a>
                     </div>
-                    {/* </div> */}
                   </div>
-                  {/* <div className="btn-group col-sm"> */}
-                  <div className="col-md-2 .offset-md-3 dropdown">
+                  <div className="col-lg-2  dropdown">
                     <button
                       className="btn dropdown-toggle"
                       type="button"
@@ -231,27 +230,6 @@ const AllProducts = () => {
                   </div>
                 </div>
               </div>
-
-              <ReactPaginate
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={3}
-                marginPagesDisplayed={2}
-                pageCount={pageCount}
-                previousLabel="< previous"
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                breakLabel="..."
-                breakClassName="page-item"
-                breakLinkClassName="page-link"
-                containerClassName="pagination"
-                activeClassName="active"
-                //renderOnZeroPageCount={null}
-              />
 
               <div className="row">
                 {currentItems
@@ -312,6 +290,26 @@ const AllProducts = () => {
               </div>
             </div>
           </section>
+          <ReactPaginate
+            className="pagination"
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+          />
         </div>
       </section>
     </div>
