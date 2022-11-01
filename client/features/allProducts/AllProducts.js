@@ -108,15 +108,19 @@ const AllProducts = () => {
                 <div className="d-flex   justify-content-start">
                   <div className="col-md-2 dropdown">
                     <button
-                      className="btn btn-primary dropdown-toggle"
+                      className="btn  dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
-                      style={{ fontFamily: "merel-black" }}
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "white",
+                        backgroundColor: "black",
+                      }}
                       aria-expanded="false"
                     >
-                      Search by Category
+                      Search by: Category
                     </button>
                     <div
                       className="dropdown-menu"
@@ -149,15 +153,19 @@ const AllProducts = () => {
                   {/* <div className="btn-group col-sm"> */}
                   <div className="col-md-2 .offset-md-3 dropdown">
                     <button
-                      className="btn btn-primary dropdown-toggle"
+                      className="btn dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
-                      style={{ fontFamily: "merel-black" }}
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "white",
+                        backgroundColor: "black",
+                      }}
                     >
-                      Search by Price
+                      Search by: Price
                     </button>
                     <div
                       className="dropdown-menu"
@@ -226,11 +234,13 @@ const AllProducts = () => {
                         >
                           <p>${product.price}</p>
                           <button
-                            className="btn btn-primary"
+                            className="btn btn-dark"
                             onClick={(ev) => addToCart(ev, product.id)}
                             style={{
                               marginTop: `-10px`,
                               fontFamily: "merel-black",
+                              color: "black",
+                              backgroundColor: "#F6BD60",
                             }}
                           >
                             ADD TO CART

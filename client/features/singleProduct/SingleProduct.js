@@ -63,14 +63,6 @@ const SingleProduct = () => {
                 padding: `10px`,
               }}
             >
-              {/* <h1
-                style={{
-                  fontSize: `600%`,
-                }}
-              >
-                {" "}
-                {name}{" "}
-              </h1> */}
               <div>
                 <h4 style={{ marginTop: `5%` }}>{description}</h4>
                 <h3
@@ -94,8 +86,12 @@ const SingleProduct = () => {
 
               <section>
                 <button
-                  className="btn btn-primary"
-                  style={{ fontFamily: "merel-black" }}
+                  className="btn btn-dark"
+                  style={{
+                    fontFamily: "merel-black",
+                    color: "black",
+                    backgroundColor: "#F6BD60",
+                  }}
                   onClick={(ev) => addToCart(ev)}
                 >
                   ADD TO CART

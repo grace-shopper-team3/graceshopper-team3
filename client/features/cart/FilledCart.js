@@ -204,8 +204,12 @@ const FilledCart = (props) => {
             </div>
 
             <button
-              className="btn btn-primary"
-              style={{ fontFamily: "merel-black" }}
+              className="btn btn-dark"
+              style={{
+                fontFamily: "merel-black",
+                color: "black",
+                backgroundColor: "#F6BD60",
+              }}
               onClick={() => {
                 handleCheckout();
               }}

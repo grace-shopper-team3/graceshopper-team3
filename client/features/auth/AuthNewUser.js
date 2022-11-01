@@ -74,8 +74,12 @@ const AuthNewUser = ({ name }) => {
                   <div className="d-grid gap-2">
                     <button
                       type="submit"
-                      className="btn btn-primary"
-                      style={{ fontFamily: "merel-black" }}
+                      className="btn btn-dark"
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "black",
+                        backgroundColor: "#F6BD60",
+                      }}
                     >
                       Sign Up
                     </button>
