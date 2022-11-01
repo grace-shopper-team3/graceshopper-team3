@@ -59,7 +59,71 @@ const Home = (props) => {
         </button>
       </div>
 
-      {/* <div className="container text-center" style={{ paddingBottom: "10px" }}>
+      {/* start */}
+      <div
+        id="carouselMultiItemExample"
+        className="carousel slide carousel-dark text-center"
+        data-mdb-ride="carousel"
+      >
+        <div className="carousel-inner py-4">
+          <div className="carousel-item active">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-4">
+                  <div className="card">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/new/standard/nature/181.webp"
+                      className="card-img-top"
+                      alt="Waterfall"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Shop DC Universe</h5>
+
+                      <a href="#!" className="btn btn-primary">
+                        Button
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 d-none d-lg-block">
+                  <div className="card">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+                      className="card-img-top"
+                      alt="Sunset Over the Sea"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Shop Marvel</h5>
+
+                      <a href="#!" className="btn btn-primary">
+                        Button
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 d-none d-lg-block">
+                  <div className="card">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/new/standard/nature/183.webp"
+                      className="card-img-top"
+                      alt="Sunset over the Sea"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Gift Ideas Under 25$</h5>
+                      <a href="#!" className="btn btn-primary">
+                        Button
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* //end */}
+      <div className="container text-center" style={{ paddingBottom: "10px" }}>
         <div className="row g-3">
           <div className="col-6">
             <Link
@@ -80,7 +144,7 @@ const Home = (props) => {
             </Link>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
