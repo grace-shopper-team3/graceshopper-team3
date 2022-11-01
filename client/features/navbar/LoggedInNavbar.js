@@ -18,9 +18,9 @@ const LoggedInNavbar = () => {
 
   return (
     <>
-      <li class="nav-item">
+      <li className="nav-item">
         <Link
-          class="nav-link active"
+          className="nav-link active"
           onClick={logoutAndRedirectHome}
           aria-current="page"
           to="/home"
@@ -29,8 +29,8 @@ const LoggedInNavbar = () => {
         </Link>
       </li>
 
-      <li class="nav-item justify-content-end">
-        <Link class="nav-link active" aria-current="page" to="/cart">
+      <li className="nav-item justify-content-end">
+        <Link className="nav-link active" aria-current="page" to="/cart">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

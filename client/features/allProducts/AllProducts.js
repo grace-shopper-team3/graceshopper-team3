@@ -192,7 +192,10 @@ const AllProducts = () => {
                         className="card border-secondary"
                         style={styles.card}
                       >
-                        <Link to={`/products/${product.id}`}>
+                        <Link
+                          to={`/products/${product.id}`}
+                          style={{ textDecoration: `none` }}
+                        >
                           <div
                             style={{
                               width: `14rem`,
@@ -204,16 +207,24 @@ const AllProducts = () => {
                           ></div>
                           <h5
                             className="card-title text-center"
-                            style={{ color: `black` }}
+                            style={{
+                              color: `black`,
+                              marginTop: `20px`,
+                              fontSize: `135%`,
+                            }}
                           >
                             {product.name}
                           </h5>
                         </Link>
-                        <div className="card-body text-center">
+                        <div
+                          className="card-body text-center"
+                          style={{ fontSize: `135%`, marginTop: `-15px` }}
+                        >
                           <p>${product.price}</p>
                           <button
                             className="btn btn-primary"
                             onClick={(ev) => addToCart(ev, product.id)}
+                            style={{ marginTop: `-30px` }}
                           >
                             ADD TO CART
                           </button>
