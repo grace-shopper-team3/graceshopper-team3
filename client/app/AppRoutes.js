@@ -8,7 +8,7 @@ import AllProducts from "../features/allProducts/AllProducts";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
-import Checkout from "../features/checkout/checkout";
+import Checkout from "../features/checkout/Checkout";
 import Profile from "../features/auth/Profile";
 
 const AppRoutes = () => {
@@ -28,7 +28,7 @@ const AppRoutes = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout-success" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       ) : (
@@ -42,7 +42,7 @@ const AppRoutes = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout-success" element={<Checkout />} />
         </Routes>
       )}
     </div>
