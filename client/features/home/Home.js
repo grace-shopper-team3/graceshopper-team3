@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -61,10 +62,14 @@ const Home = (props) => {
       <div className="container text-center" style={{ paddingBottom: "10px" }}>
         <div className="row g-3">
           <div className="col-6">
-            <div className="bundle">DC Universe</div>
+            <Link to={`/products`} state={{ homeCategory: "DC" }}>
+              <div className="bundle">DC Universe</div>
+            </Link>
           </div>
           <div className="col-6">
-            <div className="bundle">Marvel</div>
+            <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
+              <div className="bundle">Marvel</div>
+            </Link>
           </div>
           <div className="col-6">
             <div className="bundle">Disney</div>
