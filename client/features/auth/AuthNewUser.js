@@ -18,7 +18,6 @@ const AuthNewUser = ({ name }) => {
     dispatch(
       authenticate({ name, email, username, password, method: "signup" })
     );
-
   };
 
   return (
@@ -30,7 +29,6 @@ const AuthNewUser = ({ name }) => {
               <img
                 src="https://cdn.shopify.com/s/files/1/1052/2158/products/58145_Marvel_InfinitySaga_Iron_Man_MegaPOP_GLAM-WEB.png?v=1637702532"
                 className="img-fluid"
-                alt="Phone image"
               />
             </div>
             <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
@@ -74,7 +72,15 @@ const AuthNewUser = ({ name }) => {
 
                 <div className="row">
                   <div className="d-grid gap-2">
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="submit"
+                      className="btn btn-dark"
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "black",
+                        backgroundColor: "#F6BD60",
+                      }}
+                    >
                       Sign Up
                     </button>
                     <small>

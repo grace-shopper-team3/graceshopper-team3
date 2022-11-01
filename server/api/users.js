@@ -21,13 +21,15 @@ router.get("/", getToken, isAdmin, async (req, res, next) => {
   }
 });
 
+// ------ Admin only
 router.get("/:userId", getToken, isAdmin, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
       attributes: ["id", "username", "name", "email"],
       include: Order,
     });
-    res.json(user);
+    if (user) res.json(user);
+    else res.json({ error: "User not found" });
   } catch (err) {
     next(err);
   }

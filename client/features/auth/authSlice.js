@@ -10,7 +10,7 @@ const TOKEN = "token";
   THUNKS
 */
 export const me = createAsyncThunk("auth/me", async () => {
-  const token = window.localStorage.getItem(TOKEN);
+  const token = window.localStorage.getItem(TOKEN); 
   try {
     if (token) {
       const res = await axios.get("/auth/me", {
@@ -99,6 +99,9 @@ export const authSlice = createSlice({
     builder.addCase(me.rejected, (state, action) => {
       state.error = action.error;
     });
+    // builder.addCase(authenticate.fulfilled, (state, action) => {
+    //   state.me = action.payload;
+    // });
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;
     });

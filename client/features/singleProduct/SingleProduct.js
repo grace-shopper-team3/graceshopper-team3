@@ -16,24 +16,34 @@ const SingleProduct = () => {
         document.getElementById("addToCart").disabled = true;
       }
     });
-    dispatch(addItemToCart({ userId, productId }));
+    dispatch(addItemToCart({ productId }));
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(fetchSingleProduct(productId));
-    dispatch(fetchCart(userId));
+    dispatch(fetchCart());
   }, [dispatch]);
 
   const product = useSelector((state) => state.singleProduct.aProduct);
   const { name, category, imageUrl, price, description } = product;
   const userInfo = useSelector((state) => state.auth.me);
-  const userId = userInfo.id;
 
   return (
     <div>
       <div>
         <div>
+          <section>
+            <h1
+              style={{
+                textAlign: `center`,
+                backgroundColor: `#F6BD60`,
+              }}
+            >
+              {name}
+            </h1>
+          </section>
+
           <div
             style={{
               display: `flex`,
@@ -53,22 +63,35 @@ const SingleProduct = () => {
                 padding: `10px`,
               }}
             >
-              <h1
-                style={{
-                  fontSize: `600%`,
-                }}
-              >
-                {" "}
-                {name}{" "}
-              </h1>
               <div>
-                <h4 style={{ marginTop: `3%` }}>Category: {category}</h4>
-                <h1 style={{ marginTop: `5%` }}>${price}</h1>
                 <h4 style={{ marginTop: `5%` }}>{description}</h4>
+                <h3
+                  style={{
+                    marginTop: `3%`,
+                    fontWeight: "bolder",
+                    fontFamily: "TT-Norms-Black",
+                  }}
+                >
+                  Category: {category}
+                </h3>
+                <h4
+                  style={{
+                    marginTop: `2%`,
+                    fontWeight: "bolder",
+                  }}
+                >
+                  ${price}
+                </h4>
               </div>
+
               <section>
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-dark"
+                  style={{
+                    fontFamily: "merel-black",
+                    color: "black",
+                    backgroundColor: "#F6BD60",
+                  }}
                   onClick={(ev) => addToCart(ev)}
                 >
                   ADD TO CART

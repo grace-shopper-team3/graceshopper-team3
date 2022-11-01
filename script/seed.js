@@ -77,6 +77,11 @@ async function seed() {
       isAdmin: true,
     }),
   ]);
+  // await User.create({
+  //   id: -1,
+  //   username: "guest",
+  //   password: "321",
+  // });
 
   // Creating Products
   const products = await Promise.all([
@@ -323,7 +328,7 @@ async function seed() {
 
     Product.create({
       name: "Thanos",
-      price: 0,
+      price: 1,
       imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
@@ -1144,7 +1149,7 @@ async function seed() {
       orderId: 1,
       productId: 2,
       quantityInCart: 2,
-      subtotal: 0,  
+      subtotal: 0,
     }),
     Order_Product.create({
       orderId: 2,
