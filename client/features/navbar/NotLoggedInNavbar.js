@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 const NotLoggedInNavbar = () => {
   return (
     <>
-      <li class="nav-item navbar-left">
-        <Link class="nav-link active" aria-current="page" to="/login">
+      <li className="nav-item navbar-left">
+        <Link className="nav-link active" aria-current="page" to="/login">
           Login
         </Link>
       </li>
-      <li class="nav-item navbar-left">
-        <Link class="nav-link active" aria-current="page" to="/signup">
+      <li className="nav-item navbar-left">
+        <Link className="nav-link active" aria-current="page" to="/signup">
           Sign Up
         </Link>
       </li>
-      <li class="nav-item navbar-left">
-        <Link class="nav-link active" aria-current="page" to="/cart">
+      <li className="nav-item navbar-left">
+        <Link className="nav-link active" aria-current="page" to="/cart">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

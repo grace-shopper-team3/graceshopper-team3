@@ -9,6 +9,7 @@ import SingleProduct from "../features/singleProduct/SingleProduct";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
 import Checkout from "../features/checkout/checkout";
+import Profile from "../features/auth/Profile";
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -28,6 +29,7 @@ const AppRoutes = () => {
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       ) : (
         <Routes>
