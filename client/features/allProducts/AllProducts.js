@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAllProducts,
-  fetchCategoryProducts,
-  fetchPriceProducts,
-} from "./allProductsSlice";
+import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart, fetchCart } from "../cart/CartSlice";
+import { useLocation } from "react-router-dom";
 
 const AllProducts = () => {
+  const location = useLocation();
+  let homeCategory = null;
+  location.state ? ({ homeCategory } = location.state) : null;
+
   const userInfo = useSelector((state) => state.auth.me);
 
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     dispatch(fetchAllProducts());
-    setProductList(allProducts);
   }, [dispatch]);
 
   const styles = {
@@ -38,22 +39,18 @@ const AllProducts = () => {
     },
   };
 
-  const filterCategory = (ev) => {
-    ev.preventDefault();
-    if (ev.target.text === "All") {
-      setProductList(allProducts);
-      return;
-    }
+  const filterCategoryButton = (ev) => {
     const category = ev.target.text;
-    const filteredArray = allProducts.filter(
-      (product) => product.category === category
-    );
-    setProductList(filteredArray);
-    console.log(productList);
+    if (category === "All") {
+      setProductList(allProducts);
+    } else {
+      setProductList(
+        allProducts.filter((product) => product.category === category)
+      );
+    }
   };
 
-  const filterPrice = (ev) => {
-    ev.preventDefault();
+  const filterPriceButton = (ev) => {
     const price = ev.target.text;
     if (price === "All") {
       setProductList(allProducts);
@@ -66,7 +63,6 @@ const AllProducts = () => {
       const filteredArray = allProducts.filter((product) => product.price < 25);
       setProductList(filteredArray);
     }
-    console.log(productList);
   };
 
   const addToCart = (ev, productId) => {
@@ -77,8 +73,16 @@ const AllProducts = () => {
   const allProducts = useSelector((state) => state.allProducts.products);
   let [productList, setProductList] = useState([]);
 
+  //Checks that allProducts and productList are avilable. Then sets productList
   productList.length === 0 && allProducts.length > 0
     ? setProductList(allProducts)
+    : null;
+
+  //Checks if we came from a home page category link, and filters if we did.
+  productList.length === 0 && allProducts.length > 0 && homeCategory
+    ? setProductList(
+        allProducts.filter((item) => item.category === homeCategory)
+      )
     : null;
 
   return (
@@ -92,6 +96,7 @@ const AllProducts = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
+            
               All PunkoFops
             </h1>
           </section>
