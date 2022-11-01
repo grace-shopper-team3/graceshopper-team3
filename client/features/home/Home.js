@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const Home = (props) => {
   const styles = {
-    // card: {
-    //   width: `25rem`,
-    //   height: `25em`,
-    //   display: `flex`,
-    //   justifyContent: `center`,
-    //   alignItems: `center`,
-    // },
+    card: {
+      // width: `25rem`,
+      // height: `25em`,
+      display: `flex`,
+      justifyContent: `center`,
+      alignItems: `center`,
+    },
   };
 
   return (
@@ -95,7 +95,7 @@ const Home = (props) => {
                 }}
                 className="btn btn-dark"
               >
-                <h5 className="card-title">Gift Ideas Under 25$</h5>
+                <h5 className="card-title ">Gift Ideas Under 25$</h5>
               </Link>
             </div>
           </div>
