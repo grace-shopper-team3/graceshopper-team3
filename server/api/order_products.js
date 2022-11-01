@@ -3,6 +3,7 @@ const { token } = require("morgan");
 const {
   models: { User, Order, Order_Product, Product },
 } = require("../db");
+const { getToken } = require("./adminCheckMiddleware");
 
 module.exports = router;
 
@@ -11,8 +12,8 @@ const TOKEN= 'token'
 // GET api/order_products ------ LoggedIn user
 // To render unchecked-out cart
 // If user has fulfilled order, this route returns null or 500server error.
-router.get("/:userId/cart", async (req, res, next) => {
-  const userId = req.params.userId;
+router.get("/cart", getToken, async (req, res, next) => {
+  const userId = req.user.id;
   try {
     const order = await Order.findOne({
       where: [{ userId: userId }, { status: "unfulfilled" }],
@@ -31,9 +32,9 @@ router.get("/:userId/cart", async (req, res, next) => {
 // POST api/order_products------ LoggedIn user
 // To use for add to cart button click
 // MESSY BUT WORKS - NEED TO CLEAN UP
-router.post("/:userId/cart", async (req, res, next) => {
-  let userId = req.params.userId;
-  let productId = +req.body.productId;
+router.post("/cart", getToken, async (req, res, next) => {
+  const userId = req.user.id;
+  const productId = +req.body.productId;
 
   try {
     const order = await Order.findOrCreate({
@@ -61,8 +62,8 @@ router.post("/:userId/cart", async (req, res, next) => {
 
 // PUT api/order_products
 // To change quantity of products which are added to cart from cart or singleProduct pages
-router.put("/:userId/cart", async (req, res, next) => {
-  const userId = req.params.userId;
+router.put("/cart", getToken, async (req, res, next) => {
+  const userId = req.user.id;
   const productId = req.body.productId;
   const qty = req.body.quantityInCart;
 
@@ -71,7 +72,7 @@ router.put("/:userId/cart", async (req, res, next) => {
       where: [{ userId: userId }, { status: "unfulfilled" }],
     });
 
-    const updatedOrder_product = await Order_Product.update(
+    const [, updatedProductQty] = await Order_Product.update(
       { quantityInCart: qty },
       {
         where: { productId: productId, orderId: order.id },
@@ -79,7 +80,7 @@ router.put("/:userId/cart", async (req, res, next) => {
         plain: true,
       }
     );
-    res.json(updatedOrder_product[1]);
+    res.json(updatedProductQty);
   } catch (err) {
     next(err);
   }
@@ -87,8 +88,8 @@ router.put("/:userId/cart", async (req, res, next) => {
 
 //  DELETE api/order_products
 // To delete product row from Order_product if remove button is clicked
-router.delete("/:userId/:productId/cart", async (req, res, next) => {
-  const userId = req.params.userId;
+router.delete("/:productId/cart", getToken, async (req, res, next) => {
+  const userId = req.user.id;
   const productId = req.params.productId;
 
   try {
@@ -107,8 +108,8 @@ router.delete("/:userId/:productId/cart", async (req, res, next) => {
 
 // GET api/order_products ------ LoggedIn user
 // To render order history
-router.get("/:userId/history", async (req, res, next) => {
-  const userId = req.params.userId;
+router.get("/history", getToken, async (req, res, next) => {
+  const userId = req.user.id;
   try {
     const orders = await Order.findAll({
       where: [{ userId: userId }, { status: "fulfilled" }],

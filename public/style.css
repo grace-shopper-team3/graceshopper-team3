@@ -3,28 +3,16 @@
   src: url(TT-Norms-Fonts/TTNorms-Black.otf);
 }
 
-/* body {
-  font-family: sans-serif;
-  min-height: 100vh;
-} */
-
-a {
-  text-decoration: none;
+@font-face {
+  font-family: merel-black;
+  src: url(merel-black/Merel\ Light.otf);
 }
+
 
 label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-nav {
-  height: 60px;
-  align-content: center;
-}
 
 form div {
   margin: 1em;
@@ -39,5 +27,11 @@ img {
   padding: 10px;
   font-weight: bold;
 }
-
-
+.navbar .navbar-nav .nav-link {
+  color: black;
+  font-size: 1.1em;
+}
+.navbar .navbar-nav .nav-link:hover {
+background-color: #F6BD60;
+color: #fff;
+}

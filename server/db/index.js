@@ -27,13 +27,13 @@ Product.filterByPriceLower = async function (price) {
   return filteredProducts;
 };
 
-// Do we need this? it only returns a number
-// Order.complete = async function (userId) {
-//   return await this.update(
-//     { status: "fulfilled" },
-//     { where: { status: "unfulfilled", userId: userId } }
-//   );
-// };
+Product.filterByCategory = async function (category) {
+  const products = await Product.findAll();
+  const filteredProducts = products.filter(
+    (element) => element.category === category
+  );
+  return filteredProducts;
+};
 
 module.exports = {
   db,
