@@ -33,7 +33,12 @@ const Payment = (props) => {
   return (
     <div>
       <button
-        className="btn btn-primary"
+        className="btn btn-dark"
+        style={{
+          fontFamily: "merel-black",
+          color: "black",
+          backgroundColor: "#F6BD60",
+        }}
         onClick={() => {
           handlePayment();
         }}

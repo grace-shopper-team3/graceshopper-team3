@@ -39,3 +39,13 @@ router.post("/stripe/create-checkout-session", getToken, async (req, res) => {
 
   res.send({ url: session.url });
 });
+
+// for deployment
+// success_url: `${process.env.SERVER_URL}/checkout-success`,
+// cancel_url: `${process.env.SERVER_URL}/cart`,
+
+//.env
+// STRIPE_API_KEY =
+// sk_test_51LzAWjIdadgQxEeI56jNMpHVxheAWbyIOcJKy32i1oIj6xjAeHitfd1TdEW23i2Zmea8XQYZefy8ZNqHwVij66vc00n1Vi5Bpk
+// SERVER_URL = http://localhost:8080 or //https://team3.onrender.com
+// NODE_ENV = development

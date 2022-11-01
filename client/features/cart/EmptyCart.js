@@ -17,13 +17,18 @@ const EmptyCart = () => {
                     className="img-fluid mb-4 mr-3"
                   />
                   <h3>
-                    <strong>Your Cart is Empty</strong>
+                    <strong>Your Cart is Empty!</strong>
                   </h3>
 
                   <Link
                     to="/products"
-                    className="btn btn-primary cart-btn-transform m-3"
+                    className="btn btn-dark cart-btn-transform m-3"
                     data-abc="true"
+                    style={{
+                      fontFamily: "merel-black",
+                      color: "black",
+                      backgroundColor: "#F6BD60",
+                    }}
                   >
                     Continue Shopping
                   </Link>

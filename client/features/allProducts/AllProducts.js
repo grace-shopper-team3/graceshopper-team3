@@ -1,28 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAllProducts,
-  fetchCategoryProducts,
-  fetchPriceProducts,
-} from "./allProductsSlice";
+import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
 import { addItemToCart, fetchCart } from "../cart/cartSlice";
+import { useLocation } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 const AllProducts = () => {
+  const itemsPerPage = 12;
+  const [itemOffset, setItemOffset] = useState(0);
+
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(3);
+
+  const location = useLocation();
+  let homeCategory = null;
+  let homePrice = null;
+  location.state ? ({ homeCategory } = location.state) : null;
+  location.state ? ({ homePrice } = location.state) : null;
+
   const userInfo = useSelector((state) => state.auth.me);
 
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+
+    productList.length > 0
+      ? setPageCount(Math.ceil(productList.length / itemsPerPage))
+      : null;
+    productList
+      ? setCurrentItems(productList.slice(itemOffset, endOffset))
+      : null;
     dispatch(fetchAllProducts());
-    setProductList(allProducts);
-  }, [dispatch]);
+  }, [itemOffset, itemsPerPage, productList]);
 
   const styles = {
-    disabled: {
-      background: `#999`,
-      color: `#555`,
-      cursor: `not-allowed`,
-    },
     row: {
       marginTop: `30px`,
       display: "flex",
@@ -38,22 +52,26 @@ const AllProducts = () => {
     },
   };
 
-  const filterCategory = (ev) => {
-    ev.preventDefault();
-    if (ev.target.text === "All") {
-      setProductList(allProducts);
-      return;
-    }
-    const category = ev.target.text;
-    const filteredArray = allProducts.filter(
-      (product) => product.category === category
+  const handlePageClick = (ev) => {
+    const newOffset = (ev.selected * itemsPerPage) % productList.length;
+    console.log(
+      `User requested page number ${ev.selected}, which is offset ${newOffset}`
     );
-    setProductList(filteredArray);
-    console.log(productList);
+    setItemOffset(newOffset);
   };
 
-  const filterPrice = (ev) => {
-    ev.preventDefault();
+  const filterCategoryButton = (ev) => {
+    const category = ev.target.text;
+    if (category === "All") {
+      setProductList(allProducts);
+    } else {
+      setProductList(
+        allProducts.filter((product) => product.category === category)
+      );
+    }
+  };
+
+  const filterPriceButton = (ev) => {
     const price = ev.target.text;
     if (price === "All") {
       setProductList(allProducts);
@@ -66,7 +84,6 @@ const AllProducts = () => {
       const filteredArray = allProducts.filter((product) => product.price < 25);
       setProductList(filteredArray);
     }
-    console.log(productList);
   };
 
   const addToCart = (ev, productId) => {
@@ -77,9 +94,33 @@ const AllProducts = () => {
   const allProducts = useSelector((state) => state.allProducts.products);
   let [productList, setProductList] = useState([]);
 
+  //Checks that allProducts and productList are avilable. Then sets productList
   productList.length === 0 && allProducts.length > 0
     ? setProductList(allProducts)
     : null;
+
+  //Checks if we came from a home page category link, and filters if we did.
+  productList &&
+  productList.length === 0 &&
+  allProducts.length > 0 &&
+  homeCategory
+    ? setProductList(
+        allProducts.filter((item) => item.category === homeCategory)
+      )
+    : null;
+
+  productList && productList.length === 0 && allProducts.length > 0 && homePrice
+    ? setProductList(allProducts.filter((item) => item.price <= homePrice))
+    : null;
+
+  productList &&
+  productList.length > 0 &&
+  currentItems &&
+  currentItems.length === 0
+    ? setCurrentItems(productList.slice(0, 12))
+    : null;
+
+  console.log("currentItems", currentItems);
 
   return (
     <div>
@@ -92,128 +133,182 @@ const AllProducts = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
-              All PunkoFops
+              ALL PRODUCTS
             </h1>
           </section>
 
-          <section className="row">
-            <div className="col-2 dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Search by Category
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  All
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  Marvel
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  DC
-                </a>
-              </div>
-            </div>
-            <div className="col-2 dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Search by Price
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  All
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  Under $25
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  Over $25
-                </a>
-              </div>
-            </div>
-          </section>
           <section>
             <div className="container py-5 h-100">
-              <div className="row">
-                {productList.map((product) => (
-                  <div className="col-sm" key={product.id}>
-                    <div style={styles.row}>
-                      <div
-                        className="card border-secondary"
-                        style={styles.card}
+              <div className="row p-2">
+                <div className="d-flex   justify-content-start">
+                  <div className="col-md-2 dropdown">
+                    <button
+                      className="btn  dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "white",
+                        backgroundColor: "black",
+                      }}
+                      aria-expanded="false"
+                    >
+                      Search by: Category
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategoryButton(ev)}
                       >
-                        <Link to={`/products/${product.id}`}>
-                          <div
-                            style={{
-                              width: `14rem`,
-                              height: `16rem`,
-                              backgroundImage: `url(${product.imageUrl})`,
-                              backgroundSize: `cover`,
-                            }}
-                            className="card-img-top"
-                          ></div>
-                          <h5
-                            className="card-title text-center"
-                            style={{ color: `black` }}
-                          >
-                            {product.name}
-                          </h5>
-                        </Link>
-                        <div className="card-body text-center">
-                          <p>${product.price}</p>
-                          <button
-                            className="btn btn-primary"
-                            onClick={(ev) => addToCart(ev, product.id)}
-                          >
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
+                        All
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategoryButton(ev)}
+                      >
+                        Marvel
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategoryButton(ev)}
+                      >
+                        DC
+                      </a>
+                    </div>
+                    {/* </div> */}
+                  </div>
+                  {/* <div className="btn-group col-sm"> */}
+                  <div className="col-md-2 .offset-md-3 dropdown">
+                    <button
+                      className="btn dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "white",
+                        backgroundColor: "black",
+                      }}
+                    >
+                      Search by: Price
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPriceButton(ev)}
+                      >
+                        All
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPriceButton(ev)}
+                      >
+                        Under $25
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPriceButton(ev)}
+                      >
+                        Over $25
+                      </a>
                     </div>
                   </div>
-                ))}
+                </div>
+              </div>
+
+              <ReactPaginate
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                marginPagesDisplayed={2}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakLabel="..."
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                containerClassName="pagination"
+                activeClassName="active"
+                //renderOnZeroPageCount={null}
+              />
+
+              <div className="row">
+                {currentItems
+                  ? currentItems.map((product) => (
+                      <div className="col-sm" key={product.id}>
+                        <div style={styles.row}>
+                          <div
+                            className="card border-secondary"
+                            style={styles.card}
+                          >
+                            <Link
+                              to={`/products/${product.id}`}
+                              style={{ textDecoration: `none` }}
+                            >
+                              <div
+                                style={{
+                                  width: `14rem`,
+                                  height: `16rem`,
+                                  backgroundImage: `url(${product.imageUrl})`,
+                                  backgroundSize: "cover",
+                                }}
+                                className="card-img-top"
+                              ></div>
+                              <h5
+                                className="card-title text-center"
+                                style={{
+                                  color: `black`,
+                                  marginTop: `20px`,
+                                  fontSize: `135%`,
+                                }}
+                              >
+                                {product.name}
+                              </h5>
+                            </Link>
+                            <div
+                              className="card-body text-center"
+                              style={{ fontSize: `100%`, marginTop: `-15px` }}
+                            >
+                              <p>${product.price}</p>
+                              <button
+                                className="btn btn-dark"
+                                onClick={(ev) => addToCart(ev, product.id)}
+                                style={{
+                                  marginTop: `-10px`,
+                                  fontFamily: "merel-black",
+                                  color: "black",
+                                  backgroundColor: "#F6BD60",
+                                }}
+                              >
+                                ADD TO CART
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  : null}
               </div>
             </div>
           </section>

@@ -35,9 +35,9 @@ const Checkout = (props) => {
                   style={{ width: 270, height: 220 }}
                 />
                 <div className="invoice p-1">
-                  <h3 className="font-weight-bold d-block mt-4">
+                  <h2 className="font-weight-bold d-block mt-4">
                     THANK YOU, {capitalizeAll(name)}!
-                  </h3>
+                  </h2>
 
                   <div className="payment border-top mt-3 mb-3 border-bottom table-responsive">
                     <table className="table table-borderless">
@@ -88,7 +88,7 @@ const Checkout = (props) => {
                                 {elem.name}
                               </span>
 
-                              <span className="d-block">
+                              <span className="d-block text-muted">
                                 Quantity: {elem.order_product.quantityInCart}
                               </span>
                             </td>
