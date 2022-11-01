@@ -2,16 +2,18 @@ const router = require("express").Router();
 const {
   models: { User, Order, Order_Product, Product },
 } = require("../db");
+const { getToken } = require("./adminCheckMiddleware");
 
 module.exports = router;
 
+
 // PUT api/orders
 // To render checkout page on clicking checkout
-router.put("/:userId/checkout", async (req, res, next) => {
-  const userId = req.params.userId;
+router.put("/checkout", getToken, async (req, res, next) => {
+  const userId = req.user.id;
 
   try {
-    const fulfill = await Order.update(
+    const [, order] = await Order.update(
       { status: "fulfilled" },
       {
         where: { status: "unfulfilled", userId: userId },
@@ -20,11 +22,8 @@ router.put("/:userId/checkout", async (req, res, next) => {
       }
     );
 
-    const orderDets = await Order_Product.findAll({
-      where: { orderId: fulfill[1].id },
-      include: { model: Product },
-    });
-    res.json(orderDets);
+    const orderDetails = await order.getProducts();
+    res.json(orderDetails);
   } catch (err) {
     next(err);
   }

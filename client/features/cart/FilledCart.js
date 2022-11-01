@@ -7,26 +7,27 @@ import {
 } from "./CartSlice";
 import { fulfillOrder } from "../checkout/checkoutSlice";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const FilledCart = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cart, userId, userInfo } = props;
+  const { cart } = props;
 
   const incrementItem = (productId, quantityInCart) => {
-    dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(incrementItemInCart({ productId, quantityInCart }));
   };
 
   const decrementItem = (productId, quantityInCart) => {
-    dispatch(decrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(decrementItemInCart({ productId, quantityInCart }));
   };
 
   const removeItem = (productId) => {
-    dispatch(removeFromCart({ userId, productId }));
+    dispatch(removeFromCart({ productId }));
   };
 
-  const handleCheckout = (userId) => {
-    dispatch(fulfillOrder(userId));
+  const handleCheckout = () => {
+    dispatch(fulfillOrder());
     navigate("/checkout");
   };
 
@@ -48,8 +49,8 @@ const FilledCart = (props) => {
                 </thead>
 
                 {cart.map((item) => (
-                  <tbody>
-                    <tr key={item.productId}>
+                  <tbody key={uuidv4()}>
+                    <tr>
                       <td>
                         <div className="d-flex align-items-center">
                           <Link to={`/products/${item.productId}`}>
@@ -182,7 +183,7 @@ const FilledCart = (props) => {
             <button
               className="btn btn-primary"
               onClick={() => {
-                handleCheckout(userInfo.id);
+                handleCheckout();
               }}
             >
               Checkout
