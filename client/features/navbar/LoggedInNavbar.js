@@ -18,6 +18,30 @@ const LoggedInNavbar = () => {
 
   return (
     <>
+      <li className="nav-item dropdown" style={{ color: "white" }}>
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          My Account
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+            <a class="dropdown-item" href="/profile">
+              User Profile
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              Another action
+            </a>
+          </li>
+        </ul>
+      </li>
+
       <li className="nav-item">
         <Link
           className="nav-link active"
