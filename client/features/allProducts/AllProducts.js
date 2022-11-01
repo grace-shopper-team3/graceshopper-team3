@@ -144,7 +144,7 @@ const AllProducts = () => {
                   <div className="col-md-2 dropdown">
                     <button
                       className="btn  dropdown-toggle"
-                      type="button"
+                      type="button"z
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
