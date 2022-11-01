@@ -19,7 +19,11 @@ router.get("/", async (req, res, next) => {
 router.get("/:productId", async (req, res, next) => {
   try {
     const aProduct = await Product.findByPk(req.params.productId);
-    res.json(aProduct);
+    if (aProduct) {
+      res.json(aProduct);
+    } else {
+      res.json({ error: "Product not found" });
+    }
   } catch (err) {
     next(err);
   }
@@ -45,9 +49,12 @@ router.put("/:productId", getToken, isAdmin, async (req, res, next) => {
     }
     const product = await Product.findByPk(req.params.productId);
 
-    const editProduct = await product.update(req.body);
-
-    res.json(editProduct);
+    if (product) {
+      const editProduct = await product.update(req.body);
+      res.json(editProduct);
+    } else {
+      res.json({ error: "Product not found" });
+    }
   } catch (err) {
     next(err);
   }
@@ -55,11 +62,16 @@ router.put("/:productId", getToken, isAdmin, async (req, res, next) => {
 
 // DELETE api/products   --------- Admin only
 router.delete("/:productId", getToken, isAdmin, async (req, res, next) => {
+  const productId = req.params.productId;
   try {
-    await Product.destroy({
-      where: { id: req.params.productId },
+    const deleteProduct = await Product.destroy({
+      where: { id: productId },
     });
-    res.status(200).send(req.params.productId);
+    if (deleteProduct === 1) {
+      res.status(200).json(productId);
+    } else {
+      res.json({ error: "Product not found" });
+    }
   } catch (err) {
     next(err);
   }
