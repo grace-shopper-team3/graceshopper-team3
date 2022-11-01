@@ -106,7 +106,7 @@ const AllProducts = () => {
                 <div className="d-flex  align-items-center  justify-content-around">
                   <div className="col-3 dropdown">
                     <button
-                      className="btn btn-secondary dropdown-toggle"
+                      className="btn btn-primary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -146,7 +146,7 @@ const AllProducts = () => {
                   {/* <div className="btn-group col-sm"> */}
                   <div className="col-3 dropdown">
                     <button
-                      className="btn btn-secondary dropdown-toggle"
+                      className="btn btn-primary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -201,7 +201,7 @@ const AllProducts = () => {
                               width: `14rem`,
                               height: `16rem`,
                               backgroundImage: `url(${product.imageUrl})`,
-                              backgroundSize: `cover`,
+                              backgroundSize: "cover",
                             }}
                             className="card-img-top"
                           ></div>
@@ -218,13 +218,13 @@ const AllProducts = () => {
                         </Link>
                         <div
                           className="card-body text-center"
-                          style={{ fontSize: `135%`, marginTop: `-15px` }}
+                          style={{ fontSize: `100%`, marginTop: `-15px` }}
                         >
                           <p>${product.price}</p>
                           <button
                             className="btn btn-primary"
                             onClick={(ev) => addToCart(ev, product.id)}
-                            style={{ marginTop: `-30px` }}
+                            style={{ marginTop: `-10px` }}
                           >
                             ADD TO CART
                           </button>
