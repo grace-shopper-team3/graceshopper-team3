@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { processPay, fulfillOrder } from "../checkout/checkoutSlice";
+import { processPay, fulfillOrder } from "./checkoutSlice";
 
 const Checkout = (props) => {
   const { id, name } = useSelector((state) => state.auth.me);
