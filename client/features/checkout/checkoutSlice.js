@@ -1,10 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+const TOKEN = "token";
 
-export const fulfillOrder = createAsyncThunk("fulfillment", async (userId) => {
-  console.log("checking userId arg", userId);
-  const { data } = await axios.put(`/api/orders/${userId}/checkout`);
-  console.log("thunk data", data);
+export const fulfillOrder = createAsyncThunk("fulfillment", async () => {
+  const token = window.localStorage.getItem(TOKEN);
+  const { data } = await axios.put(
+    `/api/orders/checkout`,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
   return data;
 });
 
@@ -18,7 +26,6 @@ const checkoutSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fulfillOrder.fulfilled, (state, action) => {
-        console.log("ACTION PAYLOAD", action.payload);
         state.fulfilledOrder = action.payload;
       })
       .addCase(fulfillOrder.rejected, (state, action) => {

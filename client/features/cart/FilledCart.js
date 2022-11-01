@@ -7,34 +7,35 @@ import {
 } from "./CartSlice";
 import { fulfillOrder } from "../checkout/checkoutSlice";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 const FilledCart = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cart, userId, userInfo } = props;
+  const { cart } = props;
 
   const incrementItem = (productId, quantityInCart) => {
-    dispatch(incrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(incrementItemInCart({ productId, quantityInCart }));
   };
 
   const decrementItem = (productId, quantityInCart) => {
-    dispatch(decrementItemInCart({ userId, productId, quantityInCart }));
+    dispatch(decrementItemInCart({ productId, quantityInCart }));
   };
 
   const removeItem = (productId) => {
-    dispatch(removeFromCart({ userId, productId }));
+    dispatch(removeFromCart({ productId }));
   };
 
-  const handleCheckout = (userId) => {
-    dispatch(fulfillOrder(userId));
+  const handleCheckout = () => {
+    dispatch(fulfillOrder());
     navigate("/checkout");
   };
 
   return (
-    <div className="container-fluid min-vh-100">
-      <div className="row g-1" style={{ padding: "20px" }}>
-        <div className="row">
-          <div className="col-md-6">
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center h-100">
+          <div className="col-md-8 col-lg-7 col-xl-6">
             <h2>Cart</h2>
             <div className="card" style={{ width: "30rem" }}>
               <table className="table align-middle mb-0">
@@ -48,8 +49,8 @@ const FilledCart = (props) => {
                 </thead>
 
                 {cart.map((item) => (
-                  <tbody>
-                    <tr key={item.productId}>
+                  <tbody key={uuidv4()}>
+                    <tr>
                       <td>
                         <div className="d-flex align-items-center">
                           <Link to={`/products/${item.productId}`}>
@@ -127,7 +128,8 @@ const FilledCart = (props) => {
               </table>
             </div>
           </div>
-          <div className="col-md-4">
+
+          <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <h2>Order Summary</h2>
             <div className="card" style={{ width: "30rem" }}></div>
             <div className="row">
@@ -181,7 +183,7 @@ const FilledCart = (props) => {
             <button
               className="btn btn-primary"
               onClick={() => {
-                handleCheckout(userInfo.id);
+                handleCheckout();
               }}
             >
               Checkout
@@ -189,7 +191,7 @@ const FilledCart = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
