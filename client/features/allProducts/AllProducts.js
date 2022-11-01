@@ -97,86 +97,90 @@ const AllProducts = () => {
             </h1>
           </section>
 
-          <section className="row">
-            <div className="col-2 dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Search by Category
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  All
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  Marvel
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterCategory(ev)}
-                >
-                  DC
-                </a>
-              </div>
-            </div>
-            <div className="col-2 dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Search by Price
-              </button>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  All
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  Under $25
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={(ev) => filterPrice(ev)}
-                >
-                  Over $25
-                </a>
-              </div>
-            </div>
-          </section>
           <section>
             <div className="container py-5 h-100">
+              <div className="row ">
+                <div className="d-flex  align-items-center  justify-content-around">
+                  <div className="col-3 dropdown">
+                    <button
+                      className="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Search by Category
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategory(ev)}
+                      >
+                        All
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategory(ev)}
+                      >
+                        Marvel
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterCategory(ev)}
+                      >
+                        DC
+                      </a>
+                    </div>
+                    {/* </div> */}
+                  </div>
+                  {/* <div className="btn-group col-sm"> */}
+                  <div className="col-3 dropdown">
+                    <button
+                      className="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Search by Price
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPrice(ev)}
+                      >
+                        All
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPrice(ev)}
+                      >
+                        Under $25
+                      </a>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(ev) => filterPrice(ev)}
+                      >
+                        Over $25
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="row">
                 {productList.map((product) => (
                   <div className="col-sm">
