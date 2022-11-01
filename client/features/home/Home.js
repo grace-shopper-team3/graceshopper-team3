@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 const Home = (props) => {
   const styles = {
-    card: {
-      width: `25rem`,
-      height: `25em`,
-      display: `flex`,
-      justifyContent: `center`,
-      alignItems: `center`,
-    },
+    // card: {
+    //   width: `25rem`,
+    //   height: `25em`,
+    //   display: `flex`,
+    //   justifyContent: `center`,
+    //   alignItems: `center`,
+    // },
   };
 
   return (
@@ -65,100 +65,93 @@ const Home = (props) => {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      {/* start */} {/* <section> */}
-      {/* <div className="text-center"> */}
-      {/* <div className="container py-3 h-100"> */}
-      <div className="row ">
-        <div className="d-flex   justify-content-start">
-          <div className="col-md">
-            <div className="card" style={styles.card}>
+
+      <div class="row justify-content-md-center">
+        <div className="col-sm">
+          <div className="card" style={styles.card}>
+            <Link
+              to={`/products`}
+              state={{ homePrice: 25 }}
+              style={{
+                fontFamily: "merel-black",
+                color: "black",
+              }}
+            >
+              <img
+                src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
+                className="card-img-top"
+                style={{ height: "300px" }}
+              />{" "}
+            </Link>
+
+            <div className="card-body">
               <Link
                 to={`/products`}
                 state={{ homePrice: 25 }}
                 style={{
                   fontFamily: "merel-black",
                   color: "black",
+                  backgroundColor: "#F6BD60",
+                }}
+                className="btn btn-dark"
+              >
+                <h5 className="card-title">Gift Ideas Under 25$</h5>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm">
+          <div className="card" style={styles.card}>
+            <Link to={`/products`} state={{ homeCategory: "DC" }}>
+              <img
+                src="https://sportshub.cbsistatic.com/i/2021/03/18/f13f4020-06ec-4abe-af95-9cf56ea0c79f/funkoverse-dc-backgrounds-1220069.jpg"
+                className="card-img-top"
+                style={{ height: "300px" }}
+              />{" "}
+            </Link>
+
+            <div className="card-body">
+              <Link
+                className="btn btn-dark"
+                to={`/products`}
+                state={{ homeCategory: "DC" }}
+                style={{
+                  fontFamily: "merel-black",
+                  color: "black",
+                  backgroundColor: "#F6BD60",
                 }}
               >
-                <img
-                  src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
-                  className="card-img-top"
-                  style={{ height: "300px" }}
-                />{" "}
+                <h5 className="card-title">Shop DC Universe</h5>
               </Link>
-
-              <div className="card-body">
-                <Link
-                  to={`/products`}
-                  state={{ homePrice: 25 }}
-                  style={{
-                    fontFamily: "merel-black",
-                    color: "black",
-                    backgroundColor: "#F6BD60",
-                  }}
-                  className="btn btn-dark"
-                >
-                  <h5 className="card-title">Gift Ideas Under 25$</h5>
-                </Link>
-              </div>
             </div>
           </div>
-          <div className="col-md">
-            <div className="card" style={styles.card}>
-              <Link to={`/products`} state={{ homeCategory: "DC" }}>
-                <img
-                  src="https://sportshub.cbsistatic.com/i/2021/03/18/f13f4020-06ec-4abe-af95-9cf56ea0c79f/funkoverse-dc-backgrounds-1220069.jpg"
-                  className="card-img-top"
-                  style={{ height: "300px" }}
-                />{" "}
+        </div>
+        <div className="col-sm">
+          <div className="card" style={styles.card}>
+            <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
+              <img
+                src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marvel-funko-pop-figures-2022-1643297204.jpg"
+                className="card-img-top"
+                style={{ height: "300px" }}
+              />{" "}
+            </Link>
+            <div className="card-body">
+              <Link
+                to={`/products`}
+                state={{ homeCategory: "Marvel" }}
+                style={{
+                  fontFamily: "merel-black",
+                  color: "black",
+                  backgroundColor: "#F6BD60",
+                }}
+                className="btn btn-dark"
+              >
+                <h5 className="card-title">Shop Marvel</h5>
               </Link>
-
-              <div className="card-body">
-                <Link
-                  className="btn btn-dark"
-                  to={`/products`}
-                  state={{ homeCategory: "DC" }}
-                  style={{
-                    fontFamily: "merel-black",
-                    color: "black",
-                    backgroundColor: "#F6BD60",
-                  }}
-                >
-                  <h5 className="card-title">Shop DC Universe</h5>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-md">
-            <div className="card" style={styles.card}>
-              <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
-                <img
-                  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marvel-funko-pop-figures-2022-1643297204.jpg"
-                  className="card-img-top"
-                  style={{ height: "300px" }}
-                />{" "}
-              </Link>
-              <div className="card-body">
-                <Link
-                  to={`/products`}
-                  state={{ homeCategory: "Marvel" }}
-                  style={{
-                    fontFamily: "merel-black",
-                    color: "black",
-                    backgroundColor: "#F6BD60",
-                  }}
-                  className="btn btn-dark"
-                >
-                  <h5 className="card-title">Shop Marvel</h5>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* </div> */}
-      {/* </div> */}
-      {/* </section> */}
     </div>
   );
 };
