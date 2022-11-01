@@ -10,7 +10,7 @@ const TOKEN = "token";
   THUNKS
 */
 export const me = createAsyncThunk("auth/me", async () => {
-  const token = window.localStorage.getItem(TOKEN); 
+  const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
       const res = await axios.get("/auth/me", {
@@ -30,6 +30,29 @@ export const me = createAsyncThunk("auth/me", async () => {
     }
   }
 });
+
+// export const editProfile = createAsyncThunk(
+//   "auth/updateProfile",
+//   async ({ name, username, email }, thunkAPI) => {
+//     const token = window.localStorage.getItem(TOKEN);
+//     try {
+//       if (token) {
+//         const res = await axios.put("/auth/me", {
+//           name,
+//           username,
+//           email,
+//         });
+//       }
+//       return res.data;
+//     } catch (err) {
+//       if (err.response.data) {
+//         return thunkAPI.rejectWithValue(err.response.data);
+//       } else {
+//         return "There was an issue with your request.";
+//       }
+//     }
+//   }
+// );
 
 export const authenticate = createAsyncThunk(
   "auth/authenticate",
@@ -76,12 +99,13 @@ export const authSlice = createSlice({
     builder.addCase(me.rejected, (state, action) => {
       state.error = action.error;
     });
-    // builder.addCase(authenticate.fulfilled, (state, action) => {
-    //   state.me = action.payload;
-    // });
+
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;
     });
+    // builder.addCase(editProfile.fulfilled, (state, action) => {
+    //   state.me = action.payload;
+    // });
   },
 });
 
