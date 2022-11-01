@@ -73,10 +73,21 @@ const SingleProduct = () => {
               </h1> */}
               <div>
                 <h4 style={{ marginTop: `5%` }}>{description}</h4>
-                <h3 style={{ marginTop: `3%`, fontWeight: "bolder" }}>
+                <h3
+                  style={{
+                    marginTop: `3%`,
+                    fontWeight: "bolder",
+                    fontFamily: "TT-Norms-Black",
+                  }}
+                >
                   Category: {category}
                 </h3>
-                <h4 style={{ marginTop: `2%`, fontWeight: "bolder" }}>
+                <h4
+                  style={{
+                    marginTop: `2%`,
+                    fontWeight: "bolder",
+                  }}
+                >
                   ${price}
                 </h4>
               </div>
@@ -84,6 +95,7 @@ const SingleProduct = () => {
               <section>
                 <button
                   className="btn btn-primary"
+                  style={{ fontFamily: "merel-black" }}
                   onClick={(ev) => addToCart(ev)}
                 >
                   ADD TO CART

@@ -85,6 +85,8 @@ const AllProducts = () => {
       )
     : null;
 
+  var button = document.querySelector(".button");
+
   return (
     <div>
       <section className="vh-100">
@@ -96,21 +98,22 @@ const AllProducts = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
-              PunkoFops
+              ALL PRODUCTS
             </h1>
           </section>
 
           <section>
             <div className="container py-5 h-100">
-              <div className="row ">
-                <div className="d-flex  align-items-center  justify-content-around">
-                  <div className="col-3 dropdown">
+              <div className="row p-2">
+                <div className="d-flex   justify-content-start">
+                  <div className="col-md-2 dropdown">
                     <button
                       className="btn btn-primary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
+                      style={{ fontFamily: "merel-black" }}
                       aria-expanded="false"
                     >
                       Search by Category
@@ -144,7 +147,7 @@ const AllProducts = () => {
                     {/* </div> */}
                   </div>
                   {/* <div className="btn-group col-sm"> */}
-                  <div className="col-3 dropdown">
+                  <div className="col-md-2 .offset-md-3 dropdown">
                     <button
                       className="btn btn-primary dropdown-toggle"
                       type="button"
@@ -152,6 +155,7 @@ const AllProducts = () => {
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
+                      style={{ fontFamily: "merel-black" }}
                     >
                       Search by Price
                     </button>
@@ -224,7 +228,10 @@ const AllProducts = () => {
                           <button
                             className="btn btn-primary"
                             onClick={(ev) => addToCart(ev, product.id)}
-                            style={{ marginTop: `-10px` }}
+                            style={{
+                              marginTop: `-10px`,
+                              fontFamily: "merel-black",
+                            }}
                           >
                             ADD TO CART
                           </button>

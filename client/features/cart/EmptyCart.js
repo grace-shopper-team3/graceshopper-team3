@@ -24,6 +24,7 @@ const EmptyCart = () => {
                     to="/products"
                     className="btn btn-primary cart-btn-transform m-3"
                     data-abc="true"
+                    style={{ fontFamily: "merel-black" }}
                   >
                     Continue Shopping
                   </Link>

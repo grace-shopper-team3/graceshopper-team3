@@ -78,7 +78,7 @@ const Checkout = (props) => {
                               {elem.name}
                             </span>
 
-                            <span className="d-block">
+                            <span className="d-block text-muted">
                               Quantity: {elem.order_product.quantityInCart}
                             </span>
                           </td>

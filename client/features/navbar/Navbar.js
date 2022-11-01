@@ -10,12 +10,12 @@ const Navbar = () => {
   const cart = useSelector((state) => state.cart.cart);
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <div className="container-fluid">
         <Link to="/">
           <img
-            style={{ width: 70, height: 40 }}
-            src="https://i.imgur.com/gxa6IWX.png"
+            style={{ width: 80, height: 40 }}
+            src="https://i.imgur.com/eotngFm.png"
           />
         </Link>
         <button

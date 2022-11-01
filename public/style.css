@@ -39,9 +39,12 @@ h5 {
   font-size: 25px;
 }
 
-nav{
-font-family: "merel-black";
-}
+/* .nav-link{
+font-family: "TT-Norms-Black";
+} */
+.nav-link{
+  font-family: "merel-black";
+  }
 
 form div {
   margin: 1em;
@@ -57,11 +60,11 @@ img {
   font-weight: bold;
 }
 .navbar .navbar-nav .nav-link {
-  color: black;
-  font-size: 1.1em;
+  color: white;
+  font-size: 1.3em;
 }
 .navbar .navbar-nav .nav-link:hover {
 background-color: #F6BD60;
-color: #fff;
+color: black;
 }
 

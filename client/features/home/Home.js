@@ -9,11 +9,11 @@ const Home = (props) => {
   return (
     <div className="container-fluid">
       <div
-        id="carousel-control-width"
+        id="carouselExampleControls"
         className="carousel slide"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner" id="carousel">
+        <div className="carousel-inner">
           <div className="carousel-item active">
             <img
               src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
@@ -59,7 +59,7 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div className="container text-center" style={{ paddingBottom: "10px" }}>
+      {/* <div className="container text-center" style={{ paddingBottom: "10px" }}>
         <div className="row g-3">
           <div className="col-6">
             <Link
@@ -80,7 +80,7 @@ const Home = (props) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

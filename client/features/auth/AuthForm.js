@@ -59,7 +59,11 @@ const AuthForm = ({ name, displayName }) => {
                 </div>
                 <div className="row">
                   <div className="d-grid gap-2">
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      style={{ fontFamily: "merel-black" }}
+                    >
                       {displayName}
                     </button>
                     <small>
