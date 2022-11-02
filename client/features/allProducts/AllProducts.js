@@ -89,6 +89,7 @@ const AllProducts = () => {
   const addToCart = (ev, productId) => {
     ev.preventDefault();
     dispatch(addItemToCart({ productId }));
+    dispatch(fetchCart());
   };
 
   const allProducts = useSelector((state) => state.allProducts.products);
