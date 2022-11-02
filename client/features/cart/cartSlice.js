@@ -20,7 +20,7 @@ export const fetchCart = createAsyncThunk("fetchOrder_Products", async () => {
 
 export const addItemToCart = createAsyncThunk(
   "addOrder_Product",
-  async ({ userId, productId }, {dispatch}) => {
+  async ({ productId }, {dispatch}) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
       const { data } = await axios.post(
@@ -157,8 +157,13 @@ const cartSlice = createSlice({
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
       const token = window.localStorage.getItem(TOKEN);
       if (token){
-      state.cart.push(action.payload);
-      }else{
+      if (!state.cart){
+        state.cart = action.payload;
+      }else if (state.cart.length > 1) {
+        state.cart.push(action.payload);
+      }
+      }
+      else{
       let init = false
       for (let i =0;i<localArry.length;i++){
         if (localArry[i].id===action.payload.id){
