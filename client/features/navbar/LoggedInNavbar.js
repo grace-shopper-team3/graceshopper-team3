@@ -6,21 +6,29 @@ import { logout } from "../../app/store";
 import { fetchCart } from "../cart/cartSlice";
 
 const LoggedInNavbar = (props) => {
-  const { cart } = props;
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const logoutAndRedirectHome = () => {
-    dispatch(logout());
-    // navigate("/home");
-  };
-  const { name, id } = useSelector((state) => state.auth.me);
-  // const capitalizeFirst = (str) => {
-  //   return str?.charAt(0).toUpperCase() + str?.slice(1);
-  // };
-
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
+
+  const cart = useSelector((state) => state.cart.cart);
+
+  const cartCheck = (cart) => {
+    let ids = [];
+    let qty = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+      if (!ids.includes(cart[i].productId)) {
+        qty += cart[i].quantityInCart;
+      }
+      ids.push(cart[i].productId);
+    }
+    return qty;
+  };
+
+  const logoutAndRedirectHome = () => {
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -62,12 +70,7 @@ const LoggedInNavbar = (props) => {
       <li className="nav-item justify-content-end">
         <Link className="nav-link active" aria-current="page" to="/cart">
           <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {cart && cart.length
-              ? cart.reduce(
-                  (accum, element) => accum + element.quantityInCart,
-                  0
-                )
-              : 0}
+            {cart && cart.length ? cartCheck(cart) : 0}
           </span>
 
           <svg

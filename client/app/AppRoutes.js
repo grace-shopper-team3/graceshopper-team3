@@ -10,6 +10,7 @@ import Cart from "../features/cart/Cart";
 import { me } from "./store";
 import Checkout from "../features/checkout/Checkout";
 import Profile from "../features/auth/Profile";
+import Navbar from "../features/navbar/Navbar";
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -18,6 +19,8 @@ const AppRoutes = () => {
   useEffect(() => {
     dispatch(me());
   }, []);
+
+  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <div>

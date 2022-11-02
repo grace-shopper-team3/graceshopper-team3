@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 const Home = (props) => {
   const styles = {
     card: {
-      // width: `25rem`,
-      // height: `25em`,
-
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
@@ -68,7 +65,7 @@ const Home = (props) => {
       </div>
 
       <div
-        class="row justify-content-md-center"
+        className="row justify-content-md-center"
         style={{ paddingBottom: "20px" }}
       >
         <div className="col-md">

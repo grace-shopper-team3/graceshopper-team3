@@ -6,9 +6,10 @@ import { addItemToCart, fetchCart } from "../cart/cartSlice";
 import { useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
   const itemsPerPage = 12;
   const [itemOffset, setItemOffset] = useState(0);
+  const cart = useSelector((state) => state.cart.cart);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(3);
@@ -18,8 +19,6 @@ const AllProducts = () => {
   let homePrice = null;
   location.state ? ({ homeCategory } = location.state) : null;
   location.state ? ({ homePrice } = location.state) : null;
-
-  const userInfo = useSelector((state) => state.auth.me);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -92,6 +91,8 @@ const AllProducts = () => {
     dispatch(fetchCart());
   };
 
+  // once it fetches cart again, quantity works fine
+
   const allProducts = useSelector((state) => state.allProducts.products);
   let [productList, setProductList] = useState([]);
 
@@ -121,8 +122,9 @@ const AllProducts = () => {
     ? setCurrentItems(productList.slice(0, 12))
     : null;
 
-  console.log("currentItems", currentItems);
-
+  // useEffect(() => {
+  //   dispatch(fetchCart());
+  // }, [dispatch]);
   return (
     <div>
       <section className="">
@@ -146,7 +148,6 @@ const AllProducts = () => {
                     <button
                       className="btn  dropdown-toggle"
                       type="button"
-                      z
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"

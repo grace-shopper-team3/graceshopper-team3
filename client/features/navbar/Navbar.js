@@ -1,13 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchCart } from "../cart/cartSlice";
 import LoggedInNavbar from "./LoggedInNavbar";
 import NotLoggedInNavbar from "./NotLoggedInNavbar";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-
-  const cart = useSelector((state) => state.cart.cart);
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
@@ -45,11 +44,7 @@ const Navbar = () => {
                 Products
               </Link>
             </li>
-            {isLoggedIn ? (
-              <LoggedInNavbar cart={cart} />
-            ) : (
-              <NotLoggedInNavbar />
-            )}
+            {isLoggedIn ? <LoggedInNavbar /> : <NotLoggedInNavbar />}
           </ul>
         </div>
       </div>
