@@ -32,7 +32,7 @@ const OrdersHistory = (props) => {
                 src="https://i5.walmartimages.com/asr/9730786f-fa24-4330-ac97-ed27d8cbd965.9ddfc005b61e51d2308bff4221582031.png"
               />
               <span className="font-weight-bold" style={{ fontSize: "30px" }}>
-                {name[0].toUpperCase() + name.slice(1)}
+                Welcome {name[0].toUpperCase() + name.slice(1)}
               </span>
               <span> </span>
             </div>

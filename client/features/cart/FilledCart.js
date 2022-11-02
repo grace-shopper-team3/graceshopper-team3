@@ -96,18 +96,34 @@ const FilledCart = (props) => {
                       </td>
                       <td>
                         <p className="fw-normal mb-1">
-                          <button
-                            type="button"
-                            className="btn btn-outline-secondary"
-                            onClick={() => {
-                              decrementItem(
-                                item.productId,
-                                item.quantityInCart
-                              );
-                            }}
-                          >
-                            -
-                          </button>
+                          {item.quantityInCart == 1 ? (
+                            <button
+                              type="button"
+                              className="btn btn-outline-secondary"
+                              disabled
+                              onClick={() => {
+                                decrementItem(
+                                  item.productId,
+                                  item.quantityInCart
+                                );
+                              }}
+                            >
+                              -
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="btn btn-outline-secondary"
+                              onClick={() => {
+                                decrementItem(
+                                  item.productId,
+                                  item.quantityInCart
+                                );
+                              }}
+                            >
+                              -
+                            </button>
+                          )}
                           &nbsp;
                           {`${item.quantityInCart}`}
                           &nbsp;
