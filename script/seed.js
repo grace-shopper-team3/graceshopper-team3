@@ -89,7 +89,7 @@ async function seed() {
       name: "Groot",
       price: 85,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "Marvel",
@@ -99,7 +99,8 @@ async function seed() {
     Product.create({
       name: "Thanos",
       price: 96,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -120,7 +121,7 @@ async function seed() {
       name: "Batman",
       price: 55,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -131,7 +132,7 @@ async function seed() {
       name: "StarLord",
       price: 80,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Test the limits of reality and leap into the Marvel multiverse with Pop! Doctor Strange from Doctor Strange in the Multiverse of Madness! Theres even a 1 in 6 chance you may find the cosmic chase variant. Vinyl bobblehead is approximately 4.15-inches tall.",
       category: "Marvel",
@@ -174,7 +175,8 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 133,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "Marvel",
@@ -185,7 +187,7 @@ async function seed() {
       name: "Thanos",
       price: 24,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Your Guardians of the Galaxy Vol. 2 collection is worried sick looking for Pop! Groot. Help them find their Flora Colossus toddler. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -195,7 +197,8 @@ async function seed() {
     Product.create({
       name: "Winter Soldier",
       price: 133,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -205,7 +208,8 @@ async function seed() {
     Product.create({
       name: "Nick Fury",
       price: 13,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "DC",
@@ -215,7 +219,8 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 52,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -235,7 +240,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 108,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "Marvel",
@@ -245,7 +251,8 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 73,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -255,7 +262,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 58,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -277,7 +285,7 @@ async function seed() {
       name: "Doctor Strange",
       price: 44,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "DC",
@@ -287,7 +295,8 @@ async function seed() {
     Product.create({
       name: "Nick Fury",
       price: 69,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "Marvel",
@@ -319,7 +328,7 @@ async function seed() {
       name: "Wanda",
       price: 68,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "DC",
@@ -329,7 +338,8 @@ async function seed() {
     Product.create({
       name: "Thanos",
       price: 1,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -339,7 +349,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 132,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -361,7 +372,7 @@ async function seed() {
       name: "Superman",
       price: 6,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -382,7 +393,8 @@ async function seed() {
     Product.create({
       name: "Groot",
       price: 11,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -393,7 +405,7 @@ async function seed() {
       name: "Moon Knight",
       price: 107,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Test the limits of reality and leap into the Marvel multiverse with Pop! Doctor Strange from Doctor Strange in the Multiverse of Madness! Theres even a 1 in 6 chance you may find the cosmic chase variant. Vinyl bobblehead is approximately 4.15-inches tall.",
       category: "Marvel",
@@ -424,7 +436,8 @@ async function seed() {
     Product.create({
       name: "Spiderman",
       price: 5,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "Marvel",
@@ -434,7 +447,7 @@ async function seed() {
     Product.create({
       name: "Wanda",
       price: 106,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -444,7 +457,8 @@ async function seed() {
     Product.create({
       name: "StarLord",
       price: 54,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -454,7 +468,8 @@ async function seed() {
     Product.create({
       name: "Thanos",
       price: 112,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "Marvel",
@@ -464,7 +479,7 @@ async function seed() {
     Product.create({
       name: "Vision",
       price: 4,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -485,7 +500,7 @@ async function seed() {
       name: "Spiderman",
       price: 83,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -506,7 +521,8 @@ async function seed() {
     Product.create({
       name: "Nick Fury",
       price: 52,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Test the limits of reality and leap into the Marvel multiverse with Pop! Doctor Strange from Doctor Strange in the Multiverse of Madness! Theres even a 1 in 6 chance you may find the cosmic chase variant. Vinyl bobblehead is approximately 4.15-inches tall.",
       category: "Marvel",
@@ -526,7 +542,8 @@ async function seed() {
     Product.create({
       name: "StarLord",
       price: 141,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -536,7 +553,8 @@ async function seed() {
     Product.create({
       name: "Vision",
       price: 1,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "Marvel",
@@ -546,7 +564,8 @@ async function seed() {
     Product.create({
       name: "Moon Knight",
       price: 111,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "Marvel",
@@ -568,7 +587,7 @@ async function seed() {
       name: "Wanda",
       price: 27,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "DC",
@@ -578,7 +597,7 @@ async function seed() {
     Product.create({
       name: "Moon Knight",
       price: 80,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -599,7 +618,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 134,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Test the limits of reality and leap into the Marvel multiverse with Pop! Doctor Strange from Doctor Strange in the Multiverse of Madness! Theres even a 1 in 6 chance you may find the cosmic chase variant. Vinyl bobblehead is approximately 4.15-inches tall.",
       category: "DC",
@@ -610,7 +630,7 @@ async function seed() {
       name: "Thanos",
       price: 89,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "DC",
@@ -632,7 +652,7 @@ async function seed() {
       name: "Winter Soldier",
       price: 126,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -642,7 +662,8 @@ async function seed() {
     Product.create({
       name: "Thanos",
       price: 85,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "Marvel",
@@ -652,7 +673,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 140,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "Marvel",
@@ -662,7 +684,7 @@ async function seed() {
     Product.create({
       name: "Vision",
       price: 65,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "Marvel",
@@ -672,7 +694,8 @@ async function seed() {
     Product.create({
       name: "Winter Soldier",
       price: 134,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "Marvel",
@@ -683,7 +706,7 @@ async function seed() {
       name: "Wanda",
       price: 64,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "Marvel",
@@ -703,7 +726,7 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 4,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -713,7 +736,7 @@ async function seed() {
     Product.create({
       name: "Vision",
       price: 143,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -723,7 +746,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 44,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "Marvel",
@@ -734,7 +758,7 @@ async function seed() {
       name: "Nick Fury",
       price: 62,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "DC",
@@ -744,7 +768,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 130,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -775,7 +800,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 110,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "Marvel",
@@ -796,7 +822,7 @@ async function seed() {
       name: "Winter Soldier",
       price: 0,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "DC",
@@ -806,7 +832,8 @@ async function seed() {
     Product.create({
       name: "Spiderman",
       price: 46,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "DC",
@@ -838,7 +865,8 @@ async function seed() {
     Product.create({
       name: "Groot",
       price: 120,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Your Guardians of the Galaxy Vol. 2 collection is worried sick looking for Pop! Groot. Help them find their Flora Colossus toddler. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -848,7 +876,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 98,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -858,7 +887,7 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 145,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "DC",
@@ -868,7 +897,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 41,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -878,7 +908,8 @@ async function seed() {
     Product.create({
       name: "Winter Soldier",
       price: 121,
-      imageUrl: "https://m.media-amazon.com/images/I/61DjVipqI+L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/8c8affbe-8a14-42ea-9946-7f622e86d05d.9bf14d85f71ca51d14fd0b24ba5ed4c3.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -889,7 +920,7 @@ async function seed() {
       name: "Winter Soldier",
       price: 39,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -911,7 +942,7 @@ async function seed() {
       name: "Superman",
       price: 80,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Your Marvel collection is about to go on a galactic adventure with the arrival of Pop! Star-Lord. Theres even a 1 in 6 chance that you may find the chase of Pop! Star-Lord with his mask on. Vinyl bobblehead is approximately 4-inches tall.",
       category: "DC",
@@ -921,7 +952,8 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 31,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -931,7 +963,8 @@ async function seed() {
     Product.create({
       name: "Doctor Strange",
       price: 21,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "Marvel",
@@ -941,7 +974,8 @@ async function seed() {
     Product.create({
       name: "Winter Soldier",
       price: 24,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "Marvel",
@@ -951,7 +985,8 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 17,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "DC",
@@ -962,7 +997,7 @@ async function seed() {
       name: "Nick Fury",
       price: 49,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "DC",
@@ -973,7 +1008,7 @@ async function seed() {
       name: "Moon Knight",
       price: 1,
       imageUrl:
-        "https://i5.walmartimages.com/asr/e099bc67-f75f-4824-989b-dc9cf093aea2.a872a158a6021212baf5611f6436a817.png",
+        "https://i5.walmartimages.com/asr/46f15960-c7bb-41db-80cc-bad0319c48d0.451c73330e35557edbbd174dcda9334d.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "DC",
@@ -983,7 +1018,7 @@ async function seed() {
     Product.create({
       name: "Superman",
       price: 113,
-      imageUrl: "https://m.media-amazon.com/images/I/41i86B2N36L.jpg",
+      imageUrl: "https://i5.walmartimages.com/asr/012d5101-92e5-4ac2-97e7-f2a4f08d242c.09479720fcb4693eb449c22a56c238ab.png",
       description:
         "Welcome to chaos. Embrace everything that has brought you to this moment with Marvels Moon Knight. The Funko exclusive Pop! Moon Knight is ready to take on the action as part of your Marvel collection. Summon him to complete the phases of your Moon Knight set. Vinyl bobblehead is approximately 4-inches tall",
       category: "Marvel",
@@ -994,7 +1029,7 @@ async function seed() {
       name: "Doctor Strange",
       price: 68,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Your Guardians of the Galaxy Vol. 2 collection is worried sick looking for Pop! Groot. Help them find their Flora Colossus toddler. Collectible stands approximately 3.75-inches tall.",
       category: "Marvel",
@@ -1005,7 +1040,7 @@ async function seed() {
       name: "Thanos",
       price: 110,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Bucky Barnes joins The Falcon (also known as Sam Wilson) on a global adventure as the Winter Soldier. What will Pop! Winter Soldier encounter when he joins your Marvel The Falcon and the Winter Soldier collection? Vinyl figure is approximately 5-inches tall.",
       category: "DC",
@@ -1015,7 +1050,8 @@ async function seed() {
     Product.create({
       name: "Vision",
       price: 77,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Your Guardians of the Galaxy Vol. 2 collection is worried sick looking for Pop! Groot. Help them find their Flora Colossus toddler. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -1025,7 +1061,8 @@ async function seed() {
     Product.create({
       name: "StarLord",
       price: 7,
-      imageUrl: "https://m.media-amazon.com/images/I/416hCIguADL._AC_.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/9221a56a-77cb-4f4c-99ab-abb08486aa9a.ffb975e1eebbdd335e51a5589092799f.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "DC",
@@ -1035,7 +1072,8 @@ async function seed() {
     Product.create({
       name: "Winter Soldier",
       price: 97,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -1057,7 +1095,7 @@ async function seed() {
       name: "Moon Knight",
       price: 82,
       imageUrl:
-        "https://m.media-amazon.com/images/I/41-CCVDjJrL._AC_SY580_.jpg",
+        "https://i5.walmartimages.com/asr/1e6c2b33-2497-43b6-a170-5dd49a18c995.f1011bbaa7034cccbefc7401d09ed475.png",
       description:
         "Tony Stark gears up in his red and gold Iron Man suit to join your Marvel Avengers: Endgame collection as a Mega Pop! figure. Complete your Marvel lineup with the towering, Funko Exclusive figure! Vinyl figure is approximately 18-inches tall.",
       category: "Marvel",
@@ -1068,7 +1106,7 @@ async function seed() {
       name: "Wanda",
       price: 37,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Your Guardians of the Galaxy Vol. 2 collection is worried sick looking for Pop! Groot. Help them find their Flora Colossus toddler. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -1099,7 +1137,8 @@ async function seed() {
     Product.create({
       name: "Batman",
       price: 71,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Assemble the Avengers to keep Thanos from getting the Infinity Stones in your Marvel Infinity War collection with the help of Pop! Iron Spider. Collectible stands approximately 3.75-inches tall.",
       category: "DC",
@@ -1109,7 +1148,8 @@ async function seed() {
     Product.create({
       name: "Groot",
       price: 66,
-      imageUrl: "https://m.media-amazon.com/images/I/5118mkJR64L.jpg",
+      imageUrl:
+        "https://i5.walmartimages.com/asr/dc47e701-06d8-414a-bbbd-724ca6bfe7a2.ed75ec07bddb9c915ddf8667aab67588.png",
       description:
         "Join The Caped Crusader™, Batman, in his early years of fighting crime in Gotham City. This Jumbo Pop! Batman™ is ready to enact vengeance. Celebrate one of DC Comics’ most recognizable superheroes by adding the towering Pop! Batman to your DC collection of The Batman. Vinyl figure is approximately 10.75-inches tall.",
       category: "Marvel",
@@ -1120,7 +1160,7 @@ async function seed() {
       name: "Spiderman",
       price: 90,
       imageUrl:
-        "https://www.tradeinn.com/f/13820/138203491/funko-pop-marvel-avengers-endgame-iron-man-exclusive.jpg",
+        "https://i5.walmartimages.com/asr/a6bde2e2-7f2b-4604-b08e-73243bf454be_1.35710300994c6dd89526ff9d0eae2d46.png?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       description:
         "Shape-shifting Skrulls have been infiltrating the Earth for years. Who do you trust? One of the greatest super spies in the world, Nick Fury, as a Pop! is ready to uncover the truth in your collection. Add this 2022 New York Comic-Con exclusive Pop! Nick Fury from Marvel Studios’ Secret Invasion to your team to see what takes shape. Vinyl bobblehead is approximately 3.94-inches tall.",
       category: "Marvel",

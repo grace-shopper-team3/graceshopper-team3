@@ -21,21 +21,18 @@ const Home = (props) => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
+              src="https://i.ytimg.com/vi/FDEtkcYZjRk/maxresdefault.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
-              src="https://assets-prd.ignimgs.com/2022/07/25/black-panther-funko-pops-1658775848280.png?width=1280"
+              src="https://images.alphacoders.com/888/888417.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
-            <img
-              src="https://assets-prd.ignimgs.com/2022/04/18/thor-love-thunder-funko-pops-1650298520364.png?width=1280"
-              className=" w-100"
-            />
+            <img src="https://i.imgur.com/yUm4b0G.png" className=" w-100" />
           </div>
         </div>
         <button

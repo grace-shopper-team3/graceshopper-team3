@@ -20,11 +20,25 @@ const LoggedInNavbar = (props) => {
     for (let i = 0; i < cart.length; i++) {
       if (!ids.includes(cart[i].productId)) {
         qty += cart[i].quantityInCart;
+        ids.push(cart[i].productId);
       }
-      ids.push(cart[i].productId);
     }
     return qty;
   };
+  // const cartCheck = (cart) => {
+  //   let ids = [];
+  //   let qty = 0;
+
+  //   for (let i = 0; i < cart.length; i++) {
+  //     if (!ids.includes(cart[i].productId)) {
+  //       qty += cart[i].quantityInCart;
+  //       ids.push(cart[i].productId);
+  //     } else {
+  //       qty++;
+  //     }
+  //   }
+  //   return qty;
+  // };
 
   const logoutAndRedirectHome = () => {
     dispatch(logout());
@@ -70,7 +84,7 @@ const LoggedInNavbar = (props) => {
       <li className="nav-item justify-content-end">
         <Link className="nav-link active" aria-current="page" to="/cart">
           <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {cart && cart.length ? cartCheck(cart) : 0}
+            {cart && cart.length ? cartCheck(cart) + 1 : 0}
           </span>
 
           <svg

@@ -7,6 +7,10 @@
   font-family: merel-black;
   src: url(merel-black/Merel\ Light.otf);
 }
+/* body {
+  background-image: url("https://i.imgur.com/KMz0LUB.png");
+
+} */
 
 label {
   display: block;
