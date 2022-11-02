@@ -34,7 +34,7 @@ const historySlice = createSlice({
       })
       .addCase(getOrdersHistory.rejected, (state, action) => {
         state.error = action.error;
-      })
+      });
   },
 });
 

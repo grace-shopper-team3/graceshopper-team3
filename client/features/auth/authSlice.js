@@ -31,29 +31,6 @@ export const me = createAsyncThunk("auth/me", async () => {
   }
 });
 
-// export const editProfile = createAsyncThunk(
-//   "auth/updateProfile",
-//   async ({ name, username, email }, thunkAPI) => {
-//     const token = window.localStorage.getItem(TOKEN);
-//     try {
-//       if (token) {
-//         const res = await axios.put("/auth/me", {
-//           name,
-//           username,
-//           email,
-//         });
-//       }
-//       return res.data;
-//     } catch (err) {
-//       if (err.response.data) {
-//         return thunkAPI.rejectWithValue(err.response.data);
-//       } else {
-//         return "There was an issue with your request.";
-//       }
-//     }
-//   }
-// );
-
 export const authenticate = createAsyncThunk(
   "auth/authenticate",
   async ({ name, email, username, password, method }, thunkAPI) => {
@@ -76,7 +53,35 @@ export const authenticate = createAsyncThunk(
   }
 );
 
-
+export const editProfile = createAsyncThunk(
+  "auth/profile",
+  async ({ name, email }) => {
+    const token = window.localStorage.getItem(TOKEN);
+    try {
+      if (token) {
+        const { data } = await axios.put(
+          "/auth/profile",
+          {
+            name,
+            email,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        return data;
+      }
+    } catch (err) {
+      if (err.response.data) {
+        return thunkAPI.rejectWithValue(err.response.data);
+      } else {
+        return "There was an issue with your request.";
+      }
+    }
+  }
+);
 
 /*
   SLICE
@@ -105,9 +110,9 @@ export const authSlice = createSlice({
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;
     });
-    // builder.addCase(editProfile.fulfilled, (state, action) => {
-    //   state.me = action.payload;
-    // });
+    builder.addCase(editProfile.fulfilled, (state, action) => {
+      state.me = action.payload;
+    });
   },
 });
 
