@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -7,24 +7,27 @@ import { fetchCart } from "../cart/cartSlice";
 
 const LoggedInNavbar = (props) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // dispatch(fetchCart());
+  // }, [dispatch]);
 
-  const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart.cart).reduce(
+    (accum, element) => accum + element.quantityInCart,
+    0
+  );
+  const [localCart, setLocalCart] = useState();
+  // const cartCheck = (cart) => {
+  //   let ids = [];
+  //   let qty = 0;
 
-  const cartCheck = (cart) => {
-    let ids = [];
-    let qty = 0;
-
-    for (let i = 0; i < cart.length; i++) {
-      if (!ids.includes(cart[i].productId)) {
-        qty += cart[i].quantityInCart;
-        ids.push(cart[i].productId);
-      }
-    }
-    return qty;
-  };
+  //   for (let i = 0; i < cart.length; i++) {
+  //     if (!ids.includes(cart[i].productId)) {
+  //       qty += cart[i].quantityInCart;
+  //       ids.push(cart[i].productId);
+  //     }
+  //   }
+  //   return qty;
+  // };
   // const cartCheck = (cart) => {
   //   let ids = [];
   //   let qty = 0;
@@ -84,7 +87,13 @@ const LoggedInNavbar = (props) => {
       <li className="nav-item justify-content-end">
         <Link className="nav-link active" aria-current="page" to="/cart">
           <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {cart && cart.length ? cartCheck(cart) + 1 : 0}
+            {/* {cart && cart.length ? cartCheck(cart) : 0} */}
+            {cart && cart.length
+              ? cart.reduce(
+                  (accum, element) => accum + element.quantityInCart,
+                  0
+                )
+              : 0}
           </span>
 
           <svg

@@ -15,8 +15,9 @@ const Home = (props) => {
     <div className="container-fluid">
       <div
         id="carouselExampleControls"
-        className="carousel slide"
+        className="carousel slide "
         data-bs-ride="carousel"
+        style={{ alignItems: "center", justifyContent: "center" }}
       >
         <div className="carousel-inner">
           <div className="carousel-item active">

@@ -9,6 +9,9 @@ const SingleProduct = () => {
   const { productId } = useParams();
   const cart = useSelector((state) => state.cart.cart);
 
+  const capitalizeAll = (str) => {
+    return str?.toUpperCase();
+  };
   const addToCart = (ev) => {
     ev.preventDefault();
     cart.map((item) => {
@@ -40,7 +43,7 @@ const SingleProduct = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
-              {name}
+              {capitalizeAll(name)}
             </h1>
           </section>
 

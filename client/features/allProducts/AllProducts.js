@@ -86,9 +86,9 @@ const AllProducts = (props) => {
   };
 
   const addToCart = (ev, productId) => {
-    ev.preventDefault();
+    // ev.preventDefault();
     dispatch(addItemToCart({ productId }));
-    dispatch(fetchCart());
+    // dispatch(fetchCart());
   };
 
   // once it fetches cart again, quantity works fine
@@ -127,7 +127,7 @@ const AllProducts = (props) => {
   // }, [dispatch]);
   return (
     <div>
-      <section className="">
+      <section>
         <div id="AllProducts">
           <section>
             <h1
@@ -246,20 +246,17 @@ const AllProducts = (props) => {
                               to={`/products/${product.id}`}
                               style={{ textDecoration: `none` }}
                             >
-                              <div
-                                style={{
-                                  width: `14rem`,
-                                  height: `16rem`,
-                                  backgroundImage: `url(${product.imageUrl})`,
-                                  backgroundSize: "cover",
-                                }}
-                                className="card-img-top"
-                              ></div>
+                              <div>
+                                <img
+                                  className="card-img-top"
+                                  src={product.imageUrl}
+                                />
+                              </div>
                               <h5
                                 className="card-title text-center"
                                 style={{
                                   color: `black`,
-                                  marginTop: `20px`,
+                                  // marginTop: `20px`,
                                   fontSize: `135%`,
                                 }}
                               >
