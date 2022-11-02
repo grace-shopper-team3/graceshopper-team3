@@ -175,6 +175,7 @@ const cartSlice = createSlice({
 
 
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
+
       const token = window.localStorage.getItem(TOKEN);
       if (token){
       if (!state.cart){
@@ -213,6 +214,7 @@ const cartSlice = createSlice({
         return item;
       })
     }
+
 
     });
 
