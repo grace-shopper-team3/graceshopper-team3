@@ -6,12 +6,16 @@ const TOKEN = "token";
 export const fetchCart = createAsyncThunk("fetchOrder_Products", async () => {
   const token = window.localStorage.getItem(TOKEN);
   if(token) {
+   try{
     const { data } = await axios.get(`/api/order_products/cart`, {
       headers: {
         authorization: token,
       },
     });
     return data;
+}catch(error){
+    console.log(error)
+}
   } else {
     return JSON.parse(window.localStorage.products)
   }
@@ -23,7 +27,8 @@ export const addItemToCart = createAsyncThunk(
   async ({ productId }, {dispatch}) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
-      const { data } = await axios.post(
+      try{ 
+        const { data } = await axios.post(
                 `/api/order_products/cart`,
                 {
                   productId,
@@ -35,6 +40,9 @@ export const addItemToCart = createAsyncThunk(
                 }
               );
               return data;
+        }catch(error){
+            console.log(error)
+        }
 
     } else  {
       const { payload } = await dispatch(fetchSingleProduct(productId))
@@ -58,6 +66,7 @@ export const incrementItemInCart = createAsyncThunk(
   async ({ productId, quantityInCart }, {dispatch}) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
+        try{
       quantityInCart++;
       const { data } = await axios.put(
         `/api/order_products/cart`,
@@ -72,6 +81,9 @@ export const incrementItemInCart = createAsyncThunk(
         }
       );
       return data;
+    }catch(error){
+        console.log(error)
+    }
     }else{
       let localArray = JSON.parse(window.localStorage.getItem('products'))
       for (let i =0;i<localArray.length;i++){
@@ -88,6 +100,7 @@ export const decrementItemInCart = createAsyncThunk(
   async ({ productId, quantityInCart }) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
+        try{
       quantityInCart--;
       const { data } = await axios.put(
         `/api/order_products/cart`,
@@ -102,6 +115,9 @@ export const decrementItemInCart = createAsyncThunk(
         }
       );
       return data;
+    }catch(error){
+        console.log(error)
+    }
     } else {
       let localArray = JSON.parse(window.localStorage.getItem('products'))
       for (let i =0;i<localArray.length;i++){
@@ -122,12 +138,16 @@ export const removeFromCart = createAsyncThunk(
   async ({ productId }) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
+        try{
       await axios.delete(`/api/order_products/${productId}/cart`, {
         headers: {
           authorization: token,
         },
       });
       return productId;
+    }catch(error){
+        console.log(error)
+    }
     } else {
       let localArray = JSON.parse(window.localStorage.getItem('products'))
       localArray = localArray.filter(product => product.id !== productId)

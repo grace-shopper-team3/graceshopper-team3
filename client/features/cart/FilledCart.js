@@ -220,39 +220,63 @@ if(token){
     return (
       <section className="vh-100">
         <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center h-100">
+          <div className="row d-flex justify-content-center p-2 h-100">
             <div className="col-md-8 col-lg-7 col-xl-6">
-              <h2>Cart</h2>
-              <div className="card" style={{ width: "30rem" }}>
-                <table className="table align-middle mb-0">
+              <h2 style={{ paddingBottom: "20px" }}> My Cart</h2>
+  
+              <div className="card">
+                <table className="table table-hover mb-0">
                   <thead>
                     <tr>
-                      <th>Product</th>
-                      <th>Quantity</th>
-                      <th></th>
-                      <th>Total</th>
+                      <th
+                        scope="col"
+                        // style={{ padding: "5px" }}/
+                        className="text-muted "
+                      >
+                        Item
+                      </th>
+                      <th scope="col" className="text-muted">
+                        Quantity
+                      </th>
+                      <th scope="col" className="text-muted"></th>
+                      <th scope="col" className="text-muted">
+                        Total
+                      </th>
                     </tr>
                   </thead>
   
                   {cart.map((item) => (
-                    <tbody key={uuidv4()}>
+                    <tbody
+                      style={{
+                        horizontalAlign: "start",
+                        verticalAlign: " middle",
+                      }}
+                      key={uuidv4()}
+                    >
                       <tr>
                         <td>
-                          <div className="d-flex align-items-center">
-                            <Link to={`/products/${item.id}`}>
+                          <div className="d-flex align-items-center ">
+                            <Link to={`/products/${item.productId}`}>
                               <img
                                 src={`${item.imageUrl}`}
-                                alt=""
-                                style={{ width: "60px", height: "70px" }}
+                                style={{
+                                  justifyContent: "start",
+                                  width: "80px",
+                                  height: "90px",
+                                }}
                               />
                             </Link>
+  
                             <div className="ms-3">
-                              <Link to={`/products/${item.id}`}>
+                              <Link
+                                to={`/products/${item.id}`}
+                                style={{ textDecorationLine: "none" }}
+                              >
                                 <p
                                   className="fw-bold mb-1"
                                   style={{
                                     color: "black",
-                                    textDecoration: "underline",
+                                    fontWeight: "bolder",
                                   }}
                                 >
                                   {`${item.name}`}
@@ -274,8 +298,10 @@ if(token){
                               }}
                             >
                               -
-                            </button>{" "}
-                            {""} {`${item.quantityInCart}`} {""}{" "}
+                            </button>
+                            &nbsp;
+                            {`${item.quantityInCart}`}
+                            &nbsp;
                             <button
                               type="button"
                               className="btn btn-outline-secondary"
@@ -302,12 +328,11 @@ if(token){
                           </p>
                         </td>
                         <td>
-                          <span className="badge badge-success rounded-pill d-inline">
-                            Active
-                          </span>
+                          <span className="badge badge-success rounded-pill d-inline"></span>
                         </td>
-                        <td>{`$${item.price * item.quantityInCart}`}</td>
-                        <td></td>
+                        <td>{`$${(
+                          item.price * item.quantityInCart
+                        ).toFixed(2)}`}</td>
                       </tr>
                     </tbody>
                   ))}
@@ -316,11 +341,11 @@ if(token){
             </div>
   
             <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <h2>Order Summary</h2>
+              <h2 style={{ paddingBottom: "20px" }}>Order Summary</h2>
               <div className="card" style={{ width: "30rem" }}></div>
               <div className="row">
                 <div className="col-8">
-                  <p>
+                  <p style={{ color: "gray" }}>
                     {" "}
                     Subtotal (
                     {cart.reduce(
@@ -343,7 +368,7 @@ if(token){
               </div>
               <div className="row">
                 <div className="col-8">
-                  <p> Delivery:</p>
+                  <p style={{ color: "gray" }}> Delivery:</p>
                 </div>
                 <div className="col-4">
                   <p> $5.99</p>
@@ -365,15 +390,7 @@ if(token){
                   </h3>
                 </div>
               </div>
-  
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  handleCheckout();
-                }}
-              >
-                Checkout
-              </button>
+              <Payment cart={cart} />
             </div>
           </div>
         </div>
