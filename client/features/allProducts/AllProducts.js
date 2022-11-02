@@ -260,20 +260,16 @@ const AllProducts = () => {
                               to={`/products/${product.id}`}
                               style={{ textDecoration: `none` }}
                             >
-                              <div
-                                style={{
-                                  width: `14rem`,
-                                  height: `16rem`,
-                                  backgroundImage: `url(${product.imageUrl})`,
-                                  backgroundSize: "cover",
-                                }}
-                                className="card-img-top"
-                              ></div>
+                              <div>
+                                <img
+                                  className="card-img-top"
+                                  src={product.imageUrl}
+                                />
+                              </div>
                               <h5
                                 className="card-title text-center"
                                 style={{
                                   color: `black`,
-                                  marginTop: `20px`,
                                   fontSize: `135%`,
                                 }}
                               >

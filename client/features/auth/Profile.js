@@ -6,7 +6,6 @@ const Profile = () => {
   const { name, email } = useSelector((state) => state.auth.me);
 
   const [updateName, setUpdateName] = useState("");
-  //const [updateUsername, setUpdateUsername] = useState("");
   const [updateEmail, setUpdateEmail] = useState("");
 
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const Profile = () => {
     evt.preventDefault();
     dispatch(editProfile({ name: updateName, email: updateEmail }));
     setUpdateName("");
-    setUpdateUsername("");
     setUpdateEmail("");
   };
   return (
@@ -56,7 +54,7 @@ const Profile = () => {
 
             <div className="row mt-3">
               <div className="col-md-12">
-                <label className="labels">Name: {name}</label>
+                <label className="labels">Name </label>
                 <input
                   type="text"
                   className="form-control"
@@ -64,18 +62,9 @@ const Profile = () => {
                   onChange={(e) => setUpdateName(e.target.value)}
                 />
               </div>
-              {/* <div className="col-md-12">
-                <label className="labels">Username </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={updateUsername}
-                  onChange={(e) => setUpdateUsername(e.target.value)}
-                />
-              </div> */}
 
               <div className="col-md-12">
-                <label className="labels">Email Address: {email}</label>
+                <label className="labels">Email Address</label>
                 <input
                   type="email"
                   pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"

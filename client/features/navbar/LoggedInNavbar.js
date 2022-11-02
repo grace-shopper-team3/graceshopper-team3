@@ -11,12 +11,7 @@ const LoggedInNavbar = (props) => {
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
-    // navigate("/home");
   };
-  const { name, id } = useSelector((state) => state.auth.me);
-  // const capitalizeFirst = (str) => {
-  //   return str?.charAt(0).toUpperCase() + str?.slice(1);
-  // };
 
   useEffect(() => {
     dispatch(fetchCart());

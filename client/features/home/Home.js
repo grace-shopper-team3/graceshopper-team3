@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 const Home = (props) => {
   const styles = {
     card: {
-      // width: `25rem`,
-      // height: `25em`,
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
@@ -19,23 +17,24 @@ const Home = (props) => {
         id="carouselExampleControls"
         className="carousel slide"
         data-bs-ride="carousel"
+        style={{ alignItems: "center", justifyContent: "center" }}
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
+              src="https://i.ytimg.com/vi/FDEtkcYZjRk/maxresdefault.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
-              src="https://assets-prd.ignimgs.com/2022/07/25/black-panther-funko-pops-1658775848280.png?width=1280"
+              src="https://images.alphacoders.com/888/888417.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
-              src="https://assets-prd.ignimgs.com/2022/04/18/thor-love-thunder-funko-pops-1650298520364.png?width=1280"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d8ffd06d-837a-4225-aedd-bae9c3dec2f3/d9udhy5-d269b81f-8318-46c3-9a5d-1cf0b6693a4c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Q4ZmZkMDZkLTgzN2EtNDIyNS1hZWRkLWJhZTljM2RlYzJmM1wvZDl1ZGh5NS1kMjY5YjgxZi04MzE4LTQ2YzMtOWE1ZC0xY2YwYjY2OTNhNGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.VFmRmdECQ73JRrJtP9WIlT34PS1cTkDWvJbTpWOm9_s"
               className=" w-100"
             />
           </div>
@@ -66,8 +65,11 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div className="row justify-content-md-center">
-        <div className="col-sm">
+      <div
+        className="row justify-content-md-center"
+        style={{ paddingBottom: "20px" }}
+      >
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link
               to={`/products`}
@@ -80,8 +82,8 @@ const Home = (props) => {
               <img
                 src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
 
             <div className="card-body">
@@ -95,19 +97,19 @@ const Home = (props) => {
                 }}
                 className="btn btn-dark"
               >
-                <h5 className="card-title ">Gift Ideas Under 25$</h5>
+                <h5 className="card-title ">Gift Ideas Under $25</h5>
               </Link>
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "DC" }}>
               <img
                 src="https://sportshub.cbsistatic.com/i/2021/03/18/f13f4020-06ec-4abe-af95-9cf56ea0c79f/funkoverse-dc-backgrounds-1220069.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
 
             <div className="card-body">
@@ -126,14 +128,14 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
               <img
                 src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marvel-funko-pop-figures-2022-1643297204.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
             <div className="card-body">
               <Link

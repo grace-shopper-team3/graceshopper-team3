@@ -89,3 +89,11 @@ li.page-item.disabled {
 color:black
 }
 
+img.singleProds   {
+  padding: 0px;
+}
+
+.singleDesc{
+  align-items: center;
+  justify-content: "center";
+}
