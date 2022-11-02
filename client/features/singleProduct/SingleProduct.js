@@ -54,60 +54,54 @@ const SingleProduct = () => {
               {capitalizeAll(name)}
             </h1>
           </section>
-
-          <div
-            style={{
-              display: `flex`,
-              justifyContent: `center`,
-              alignItems: `center`,
-            }}
-          >
-            <img
-              src={imageUrl}
-              style={{
-                height: `36rem`,
-              }}
-            />
-            <div
-              style={{
-                flex: `0 0 50%`,
-                padding: `10px`,
-              }}
-            >
-              <div>
-                <h4 style={{ marginTop: `5%` }}>{description}</h4>
-                <h3
+          <div className="container">
+            <div className="row">
+              <div className="col-md">
+                <img
+                  className="singleProds"
+                  src={imageUrl}
                   style={{
-                    marginTop: `3%`,
-                    fontWeight: "bolder",
-                    fontFamily: "TT-Norms-Black",
+                    height: `32rem`,
                   }}
-                >
-                  Category: {category}
-                </h3>
-                <h4
-                  style={{
-                    marginTop: `2%`,
-                    fontWeight: "bolder",
-                  }}
-                >
-                  ${price}
-                </h4>
+                />
               </div>
+              <div className="col-md">
+                <div className="singleDesc">
+                  <h4 style={{ marginTop: `10%` }}>{description}</h4>
+                  <h3
+                    style={{
+                      marginTop: `3%`,
+                      fontWeight: "bolder",
+                      alignItems: "center",
+                      fontFamily: "TT-Norms-Black",
+                    }}
+                  >
+                    Category: {category}
+                  </h3>
+                  <h4
+                    style={{
+                      marginTop: `2%`,
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    ${price}
+                  </h4>
 
-              <section>
-                <button
-                  className="btn btn-dark"
-                  style={{
-                    fontFamily: "merel-black",
-                    color: "black",
-                    backgroundColor: "#F6BD60",
-                  }}
-                  onClick={(ev) => addToCart(ev, productId)}
-                >
-                  ADD TO CART
-                </button>
-              </section>
+                  <section>
+                    <button
+                      className="btn btn-dark"
+                      style={{
+                        fontFamily: "merel-black",
+                        color: "black",
+                        backgroundColor: "#F6BD60",
+                      }}
+                      onClick={(ev) => addToCart(ev, productId)}
+                    >
+                      ADD TO CART
+                    </button>
+                  </section>
+                </div>
+              </div>
             </div>
           </div>
         </div>
