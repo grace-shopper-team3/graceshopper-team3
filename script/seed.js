@@ -1191,14 +1191,12 @@ async function seed() {
     Order.create({ status: "unfulfilled", userId: 1 }),
     Order.create({ status: "fulfilled", userId: 2 }),
     Order.create({ status: "unfulfilled", userId: 3 }),
-    Order.create({ status: "fulfilled", userId: 2 }),
-    Order.create({ status: "fulfilled", userId: 4 }),
   ]);
 
   // Creating Order_Products
   const order_products = await Promise.all([
     Order_Product.create({
-      orderId: 1,
+      orderId: 3,
       productId: 1,
       quantityInCart: 1,
       subtotal: 0,

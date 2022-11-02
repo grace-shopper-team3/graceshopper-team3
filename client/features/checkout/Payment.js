@@ -9,6 +9,7 @@ const Payment = (props) => {
   const navigate = useNavigate();
   const { cart } = props;
   const TOKEN = "token";
+  const token = window.localStorage.getItem(TOKEN);
 
   const handlePayment = async () => {
     const token = window.localStorage.getItem(TOKEN);
@@ -29,24 +30,42 @@ const Payment = (props) => {
       console.log(err.message);
     }
   };
-
-  return (
-    <div>
-      <button
-        className="btn btn-dark"
-        style={{
-          fontFamily: "merel-black",
-          color: "black",
-          backgroundColor: "#F6BD60",
-        }}
-        onClick={() => {
-          handlePayment();
-        }}
-      >
-        Checkout & Pay
-      </button>
-    </div>
-  );
+  if (token) {
+    return (
+      <div>
+        <button
+          className="btn btn-dark"
+          style={{
+            fontFamily: "merel-black",
+            color: "black",
+            backgroundColor: "#F6BD60",
+          }}
+          onClick={() => {
+            handlePayment();
+          }}
+        >
+          Checkout & Pay
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Link to={`/login`}>
+          <button
+            className="btn btn-dark"
+            style={{
+              fontFamily: "merel-black",
+              color: "black",
+              backgroundColor: "#F6BD60",
+            }}
+          >
+            Login or Signup to Checkout
+          </button>
+        </Link>
+      </div>
+    );
+  }
 };
 
 export default Payment;
