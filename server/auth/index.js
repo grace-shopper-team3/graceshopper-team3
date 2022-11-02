@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   models: { User },
 } = require("../db");
+const { getToken } = require("../api/adminCheckMiddleware");
 module.exports = router;
 
 router.post("/login", async (req, res, next) => {
@@ -34,11 +35,23 @@ router.get("/me", async (req, res, next) => {
   }
 });
 
-// router.put("/me", async (req, res, next) => {
-//   try {
-//     const user = await User.findByToken(req.headers.authorization);
-//     res.send(await user.update(req.body));
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
+// -------- LoggedIn User only
+// PUT auth
+router.put("/profile", getToken, async (req, res, next) => {
+  const userId = req.user.id;
+  //const user = await User.findByToken(req.headers.authorization)
+  try {
+    for (let key in req.body) {
+      if (req.body[key] === "") {
+        delete req.body[key];
+      }
+    }
+
+    const user = await User.findByPk(userId);
+    const editUser = await user.update(req.body);
+
+    res.json(editUser);
+  } catch (err) {
+    next(err);
+  }
+});
