@@ -26,7 +26,7 @@ const Profile = () => {
     <div className="container rounded bg-white mt-5 mb-5">
       <div className="d-flex justify-content-center mb-3">
         <h2 className="text-right" style={{ fontSize: "60px" }}>
-          Welcome Back, {capitalizeFirst(name)}!
+          Welcome back, {capitalizeFirst(name)}!
         </h2>
       </div>
       <div className="row">
