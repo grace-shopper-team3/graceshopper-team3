@@ -4,20 +4,17 @@ import EmptyCart from "../cart/EmptyCart";
 import FilledCart from "./FilledCart";
 import { fetchCart } from "./cartSlice";
 
-const Cart = (props) => {
+const Cart = () => {
+  const TOKEN = "token";
+  const token = window.localStorage.getItem(TOKEN);
 
-  
-  const TOKEN = 'token'
-  const token = window.localStorage.getItem(TOKEN)
-
- let cart
-   if (token){
-  cart = useSelector((state) => state.cart.cart);
-  } else{
-  //  cart = JSON.parse(window.localStorage.getItem('products'))
-  cart = useSelector((state) => state.cart.cart);
+  let cart;
+  if (token) {
+    cart = useSelector((state) => state.cart.cart);
+  } else {
+    //  cart = JSON.parse(window.localStorage.getItem('products'))
+    cart = useSelector((state) => state.cart.cart);
   }
-
 
   const userInfo = useSelector((state) => state.auth.me);
   const dispatch = useDispatch();
@@ -26,8 +23,6 @@ const Cart = (props) => {
     window.scrollTo(0, 0);
     userInfo ? dispatch(fetchCart()) : null;
   }, [dispatch]);
-
-  
 
   return (
     <>{cart && cart.length ? <FilledCart cart={cart} /> : <EmptyCart />}</>

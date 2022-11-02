@@ -258,6 +258,7 @@ const AllProducts = () => {
                           >
                             <Link
                               to={`/products/${product.id}`}
+                              state={{ productId: product.id }}
                               style={{ textDecoration: `none` }}
                             >
                               <div>
