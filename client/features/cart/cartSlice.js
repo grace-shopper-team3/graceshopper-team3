@@ -175,7 +175,7 @@ const cartSlice = createSlice({
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        state.cart = action.payload;
+        state.cart.push(action.payload);
       } else {
         let init = false;
         for (let i = 0; i < localArry.length; i++) {
