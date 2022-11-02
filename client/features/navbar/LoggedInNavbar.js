@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../app/store";
-import { fetchCart } from "../cart/CartSlice";
+import { fetchCart } from "../cart/cartSlice";
 
 const LoggedInNavbar = (props) => {
   const { cart } = props;
