@@ -66,7 +66,7 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div class="row justify-content-md-center">
+      <div className="row justify-content-md-center">
         <div className="col-sm">
           <div className="card" style={styles.card}>
             <Link

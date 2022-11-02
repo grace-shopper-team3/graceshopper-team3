@@ -139,7 +139,9 @@ const FilledCart = (props) => {
                       <td>
                         <span className="badge badge-success rounded-pill d-inline"></span>
                       </td>
-                      <td>{`$${item.product.price * item.quantityInCart}`}</td>
+                      <td>{`$${(
+                        item.product.price * item.quantityInCart
+                      ).toFixed(2)}`}</td>
                     </tr>
                   </tbody>
                 ))}
