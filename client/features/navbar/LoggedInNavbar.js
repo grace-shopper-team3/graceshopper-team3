@@ -19,8 +19,8 @@ const LoggedInNavbar = (props) => {
   // };
 
   useEffect(() => {
-    dispatch(fetchCart(id));
-  }, [dispatch, id]);
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   return (
     <>
