@@ -72,7 +72,7 @@ const OrdersHistory = (props) => {
                       className="product border-bottom table-responsive"
                     >
                       <td className="py-2">
-                        {order[0].order_product.updatedAt.slice(0, 10)}
+                        {order[0]?.order_product.updatedAt.slice(0, 10)}
                       </td>
                       <td className="py-2">
                         <div className="text-right">

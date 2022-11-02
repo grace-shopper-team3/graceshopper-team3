@@ -27,7 +27,7 @@ export const addItemToCart = createAsyncThunk(
   async ({ productId }, {dispatch}) => {
     const token = window.localStorage.getItem(TOKEN);
     if(token) {
-      try{ 
+      try{
         const { data } = await axios.post(
                 `/api/order_products/cart`,
                 {
@@ -51,7 +51,7 @@ export const addItemToCart = createAsyncThunk(
       for(let key in payload){
         product[key]=payload[key]
       }
-      
+
       if (!product['quantityInCart']){
         product['quantityInCart'] = 1
       }
