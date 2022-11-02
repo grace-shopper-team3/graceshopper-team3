@@ -4,9 +4,9 @@ const {
 } = require("../db");
 const { getToken } = require("./adminCheckMiddleware");
 
-// require("dotenv").config();
+require("dotenv").config();
 const Stripe = require("stripe");
-//const stripe = Stripe(process.env.STRIPE_API_KEY);
+// const stripe = Stripe(process.env.STRIPE_API_KEY);
 const stripe = Stripe(
   "sk_test_51LzAWjIdadgQxEeI56jNMpHVxheAWbyIOcJKy32i1oIj6xjAeHitfd1TdEW23i2Zmea8XQYZefy8ZNqHwVij66vc00n1Vi5Bpk"
 );
@@ -47,5 +47,5 @@ router.post("/stripe/create-checkout-session", getToken, async (req, res) => {
 //.env
 // STRIPE_API_KEY =
 // sk_test_51LzAWjIdadgQxEeI56jNMpHVxheAWbyIOcJKy32i1oIj6xjAeHitfd1TdEW23i2Zmea8XQYZefy8ZNqHwVij66vc00n1Vi5Bpk
-// SERVER_URL = http://localhost:8080 or //https://team3.onrender.com
+// SERVER_URL for local = http://localhost:8080 or //
 // NODE_ENV = development

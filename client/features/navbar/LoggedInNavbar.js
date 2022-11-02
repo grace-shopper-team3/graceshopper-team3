@@ -41,8 +41,8 @@ const LoggedInNavbar = (props) => {
             </a>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
-              Another action
+            <a className="dropdown-item" href="/orders-history">
+              Orders
             </a>
           </li>
         </ul>
