@@ -24,13 +24,9 @@ router.post("/stripe/create-checkout-session", getToken, async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items,
     mode: "payment",
-    success_url: `${process.env.DEV_URL}/checkout-success`,
-    cancel_url: `${process.env.DEV_URL}/cart`,
+    success_url: `https://team3.onrender.com/checkout-success`,
+    cancel_url: `https://team3.onrender.com/cart`,
   });
 
   res.send({ url: session.url });
 });
-
-// -------------  Before Deployment ----------------------
-// success_url: `${process.env.PRODUCTION_URL}/checkout-success`,
-// cancel_url: `${process.env.PRODUCTION_URL}/cart`,
