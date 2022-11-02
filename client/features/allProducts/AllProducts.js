@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
-import { addItemToCart, fetchCart } from "../cart/cartSlice";
+import {
+  addItemToCart,
+  fetchCart,
+  incrementItemInCart,
+} from "../cart/cartSlice";
 import { useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -20,7 +24,7 @@ const AllProducts = () => {
   location.state ? ({ homeCategory } = location.state) : null;
   location.state ? ({ homePrice } = location.state) : null;
 
-  const userInfo = useSelector((state) => state.auth.me);
+  const cart = useSelector((state) => state.cart.cart);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -90,8 +94,17 @@ const AllProducts = () => {
   };
 
   const addToCart = (ev, productId) => {
-    ev.preventDefault();
-    dispatch(addItemToCart({ productId }));
+    let init = false;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productId == productId) {
+        console.log("Hi, I'm in the increment loop");
+        const quantityInCart = cart[i].quantityInCart;
+        dispatch(incrementItemInCart({ productId, quantityInCart }));
+        init = true;
+      }
+    }
+    console.log("I'm not in the increment loop", init);
+    !init ? dispatch(addItemToCart({ productId })) : null;
     dispatch(fetchCart());
   };
 
@@ -149,7 +162,6 @@ const AllProducts = () => {
                     <button
                       className="btn  dropdown-toggle"
                       type="button"
-                      z
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
                       aria-haspopup="true"
