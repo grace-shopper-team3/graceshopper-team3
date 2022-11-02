@@ -5,7 +5,20 @@ import FilledCart from "./FilledCart";
 import { fetchCart } from "./CartSlice";
 
 const Cart = (props) => {
-  const cart = useSelector((state) => state.cart.cart);
+
+  
+  const TOKEN = 'token'
+  const token = window.localStorage.getItem(TOKEN)
+
+ let cart
+   if (token){
+  cart = useSelector((state) => state.cart.cart);
+  } else{
+  //  cart = JSON.parse(window.localStorage.getItem('products'))
+  cart = useSelector((state) => state.cart.cart);
+  }
+
+
   const userInfo = useSelector((state) => state.auth.me);
   const dispatch = useDispatch();
 
@@ -13,6 +26,8 @@ const Cart = (props) => {
     window.scrollTo(0, 0);
     dispatch(fetchCart());
   }, [dispatch]);
+
+  
 
   return (
     <>{cart && cart.length ? <FilledCart cart={cart} /> : <EmptyCart />}</>
