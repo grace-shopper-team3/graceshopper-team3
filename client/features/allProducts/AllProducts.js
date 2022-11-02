@@ -89,7 +89,7 @@ const AllProducts = () => {
   const addToCart = (ev, productId) => {
     ev.preventDefault();
     dispatch(addItemToCart({ productId }));
-    dispatch(fetchCart(userInfo.id));
+    dispatch(fetchCart());
   };
 
   const allProducts = useSelector((state) => state.allProducts.products);
