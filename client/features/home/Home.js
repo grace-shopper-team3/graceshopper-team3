@@ -7,6 +7,7 @@ const Home = (props) => {
     card: {
       // width: `25rem`,
       // height: `25em`,
+
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
@@ -66,8 +67,11 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div class="row justify-content-md-center">
-        <div className="col-sm">
+      <div
+        class="row justify-content-md-center"
+        style={{ paddingBottom: "20px" }}
+      >
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link
               to={`/products`}
@@ -80,7 +84,7 @@ const Home = (props) => {
               <img
                 src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
+                style={{ height: "300px", width: "450px" }}
               />{" "}
             </Link>
 
@@ -95,18 +99,18 @@ const Home = (props) => {
                 }}
                 className="btn btn-dark"
               >
-                <h5 className="card-title ">Gift Ideas Under 25$</h5>
+                <h5 className="card-title ">Gift Ideas Under $25</h5>
               </Link>
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "DC" }}>
               <img
                 src="https://sportshub.cbsistatic.com/i/2021/03/18/f13f4020-06ec-4abe-af95-9cf56ea0c79f/funkoverse-dc-backgrounds-1220069.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
+                style={{ height: "300px", width: "450px" }}
               />{" "}
             </Link>
 
@@ -126,13 +130,13 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
               <img
                 src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marvel-funko-pop-figures-2022-1643297204.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
+                style={{ height: "300px", width: "450px" }}
               />{" "}
             </Link>
             <div className="card-body">
