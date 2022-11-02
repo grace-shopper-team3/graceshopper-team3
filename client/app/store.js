@@ -3,8 +3,9 @@ import logger from "redux-logger";
 import authReducer from "../features/auth/authSlice";
 import allProductsSliceReducer from "../features/allProducts/allProductsSlice";
 import singleProductSliceReducer from "../features/singleProduct/singleProductSlice";
-import cartSliceReducer from "../features/cart/CartSlice";
+import cartSliceReducer from "../features/cart/cartSlice";
 import checkoutSliceReducer from "../features/checkout/checkoutSlice";
+import historySliceReducer from "../features/auth/historySlice";
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     singleProduct: singleProductSliceReducer,
     cart: cartSliceReducer,
     checkoutOrder: checkoutSliceReducer,
+    ordersHistory: historySliceReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

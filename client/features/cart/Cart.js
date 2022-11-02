@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EmptyCart from "../cart/EmptyCart";
 import FilledCart from "./FilledCart";
-import { fetchCart } from "./CartSlice";
+import { fetchCart } from "./cartSlice";
 
 const Cart = (props) => {
 
@@ -24,7 +24,7 @@ const Cart = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(fetchCart());
+    userInfo ? dispatch(fetchCart()) : null;
   }, [dispatch]);
 
   

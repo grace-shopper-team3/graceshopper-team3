@@ -19,11 +19,15 @@ router.get("/cart", getToken, async (req, res, next) => {
       where: [{ userId: userId }, { status: "unfulfilled" }],
     });
 
-    const ordersDets = await Order_Product.findAll({
-      where: { orderId: order.id },
-      include: { model: Product },
-    });
-    res.json(ordersDets);
+    if (order) {
+      const ordersDets = await Order_Product.findAll({
+        where: { orderId: order.id },
+        include: { model: Product },
+      });
+      res.json(ordersDets);
+    } else {
+      res.json({ error: "Order not found" });
+    }
   } catch (err) {
     next(err);
   }
@@ -101,33 +105,6 @@ router.delete("/:productId/cart", getToken, async (req, res, next) => {
       where: { productId: productId, orderId: order.id },
     });
     res.json(updatedItem); //only sends num of deletion back
-  } catch (err) {
-    next(err);
-  }
-});
-
-// GET api/order_products ------ LoggedIn user
-// To render order history
-router.get("/history", getToken, async (req, res, next) => {
-  const userId = req.user.id;
-  try {
-    const orders = await Order.findAll({
-      where: [{ userId: userId }, { status: "fulfilled" }],
-    });
-
-    // Resolve this for users with multiple fulfilled orders
-    // const ordersDets = orders.map(async (order) => {
-    //   await Order_Product.findAll({
-    //     where: { orderId: order.id },
-    //     include: { model: Product },
-    //   });
-    // });
-
-    const ordersDets = await Order_Product.findAll({
-      where: { orderId: orders[0].id },
-      include: { model: Product },
-    });
-    res.json(ordersDets);
   } catch (err) {
     next(err);
   }
