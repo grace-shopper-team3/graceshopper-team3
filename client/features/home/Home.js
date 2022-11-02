@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 const Home = (props) => {
   const styles = {
     card: {
-      // width: `25rem`,
-      // height: `25em`,
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
@@ -19,25 +17,23 @@ const Home = (props) => {
         id="carouselExampleControls"
         className="carousel slide"
         data-bs-ride="carousel"
+        style={{ alignItems: "center", justifyContent: "center" }}
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://assets-prd.ignimgs.com/2022/08/16/funko-advent-calendars-2022-1660661618907.png"
+              src="https://i.ytimg.com/vi/FDEtkcYZjRk/maxresdefault.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
             <img
-              src="https://assets-prd.ignimgs.com/2022/07/25/black-panther-funko-pops-1658775848280.png?width=1280"
+              src="https://images.alphacoders.com/888/888417.jpg"
               className=" w-100"
             />
           </div>
           <div className="carousel-item">
-            <img
-              src="https://assets-prd.ignimgs.com/2022/04/18/thor-love-thunder-funko-pops-1650298520364.png?width=1280"
-              className=" w-100"
-            />
+            <img src="https://i.imgur.com/yUm4b0G.png" className=" w-100" />
           </div>
         </div>
         <button
@@ -66,8 +62,11 @@ const Home = (props) => {
         </button>
       </div>
 
-      <div className="row justify-content-md-center">
-        <div className="col-sm">
+      <div
+        className="row justify-content-md-center"
+        style={{ paddingBottom: "20px" }}
+      >
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link
               to={`/products`}
@@ -80,8 +79,8 @@ const Home = (props) => {
               <img
                 src="https://popgeekcollectibles.com/wp-content/uploads/2020/10/Funko_Pop_Banner_Image-1.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
 
             <div className="card-body">
@@ -100,14 +99,14 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "DC" }}>
               <img
                 src="https://sportshub.cbsistatic.com/i/2021/03/18/f13f4020-06ec-4abe-af95-9cf56ea0c79f/funkoverse-dc-backgrounds-1220069.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
 
             <div className="card-body">
@@ -126,14 +125,14 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm">
+        <div className="col-md">
           <div className="card" style={styles.card}>
             <Link to={`/products`} state={{ homeCategory: "Marvel" }}>
               <img
                 src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marvel-funko-pop-figures-2022-1643297204.jpg"
                 className="card-img-top"
-                style={{ height: "300px" }}
-              />{" "}
+                style={{ height: "300px", width: "450px" }}
+              />
             </Link>
             <div className="card-body">
               <Link
