@@ -5,7 +5,6 @@ import {
   addItemToCart,
   incrementItemInCart,
   fetchCart,
-  selectCart,
 } from "../cart/cartSlice";
 import { fetchSingleProduct } from "./singleProductSlice";
 
@@ -14,14 +13,9 @@ const SingleProduct = () => {
   const { productId } = useParams();
   const cart = useSelector((state) => state.cart.cart);
 
-  // const addToCart = (ev) => {
-  //   cart.map((item) => {
-  //     if (item.productId === productId) {
-  //       document.getElementById("addToCart").disabled = true;
-  //     }
-  //   });
-  //   dispatch(addItemToCart({ productId }));
-  // };
+  const capitalizeAll = (str) => {
+    return str?.toUpperCase();
+  };
 
   const addToCart = (ev, productId) => {
     let init = false;
@@ -57,7 +51,7 @@ const SingleProduct = () => {
                 backgroundColor: `#F6BD60`,
               }}
             >
-              {name}
+              {capitalizeAll(name)}
             </h1>
           </section>
 
