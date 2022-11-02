@@ -9,6 +9,7 @@ import ReactPaginate from "react-paginate";
 const AllProducts = () => {
   const itemsPerPage = 12;
   const [itemOffset, setItemOffset] = useState(0);
+  const [render, setRender] = useState(true);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(3);
@@ -34,7 +35,7 @@ const AllProducts = () => {
       ? setCurrentItems(productList.slice(itemOffset, endOffset))
       : null;
     dispatch(fetchAllProducts());
-  }, [itemOffset, itemsPerPage, productList]);
+  }, [itemOffset, itemsPerPage, productList, render]);
 
   const styles = {
     row: {
@@ -69,6 +70,7 @@ const AllProducts = () => {
         allProducts.filter((product) => product.category === category)
       );
     }
+    render ? setRender(false) : setRender(true);
   };
 
   const filterPriceButton = (ev) => {
@@ -84,6 +86,7 @@ const AllProducts = () => {
       const filteredArray = allProducts.filter((product) => product.price < 25);
       setProductList(filteredArray);
     }
+    render ? setRender(false) : setRender(true);
   };
 
   const addToCart = (ev, productId) => {
