@@ -3,7 +3,7 @@ const { getToken } = require("./adminCheckMiddleware");
 
 const Stripe = require("stripe");
 const stripe = Stripe(
-  "sk_test_51LzAWjIdadgQxEeI56jNMpHVxheAWbyIOcJKy32i1oIj6xjAeHitfd1TdEW23i2Zmea8XQYZefy8ZNqHwVij66vc00n1Vi5Bpk"
+  "pk_test_51LzAWjIdadgQxEeIGnPTdeBH8x6bQMGP3Ut2VuVCC6XPUlpaMU0sio45i0sNNo1sj2kXZb0iqcS2iSaN5EirBuyT00LMkaOAWz"
 );
 
 module.exports = router;
