@@ -2,7 +2,9 @@ const router = require("express").Router();
 const { getToken } = require("./adminCheckMiddleware");
 
 const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_API_KEY);
+const stripe = Stripe(
+  "sk_test_51LzAWjIdadgQxEeI56jNMpHVxheAWbyIOcJKy32i1oIj6xjAeHitfd1TdEW23i2Zmea8XQYZefy8ZNqHwVij66vc00n1Vi5Bpk"
+);
 
 module.exports = router;
 
