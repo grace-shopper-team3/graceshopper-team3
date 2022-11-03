@@ -2,9 +2,7 @@ const router = require("express").Router();
 const { getToken } = require("./adminCheckMiddleware");
 
 const Stripe = require("stripe");
-const stripe = Stripe(
-  "pk_test_51LzAWjIdadgQxEeIGnPTdeBH8x6bQMGP3Ut2VuVCC6XPUlpaMU0sio45i0sNNo1sj2kXZb0iqcS2iSaN5EirBuyT00LMkaOAWz"
-);
+const stripe = Stripe(process.env.STRIPE_API_KEY);
 
 module.exports = router;
 
@@ -26,8 +24,8 @@ router.post("/stripe/create-checkout-session", getToken, async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items,
     mode: "payment",
-    success_url: `https://team3.onrender.com/checkout-success`,
-    cancel_url: `https://team3.onrender.com/cart`,
+    success_url: `${process.env.PRODUCTION_URL}/checkout-success`,
+    cancel_url: `${process.env.PRODUCTION_URL}/cart`,
   });
 
   res.send({ url: session.url });
