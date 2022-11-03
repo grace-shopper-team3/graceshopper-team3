@@ -56,15 +56,6 @@ const LoggedInNavbar = (props) => {
 
       <li className="nav-item justify-content-end">
         <Link className="nav-link active" aria-current="page" to="/cart">
-          <span className="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {cart && cart.length
-              ? cart.reduce(
-                  (accum, element) => accum + element.quantityInCart,
-                  0
-                )
-              : 0}
-          </span>
-
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
