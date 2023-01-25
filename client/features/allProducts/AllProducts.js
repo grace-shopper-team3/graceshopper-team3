@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "./allProductsSlice";
 import { Link } from "react-router-dom";
-import {
-  addItemToCart,
-  fetchCart,
-  incrementItemInCart,
-} from "../cart/cartSlice";
+import { addItemToCart, fetchCart, incrementItemInCart } from "../cart/cartSlice";
 import { useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -32,12 +28,8 @@ const AllProducts = () => {
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
 
-    productList.length > 0
-      ? setPageCount(Math.ceil(productList.length / itemsPerPage))
-      : null;
-    productList
-      ? setCurrentItems(productList.slice(itemOffset, endOffset))
-      : null;
+    productList.length > 0 ? setPageCount(Math.ceil(productList.length / itemsPerPage)) : null;
+    productList ? setCurrentItems(productList.slice(itemOffset, endOffset)) : null;
     dispatch(fetchAllProducts());
   }, [itemOffset, itemsPerPage, productList, render]);
 
@@ -59,9 +51,7 @@ const AllProducts = () => {
 
   const handlePageClick = (ev) => {
     const newOffset = (ev.selected * itemsPerPage) % productList.length;
-    console.log(
-      `User requested page number ${ev.selected}, which is offset ${newOffset}`
-    );
+    console.log(`User requested page number ${ev.selected}, which is offset ${newOffset}`);
     setItemOffset(newOffset);
   };
 
@@ -70,9 +60,7 @@ const AllProducts = () => {
     if (category === "All") {
       setProductList(allProducts);
     } else {
-      setProductList(
-        allProducts.filter((product) => product.category === category)
-      );
+      setProductList(allProducts.filter((product) => product.category === category));
     }
     render ? setRender(false) : setRender(true);
   };
@@ -82,9 +70,7 @@ const AllProducts = () => {
     if (price === "All") {
       setProductList(allProducts);
     } else if (price === "Over $25") {
-      const filteredArray = allProducts.filter(
-        (product) => product.price >= 25
-      );
+      const filteredArray = allProducts.filter((product) => product.price >= 25);
       setProductList(filteredArray);
     } else {
       const filteredArray = allProducts.filter((product) => product.price < 25);
@@ -97,13 +83,11 @@ const AllProducts = () => {
     let init = false;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].productId == productId) {
-        console.log("Hi, I'm in the increment loop");
         const quantityInCart = cart[i].quantityInCart;
         dispatch(incrementItemInCart({ productId, quantityInCart }));
         init = true;
       }
     }
-    console.log("I'm not in the increment loop", init);
     !init ? dispatch(addItemToCart({ productId })) : null;
     dispatch(fetchCart());
   };
@@ -112,32 +96,20 @@ const AllProducts = () => {
   let [productList, setProductList] = useState([]);
 
   //Checks that allProducts and productList are avilable. Then sets productList
-  productList.length === 0 && allProducts.length > 0
-    ? setProductList(allProducts)
-    : null;
+  productList.length === 0 && allProducts.length > 0 ? setProductList(allProducts) : null;
 
   //Checks if we came from a home page category link, and filters if we did.
-  productList &&
-  productList.length === 0 &&
-  allProducts.length > 0 &&
-  homeCategory
-    ? setProductList(
-        allProducts.filter((item) => item.category === homeCategory)
-      )
+  productList && productList.length === 0 && allProducts.length > 0 && homeCategory
+    ? setProductList(allProducts.filter((item) => item.category === homeCategory))
     : null;
 
   productList && productList.length === 0 && allProducts.length > 0 && homePrice
     ? setProductList(allProducts.filter((item) => item.price <= homePrice))
     : null;
 
-  productList &&
-  productList.length > 0 &&
-  currentItems &&
-  currentItems.length === 0
+  productList && productList.length > 0 && currentItems && currentItems.length === 0
     ? setCurrentItems(productList.slice(0, 12))
     : null;
-
-  console.log("currentItems", currentItems);
 
   return (
     <div>
@@ -174,10 +146,7 @@ const AllProducts = () => {
                     >
                       Search by: Category
                     </button>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a
                         className="dropdown-item"
                         href="#"
@@ -217,29 +186,14 @@ const AllProducts = () => {
                     >
                       Search by: Price
                     </button>
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={(ev) => filterPriceButton(ev)}
-                      >
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a className="dropdown-item" href="#" onClick={(ev) => filterPriceButton(ev)}>
                         All
                       </a>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={(ev) => filterPriceButton(ev)}
-                      >
+                      <a className="dropdown-item" href="#" onClick={(ev) => filterPriceButton(ev)}>
                         Under $25
                       </a>
-                      <a
-                        className="dropdown-item"
-                        href="#"
-                        onClick={(ev) => filterPriceButton(ev)}
-                      >
+                      <a className="dropdown-item" href="#" onClick={(ev) => filterPriceButton(ev)}>
                         Over $25
                       </a>
                     </div>
@@ -252,20 +206,14 @@ const AllProducts = () => {
                   ? currentItems.map((product) => (
                       <div className="col-sm" key={product.id}>
                         <div style={styles.row}>
-                          <div
-                            className="card border-secondary"
-                            style={styles.card}
-                          >
+                          <div className="card border-secondary" style={styles.card}>
                             <Link
                               to={`/products/${product.id}`}
                               state={{ productId: product.id }}
                               style={{ textDecoration: `none` }}
                             >
                               <div>
-                                <img
-                                  className="card-img-top"
-                                  src={product.imageUrl}
-                                />
+                                <img className="card-img-top" src={product.imageUrl} />
                               </div>
                               <h5
                                 className="card-title text-center"

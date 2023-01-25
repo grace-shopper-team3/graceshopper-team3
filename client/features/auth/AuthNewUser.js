@@ -10,7 +10,6 @@ const AuthNewUser = ({ name }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const name = evt.target.name.value;
-    console.log("name", name);
     const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;

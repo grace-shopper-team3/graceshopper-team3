@@ -21,7 +21,6 @@ const SingleProduct = () => {
     let init = false;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].productId == productId) {
-        console.log("product IDs", cart[i].productId, productId);
         const quantityInCart = cart[i].quantityInCart;
         dispatch(incrementItemInCart({ productId, quantityInCart }));
         init = true;
