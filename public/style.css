@@ -97,3 +97,9 @@ img.singleProds   {
   align-items: center;
   justify-content: "center";
 }
+
+.d-block.w-100 {
+  width: 100%;
+  height: 50vw;
+  object-fit: cover;
+}
